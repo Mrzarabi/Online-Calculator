@@ -71,7 +71,7 @@
                                         <div class="form-group">
                                             <select name="output_currency_type" class="form-control form-control-sm select-background-color-left" wire:model.lazy="output_currency_type">
                                                 <option selected >Select Currency</option>
-                                                    <option value="{{$output->id}}">{{isset($output->name)}}</option>
+                                                    <option value="{{$output->id}}">{{$output->name}}</option>
                                                     <option value="Cash" disabled>Cash</option>
                                                     <option value="Tether (TRC20)" disabled>Tether (TRC20)</option>
                                                     <option value="Web Money" disabled>Web Money</option>

@@ -36,7 +36,7 @@
                                             <select name="input_currency_type" class="form-control form-control-sm select-background-color-left" wire:model.lazy="input_currency_type" required>
                                                 <option selected >Select Currency</option>
                                                 @foreach ($inputs as $input)
-                                                    <option value="{{$input->id}}">{{isset($input->name)}}</option>
+                                                    <option value="{{$input->id}}">{{$input->name}}</option>
                                                 @endforeach
                                                     <option value="Cash" disabled>Cash</option>
                                                     <option value="PayPal" disabled>PayPal</option>
@@ -80,7 +80,7 @@
                                                 <option selected >Select Currency</option>
                                                 @if (isset($outputs))
                                                     @foreach ($outputs as $output)
-                                                        <option value="{{$output->id}}">{{isset($output->name)}}</option>
+                                                        <option value="{{$output->id}}">{{$output->name}}</option>
                                                     @endforeach
                                                 @endif
                                                     <option value="Cash" disabled>Cash</option>

@@ -1,0 +1,56 @@
+.custom-background-color {
+    background-color: #292b30;
+    color: #f6fd09 !important;
+}
+
+.custom-text-color {
+    color: #f6fd09 !important;
+}
+
+.custom-back-color-card {
+    background-color: #343a40 !important;
+}
+
+.custom-user-info, .swal2-title, .swal2-html-container {
+    color: #fff !important;
+}
+
+.custom-form-control, .custom-icon-back-color, .custom-page-link {
+    background-color: #323233 !important;
+    border: 1px solid #323233 !important;
+    color: #fff !important;
+} 
+
+.custom-card-color, .swal2-popup {
+    background-color: #3c3d41 !important;
+}
+
+.custom-style-user {
+    max-width: 300px; 
+    max-height: 500px";
+}
+
+.custom-font-weight {
+    font-weight: 100;
+}
+
+.custom-size-clearing-image {
+    max-width: 600px;
+    max-height: 800px;
+}
+
+.custom-font-size {
+    font-size: .8rem;
+}
+
+@media (max-width: 1025px) {
+    .show-table {
+        display: none !important;
+    }
+}
+
+@media(min-width: 1050px) {
+    .show-card {
+        display: none !important;
+    }
+}

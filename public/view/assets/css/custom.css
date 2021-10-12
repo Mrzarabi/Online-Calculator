@@ -1,0 +1,468 @@
+@font-face {
+    font-family: roboto;
+    src: url('/fonts/Roboto-Regular.ttf');
+}
+
+.sold {
+    width: 100px;
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+@keyframes example {
+    to { -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+        transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        /* -webkit-transform: rotate(360deg); */
+        /* transform-origin: center; */
+        -moz-transform-origin: center;
+        /* -webkit-transform-origin: center; */
+        transition:  4s ease all;
+        -moz-transition: 4s ease all;
+        /* -webkit-transition:  4s ease all; */
+    }
+}
+
+.text-come {
+    animation-name: come;
+    animation-duration: 10s;
+}
+
+@keyframes come {
+    to {
+        transition:  4s ease all;
+        -moz-transition: 4s ease all;
+    }
+}
+
+.content-style {
+    position: absolute; 
+    top: 20%; 
+    left: 20%;
+}
+
+.site-color {
+    color: #f6fd09 !important;
+}
+  
+
+.custom-font-size {
+    font-size: .8rem;
+}
+
+.custom-logout-btn {
+    all: unset;
+}
+
+.custom-back-color-card {
+    background-color: #343a40 !important;
+}
+
+
+.swal2-title, .swal2-html-container {
+    color: #fff !important;
+}
+
+.swal2-popup {
+    background-color: #3c3d41 !important;
+}
+
+.custom-btn-form-terms {
+    all: unset;
+    text-decoration: underline;
+    color: #f6fd09 !important;
+}
+
+.custom-ml-1 {
+    margin-left: 10px !important;
+}
+
+.custom--ml {
+    margin-left: -10px;
+}
+
+.custom-overflow-y {
+    overflow-y: auto !important;
+}
+
+.site-background-color {
+    background-color: #1b1b1c;
+}
+
+.mt--5 {
+    margin-top: -20px;
+}
+
+.select-background-color-left {
+    background-color:#3c3d41 !important;
+    color: white;
+    min-width: 140px;
+    border-radius: 5px 0 0 5px !important;
+    box-shadow: unset !important;
+}
+
+.input-background-size {
+    margin-top: -2px;
+    height: 45px;
+    min-width: 80px;
+    max-width: 120px;
+}
+
+.select-background-color-right {
+    background-color:#3c3d41 !important;
+    color: white;
+    min-width: 125px;
+    border-radius: 0 5px 5px 0 !important;
+    box-shadow: unset !important;
+}
+
+.custom-output-background-color-left {
+    background-color: #3c3d41 !important;
+    width: 70px;
+    border-radius: 5px 0 0 5px !important;
+    height: 46px;
+}
+
+.custom-output-background-color-center {
+    background-color: #323233 !important;
+    min-width: 120px;
+    max-width: 140px; 
+    height: 45px;
+    margin-top: -2px;
+}
+
+.custom-output-background-color-right {
+    background-color: #3c3d41 !important;
+    min-width: 125px;
+    border-radius: 0 5px 5px 0 !important;
+    height: 45px;
+    margin-top: -2px;
+}
+
+.custom-btn-content {
+    background-color: #f6fd09; 
+    color: black; 
+    margin-left: -1%;
+}
+
+.logo-content-size {
+    width: 75px; 
+    margin: 7px 0 0 0;
+}
+
+.top-nav {
+    position: absolute; 
+    top: 8%; 
+    left: 30%;
+}
+
+.footer-reserved-text {
+    position: absolute; 
+    bottom: 5%; 
+    left: 10%; 
+    color: #f6fd09;
+}
+
+.logo-styles {
+    position: absolute;
+    left: 12%; 
+    top: 0%;
+}
+
+.logo-styles img {
+    width: 30vw;
+}
+
+.custom-btn-style {
+    all: unset;
+}
+
+.custom-background-dropdown {
+    background-color: transparent;
+}
+
+.custom-dropdown-link {
+    all: unset;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    color: #f6fd09;
+}
+
+.custom-text-decoration {
+    text-decoration: underline;
+}
+
+.dropdown-item:hover {
+    background-color: transparent !important;
+}
+
+.custom-margin-logo {
+    margin: 0 15px 0 -25px;
+}
+
+.custom-mr-5 {
+    margin-right: 3rem!important;
+}
+
+@media (min-width: 540px) {
+    
+}
+
+@media (min-width: 767.99px) {
+    .site-background-color {
+        padding: 8% 0 8% 0 !important;
+    }
+
+    .content-style {
+        left: 1%;
+        right: 1%;
+    }
+
+    .input-background-size {
+        height: 42px;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .logo-styles {
+        left: 6%;
+        top: 3%;
+    }
+
+    .logo-styles img {
+        width: 250px;
+    }
+
+    .site-background-color {
+        padding: 8% !important;
+    }
+
+    .logo-content-size {
+        margin: 7px 0 0 -5px;
+    }
+
+    .input-background-size {
+        height: 44px;
+    }
+}
+
+@media (min-width: 1050px) {
+    .logo-styles {
+        top: 0%;
+    }
+
+    .content-style {
+        left: 15%;
+        right: 15%;
+    }
+
+    .input-background-size {
+        height: 45px;
+    }
+}
+
+@media (max-width: 1024.99px) {
+    #ts-hero .ts-background-image {
+        background-position: top right !important;
+    }
+
+    .footer-reserved-text {
+        bottom: 3%;
+    }
+}
+
+@media (max-width: 768.99px) {
+    .top-nav {
+        display: none;
+    }
+
+    .custom-ml-1 {
+        margin-left: 0px !important ;
+    }
+
+    .c-bg-li:hover {
+        background-color: #1b1b1c;
+    }
+
+    .custom-output-background-color-left {
+        height: 41px;
+    }
+
+    .custom-output-background-color-center {
+        min-width: 100px;
+        max-width: 110px;
+        height: 41px;
+    }
+
+    .select-background-color-left {
+        min-width: 110px;
+    }
+
+    .input-background-size {
+        min-width: 100px;
+        max-width: 100px;
+        height: 41px;
+    }
+
+    .custom-btn-content {
+        margin-left: -3%;
+    }
+
+    .custom-margin-logo {
+        margin: 0 22px 0 -38px;
+    }
+    
+    .select-background-color-right {
+        min-width: 110px;
+    }
+
+    .custom--ml {
+        margin-left: -5% !important;
+    }
+
+    .custom-output-background-color-right {
+        height: 41px;
+        min-width: 115px;
+    }
+
+    .custom--ml {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 540px) {
+
+    .custom-mr-5 {
+        margin-right: 1rem !important;
+    }
+
+    .custom--ml {
+        margin-left: 0 !important;
+    }
+
+    .custom--ml2 {
+        margin-left: -14 !important;
+    }
+    .mt--5 {
+        margin-top: -12px;
+    }
+
+    .custom-mobile-inventory {
+        display: inline !important;
+    }
+
+    .content-style {
+        top: 17%;
+        left: 5%;
+        right: 5%;
+    }
+
+    .c-display-logo-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input-background-size {
+        max-width: 140px;
+        height: 38px;
+    }
+
+    .custom-margin-logo {
+        margin: 0;
+    }
+
+    .custom-output-background-color-center, .input-background-size, .custom-output-background-color-left {
+        height: 37px;
+    }
+
+    .custom-output-background-color-right {
+        height: 36px;
+    }
+    
+}
+
+@media (max-width: 539.98px) {
+    .select-background-color-left {
+        min-width: 110px !important;
+    }
+
+    .input-background-size {
+        max-width: 111px;
+        height: 36px;
+    }
+
+    .select-background-color-right {
+        min-width: 100px !important;
+    }
+}
+
+@media (max-width: 360.98px) {
+    .select-background-color-left {
+        min-width: 90px !important;
+    }
+
+    .input-background-size {
+        min-width: 100px;
+        max-width: 110px;
+    }
+    
+    .custom-margin-logo {
+        margin: 0;
+    }
+
+    .custom-btn-content {
+        margin-left: -5%;
+    }
+
+    .select-background-color-right {
+        min-width: 100px !important;
+    }
+
+    .custom-output-background-color-left {
+        width: 55px;
+    }
+
+    .custom-output-background-color-right {
+        min-width: 110px;
+    }
+}
+
+
+@media (max-width: 340.98px) {
+    .select-background-color-left {
+        min-width: 90px !important;
+    }
+
+    .custom-monile-margin-select-left {
+        margin-left:9px;
+    }
+
+    .input-background-size {
+        min-width: 80px;
+        max-width: 100px;
+    }
+    
+    .select-background-color-right {
+        min-width: 90px !important;
+    }
+
+    .custom-margin-logo {
+        margin: 0;
+    }
+
+    .custom-btn-content {
+        margin-left: -5%;
+    }
+
+    .custom-output-background-color-right {
+        min-width: 100px !important;
+    }
+}

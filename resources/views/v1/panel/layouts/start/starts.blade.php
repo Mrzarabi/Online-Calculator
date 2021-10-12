@@ -20,9 +20,6 @@
             </form>
         </div>
     </div> --}}
-    <div class="d-flex justify-content-center mb-5">
-        <button type="button" class="btn btn-primary justify-center" data-toggle="modal" data-target="#create-starter-sm" data-whatever="@mdo">Create New Session</button>
-    </div>
     {{-- modal --}}
         <div class="modal fade" id="create-starter-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -54,7 +51,7 @@
             <tr>
                 <th scope="col" class="custom-text-color">#</th>
                 <th scope="col" class="custom-text-color">Title</th>
-                <th scope="col" class="custom-text-color">Answerd</th>
+                <th scope="col" class="custom-text-color">New Ticket</th>
                 <th scope="col" class="custom-text-color">Clsoed</th>
                 <th scope="col" class="custom-text-color">Date</th>
                 <th scope="col" class="custom-text-color">Actions</th>

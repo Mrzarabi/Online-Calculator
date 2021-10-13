@@ -5,6 +5,7 @@ namespace App\Http\Controllers\V1\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Starter\StarterRequest;
 use App\Models\Starter;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,7 +42,14 @@ class StarterController extends Controller
     {
         DB::transaction(function () use($request) {
 
-            $starter = auth()->user()->starters()->create($request->all());
+            $day = Carbon::now()->day;
+            $second = carbon::now()->second;
+
+            $starter = auth()->user()->starters()->create(
+                array_merge( $request->all(), [
+                    'start_no' => rand(0, 9999) . $day. $second,
+                ])
+            );
             $this->location(auth()->user(), "User started session {$starter->title}.");
             $this->custom_alert('Session ' . $starter->title, 'created');
         });

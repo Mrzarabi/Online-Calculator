@@ -15,10 +15,8 @@ class Ticket extends Model
      * @var array
      */
     protected $fillable = [
-        'ticket_id',
         'starter_id',
         'body',
-        'watched',
         'importance',
         'image'
     ];
@@ -44,25 +42,6 @@ class Ticket extends Model
     // Relations
 
     /**
-     * Get the ticket that owns the ticket
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function ticket()
-    {
-        return $this->belongsTo(Ticket::class);
-    }
-
-    /**
-     * Get the tickets for the ticket.
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\hasMany
-     */
-    public function ticlets() {
-        return $this->hasMany(Ticket::class);
-    }
-
-    /**
      * Get the starter that owns the ticket
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -70,5 +49,15 @@ class Ticket extends Model
     public function starter()
     {
         return $this->belongsTo(Starter::class);
+    }
+
+    /**
+     * Get the user that owns the ticket
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

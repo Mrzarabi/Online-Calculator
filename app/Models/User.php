@@ -124,6 +124,15 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the tickets for the user.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function tickets() {
+        return $this->hasMany(Ticket::class);
+    }
+
+    /**
      * Get the forms for the user.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\hasMany

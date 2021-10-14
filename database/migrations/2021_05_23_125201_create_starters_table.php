@@ -21,7 +21,8 @@ class CreateStartersTable extends Migration
                                     ->onUpdate('cascade');
                                     
             $table->string('title', 255);
-            $table->boolean('clsoed')->default(false);
+            $table->string('start_no')->unique();
+            $table->boolean('closed')->default(false);
             $table->boolean('answerd')->delfault(true);
 
             $table->timestamps();

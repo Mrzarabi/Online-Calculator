@@ -16,8 +16,8 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('ticket_id')->nullable()->references('id')->on('tickets')
-                                    ->onDelete('set null')
+            $table->foreignUuid('user_id')->references('id')->on('users')
+                                    ->onDelete('cascade')
                                     ->onUpdate('cascade');
 
             $table->foreignId('starter_id')->nullable()->references('id')->on('starters')
@@ -25,7 +25,6 @@ class CreateTicketsTable extends Migration
                                     ->onUpdate('cascade');
                                     
             $table->text('body');
-            $table->boolean('watched')->default(false);
             $table->string('importance')->default(0);
             $table->string('image')->nullable();
 

@@ -50,7 +50,7 @@ class StarterController extends Controller
                     'start_no' => rand(0, 9999) . $day. $second,
                 ])
             );
-            $this->location(auth()->user(), "User started session {$starter->title}.");
+            $this->location(auth()->user(), "User started session {$starter->start_no}.");
             $this->custom_alert('Session ' . $starter->title, 'created');
         });
         

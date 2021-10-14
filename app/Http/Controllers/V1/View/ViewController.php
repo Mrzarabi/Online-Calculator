@@ -84,14 +84,12 @@ class ViewController extends Controller
             return redirect()->route('login');
         } else {
 
-            DB::transaction(function () use($request) {
                 
-                $this->form = auth()->user()->forms()->create(
-                    array_merge($request->all(), [
-                        'order_id' => $request->order_id
-                    ]) 
-                );
-            });
+            $this->form = auth()->user()->forms()->create(
+                array_merge($request->all(), [
+                    'order_id' => $request->order_id
+                ]) 
+            );
 
             $order = Order::where('id', $request->order_id)->first();
             $tether = Calculator::where('name', 'Tether (TRC 20)')->first();
@@ -110,7 +108,7 @@ class ViewController extends Controller
             $input = Calculator::where('id', $order->input_currency_type)->first();
             $output = Element::where('id', $order->output_currency_type)->first();
             
-            Mail::to('samxpay@gamil.com')->send( new adminRequest(auth()->user(), $order, $this->form->email, $this->form->contact_email, $input, $output) );
+            Mail::to('samxpay@gamil.com')->send( new adminRequest($order, $input, $output, $this->form) );
 
             $this->location(auth()->user(), "User Created New Order With ID: {$order->order_no}");
             $this->custom_alert('Your Order', 'submited');
@@ -132,11 +130,12 @@ class ViewController extends Controller
     
     public function email()
     {  
-        $user = auth()->user();
         $order = Order::with('user')->latest()->first();
         $form = Form::where('order_id', $order->id)->first();
         $input = Calculator::where('id', $order->input_currency_type)->first();
         $output = Element::where('id', $order->output_currency_type)->first();
-        return new adminRequest($user, $order, $input, $output, $form);
+
+
+        return new adminRequest($order, $input, $output, $form);
     }
 }

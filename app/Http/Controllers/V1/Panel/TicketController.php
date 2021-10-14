@@ -52,26 +52,24 @@ class TicketController extends Controller
                 if($request->hasFile('image')) {
 
                     $photo = $this->upload($request->file('image'));
-                    $starter->tickets()->create( 
+                    auth()->user()->tickets()->create( 
                         array_merge($request->all(), [
-                            'image' => $photo
+                            'image' => $photo,
+                            'starter_id' => $starter->id
                         ])
                     );
                 } else {
 
-                    $starter->tickets()->create($request->all());
+                    auth()->user()->tickets()->create(
+                        array_merge($request->all(), [
+                            'starter_id' => $starter->id
+                        ])
+                    );
                 }
 
-                $parent = Ticket::where('id', $request->ticket_id)->first();
-                if($parent->watched == false) {
-
-                    $parent->update([
-                        'watched' => true
-                    ]);
-                }
-                $this->custom_alert('Ticket ' . $parent->title, 'answerd');
+                $this->custom_alert('Ticket ', 'answerd');
             });
-            return redirect()->route('tickets.index');
+            return redirect()->back();
         } else {
 
             abort(403, 'Forbidden.');

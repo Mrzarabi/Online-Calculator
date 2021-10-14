@@ -34,6 +34,19 @@
     font-weight: 100;
 }
 
+.custom-border-ticket {
+    border: 1px solid #f6fd09 !important;
+}
+
+.test {
+    border: 1px solid #f6fd09 !important;
+}
+
+.custom-size-title-ticket {
+    text-overflow: ellipsis; 
+    max-width: 150px;
+}
+
 .custom-size-clearing-image {
     max-width: 600px;
     max-height: 800px;
@@ -41,6 +54,18 @@
 
 .custom-font-size {
     font-size: .8rem;
+}
+
+@media(max-width: 540px) {
+    .show-table-ticket {
+        display: none;
+    }
+}
+
+@media (min-width: 541px) {
+    .show-card-ticket {
+        display: none
+    }
 }
 
 @media (max-width: 1025px) {

@@ -9,7 +9,7 @@
             <a href=" {{route('starters.index')}} " class="btn btn-primary justify-center mt-4">Return To Page Tickets</a>
         </div>
     @endif
-    
+    <p class="mt-2 custom-size-text text-justify"> {{$starter->title}} </p>
     @php
         $tickets = Ticket::with('user')->where('starter_id', $starter->id)->get();
     @endphp

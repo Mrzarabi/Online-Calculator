@@ -6,11 +6,15 @@
     <h3>HI Dear {{$order->user->name . " " . $order->user->family}}</h3>
     <h3>
         The order :
-        {{isset($input->name)}} 
+        @if (isset($input->name))
+            {{$input->name}} 
+        @endif
         {{$order->input_number}}
         {{$order->input_currency_unit}} 
         TO 
-        {{isset($output->name)}} 
+        @if (isset($output->name))
+            {{$output->name}} 
+        @endif
         {{$order->output_number}} 
         {{$order->output_currency_unit}}
         is accepted successfully .

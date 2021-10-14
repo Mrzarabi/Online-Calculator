@@ -27,9 +27,6 @@ class TicketRequest extends FormRequest
             'body' => 'required|string',
             'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg,gif,svg'],
             'importance' => 'string',
-
-            // relation
-            'tickets.*' => 'nullable|exists:tickets,id|integer'
         ];
     }
 }

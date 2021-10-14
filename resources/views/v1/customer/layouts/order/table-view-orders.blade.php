@@ -82,7 +82,7 @@
                                     </div>
                                 @endif
                                 <p class="text-justify"> This order is 
-                                    @if ($clearing->cheack == true)
+                                    @if ($clearing->clear == true)
                                         Clear
                                     @else
                                         Not Clear

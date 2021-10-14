@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Starter extends Model
 {
-    use HasFactory;
+    use HasFactory, SearchableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +18,8 @@ class Starter extends Model
     protected $fillable = [
         'title',
         'answerd',
-        'closed'
+        'closed',
+        'start_no'
     ];
 
     /**
@@ -28,6 +30,7 @@ class Starter extends Model
     protected $hidden = [
         'answerd',
         'closed',
+        'start_no'
     ];
 
     /**
@@ -39,6 +42,30 @@ class Starter extends Model
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'starters.start_no' => 10,
+            'starters.title' => 10,
+            'users.name' => 10,
+            'users.family' => 10,
+        ],
+        'joins' => [
+            'users' => ['users.id', 'starters.user_id'],
+        ]
+    ];
+    
     // Relations
 
     /**

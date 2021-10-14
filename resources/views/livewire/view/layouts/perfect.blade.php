@@ -33,7 +33,9 @@
                                     <div class="float-left">
                                         <div class="form-group">
                                             <select name="input_currency_type" class="form-control form-control-sm select-background-color-left" wire:model.lazy="input_currency_type" required>
-                                                <option value="{{$input->id}}" selected>{{isset($input->name)}}</option>
+                                                @if (isset($input->name))
+                                                    <option value="{{$input->id}}" selected>{{$input->name}}</option>
+                                                @endif
                                             </select>
                                         </div>
                                     </div>

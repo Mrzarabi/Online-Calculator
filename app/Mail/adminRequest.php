@@ -10,7 +10,6 @@ use Illuminate\Queue\SerializesModels;
 class adminRequest extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user;
     public $order;
     public $input;
     public $output;
@@ -21,9 +20,8 @@ class adminRequest extends Mailable
      *
      * @return void
      */
-    public function __construct($user, $order, $input, $output, $form)
+    public function __construct($order, $input, $output, $form)
     {
-        $this->user = $user;
         $this->order = $order;
         $this->input = $input;
         $this->output = $output;
@@ -40,7 +38,6 @@ class adminRequest extends Mailable
         return $this->subject('You Have New Request')
                     ->view('mail.adminRequest')
                     ->with([
-                        'user' =>  $this->user,
                         'order' => $this->order,  
                         'input' => $this->input,
                         'output' => $this->output,

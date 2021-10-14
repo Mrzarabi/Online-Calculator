@@ -33,18 +33,6 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <h6 class="text-center text-danger custom-font-size mt-2" >{{$email_text }}</h6>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="wallet">Your {{$this->input->name}} Wallet:  <span class="text-danger custom-font-size"> * </span> </label>
-                        <input type="text" class="form-control form-control-lg mb-2 rounded" id="wallet" name="wallet" wire:model.lazy="wallet" required>
-                        @if ($errors->has('wallet'))
-                            <span class="d-block text-danger">{{ $errors->first('wallet') }}</span>
-                        @endif
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-12">
                             <h6 class="mb-2 mt-2 site-color font-weight-lighter text-center">
                                 @if ($order->input_currency_unit == 'USD')
                                     You will be received {{$order->output_number}} {{$order->output_currency_unit}} to this PayPal account.
@@ -54,6 +42,18 @@
                             </h6>
                             <h6 class="text-center text-danger custom-font-size mt-2">Please note PayPal internal fee is not included this amount.</h6>
                         </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <h6 class="text-center text-danger custom-font-size mt-2" >{{$email_text }}</h6>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="wallet">Your {{$this->input->name}} Wallet:  <span class="text-danger custom-font-size"> * </span> </label>
+                        <input type="text" class="form-control form-control-lg mb-2 rounded" id="wallet" name="wallet" wire:model.lazy="wallet" required>
+                        @if ($errors->has('wallet'))
+                            <span class="d-block text-danger">{{ $errors->first('wallet') }}</span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="contact_email">Your Contact E-mail Address:  <span class="text-danger custom-font-size"> * </span>  </label>

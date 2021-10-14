@@ -25,7 +25,7 @@
                             $calculator = Calculator::where('id', $element->calculator_id)->first();
                         @endphp
                         <h6 class="mr-2">Left Side: {{$calculator->name}}</h6>
-                        <h4 class="mr-2">{{$element->price}}</h4>
+                        <h4 class="mr-2">{{$element->price}}%</h4>
                         <h6 class="mr-2">Right side: {{$element->name}}</h6>
                     </div>
                 </div>

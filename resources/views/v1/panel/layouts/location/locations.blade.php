@@ -16,7 +16,7 @@
         </div>
             <div class="card custom-back-color-card">
                 <div class="card-body pb-0">
-                    <span class="custom-font-weight badge badge-pill mb-1 badge-primary"> {{ $location->title }} </span>
+                    <span class="custom-font-weight badge badge-pill mb-1 badge-primary" title="{{$location->title}}"> {{ $location->title }} </span>
                     <span class="custom-font-weight badge badge-pill mb-1 badge-success"> {{ Carbon::parse($location->created_at)->format('d/m/Y H:m') }} </span>
                     <span class="custom-font-weight badge badge-pill mb-1 badge-warning"> {{ $location->ip }} </span>
                     <div>

@@ -35,31 +35,6 @@
                         <h6  class="mr-2">{{$order->output_currency_unit ? $order->output_currency_unit : 'NO TEXT'}}</h6>
                     </div>
                 </div>
-                <div class="user">
-                    <img src=" {{$order->user->avatar ? $order->user->avatar : '/defaultImages/avatar.png'}} " alt="user" />
-                    <div class="user-info">
-                        <h5 class="custom-user-info"> {{$order->user->name . ' ' . $order->user->family}} </h5>
-                        <small class="custom-user-info"> {{$order->user->email}} </small>
-                        <br>
-                        <small class="custom-user-info"> {{$order->user->phone ? $order->user->phone : 'NO PHONE' }} </small>
-                        <br>
-                        <small class="custom-user-info">{{$order->user->address ? $order->user->address : 'NO ADDRESS'}}</small>
-                        <br>
-                        <small class="custom-user-info"> {{ Carbon::parse($order->created_at)->format('d/m/Y') }} </small>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-sm btn-danger mr-1" data-toggle="modal" data-target="#order-{{$order->id}}-sm" data-whatever="@mdo">Delete</button>
-                <a href=" {{route('clearing.create', ['order' => $order->id])}} " class="btn btn-warning btn-sm mr-1">{{$clearing ? "Update Doc" : "Add Doc" }}</a>
-                <form action="{{route('orders.accept', ['order' => $order->id])}} " method="POST" class="mr-1">
-                    @if ($order->accept == false)
-                        <button type="submit" class="btn btn-sm btn-success">Accept</button>
-                    @else 
-                        <button type="submit" class="btn btn-sm btn-secondary">Pending</button>
-                    @endif
-                    @csrf
-                </form>
             </div>
             <div class="d-flex justify-content-center mb-2">
                 @if ($clearing)
@@ -147,38 +122,38 @@
                     <div class="modal-content custom-card-color">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="custom-user-info custom-font-size">User PayPal E-mail address: </label>
+                                <label class="custom-user-info custom-font-size">Your PayPal E-mail address: </label>
                                 <h6 class="ml-3 mr-3 text-justify mb-3"> {{$form->email ? $form->email : 'NO TEXT'}} </h6>
                             </div>
                             <div class="form-group">
-                                <label class="custom-user-info custom-font-size">User content E-mail address: </label>
+                                <label class="custom-user-info custom-font-size">Your content E-mail address: </label>
                                 <h6 class="ml-3 mr-3 text-justify mb-3"> {{$form->contact_email ? $form->contact_email : 'NO TEXT'}} </h6>
                             </div>
                             <div class="form-group">
-                                <label class="custom-user-info custom-font-size">User {{$input->name}} wallet: </label>
+                                <label class="custom-user-info custom-font-size">Your {{$input->name}} wallet: </label>
                                 <h6 class="ml-3 mr-3 text-justify mb-3"> {{$form->wallet ? $form->wallet : 'NO TEXT'}} </h6>
                             </div>
                             @isset($form->telegram)
                                 <div class="form-group">
-                                    <label class="custom-user-info custom-font-size">User Telegram account: </label>
+                                    <label class="custom-user-info custom-font-size">Your Telegram account: </label>
                                     <h6 class="ml-3 mr-3 text-justify"> {{$form->telegram}} </h6>
                                 </div>
                             @endisset
                             @isset($form->whatsApp)
                                 <div class="form-group">
-                                    <label class="custom-user-info custom-font-size">User WhatsApp account: </label>
+                                    <label class="custom-user-info custom-font-size">Your WhatsApp account: </label>
                                     <h6 class="ml-3 mr-3 text-justify"> {{$form->whatsApp ? $form->whatsApp : 'NO TEXT'}} </h6>
                                 </div>
                             @endisset
                             @isset($form->skype)
                                 <div class="form-group">
-                                    <label class="custom-user-info custom-font-size">User Skype account: </label>
+                                    <label class="custom-user-info custom-font-size">Your Skype account: </label>
                                     <h6 class="ml-3 mr-3 text-justify"> {{$form->skype ? $form->skype : 'NO TEXT'}} </h6>
                                 </div>
                             @endisset
                             @isset($form->extra)
                                 <div class="form-group">
-                                    <label class="custom-user-info custom-font-size">Extra note on your user transaction: </label>
+                                    <label class="custom-user-info custom-font-size">Extra note on your transaction: </label>
                                     <p class="ml-3 mr-3 text-justify"> {{$form->extra ? $form->extra : 'NO TEXT'}} </p>
                                 </div>
                             @endisset

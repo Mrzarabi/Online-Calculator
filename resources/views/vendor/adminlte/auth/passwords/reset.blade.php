@@ -19,10 +19,10 @@
 
         {{-- Email field --}}
         <div class="input-group mb-3">
-            <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+            <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }} custom-form-control"
                    value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
             <div class="input-group-append">
-                <div class="input-group-text">
+                <div class="input-group-text custom-icon-back-color">
                     <span class="fas fa-envelope {{ config('adminlte.classes_auth_icon', '') }}"></span>
                 </div>
             </div>
@@ -36,10 +36,10 @@
         {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password"
-                   class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
+                   class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }} custom-form-control"
                    placeholder="{{ __('adminlte::adminlte.password') }}">
             <div class="input-group-append">
-                <div class="input-group-text">
+                <div class="input-group-text custom-icon-back-color">
                     <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
                 </div>
             </div>
@@ -53,10 +53,10 @@
         {{-- Password confirmation field --}}
         <div class="input-group mb-3">
             <input type="password" name="password_confirmation"
-                   class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
+                   class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }} custom-form-control"
                    placeholder="{{ trans('adminlte::adminlte.retype_password') }}">
             <div class="input-group-append">
-                <div class="input-group-text">
+                <div class="input-group-text custom-icon-back-color">
                     <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
                 </div>
             </div>
@@ -68,7 +68,7 @@
         </div>
 
         {{-- Confirm password reset button --}}
-        <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
+        <button type="submit" class="rounded btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
             <span class="fas fa-sync-alt"></span>
             {{ __('adminlte::adminlte.reset_password') }}
         </button>

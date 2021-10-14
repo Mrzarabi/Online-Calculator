@@ -44,14 +44,19 @@ class TicketController extends Controller
             if($request->hasFile('image')) {
 
                 $photo = $this->upload($request->file('image'));
-                $ticket = $starter->tickets()->create( 
+                $ticket = auth()->user()->tickets()->create( 
                     array_merge($request->all(), [
-                        'image' => $photo
+                        'image' => $photo,
+                        'starter_id' => $starter->id,
                     ])
                 );
             } else {
 
-                $ticket = $starter->tickets()->create($request->all());
+                $ticket = auth()->user()->tickets()->create(
+                    array_merge($request->all(), [
+                        'starter_id' => $starter->id,
+                    ])
+                );
             }
 
             $this->location(auth()->user(), 'User sended a ticket');

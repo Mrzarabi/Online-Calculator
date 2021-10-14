@@ -72,12 +72,14 @@ Route::prefix('admin')
     
     Route::get('/create/ticket/{starter}', [TicketController::class, 'create'])->name('tickets.create');
     Route::post('/create/ticket/{starter}', [TicketController::class, 'store'])->name('tickets.store');
+    Route::put('/close/ticket/{starter}', [StarterController::class, 'close'])->name('starters.close');
 
     Route::post('loacations/{user}', [LocationController::class, 'index'])->name('locations.index');
 
     Route::get('/search/order', [OrderController::class, 'search'])->name('order.search');
     Route::get('/search/user', [UserController::class, 'search'])->name('user.search');
     Route::get('/search/element', [ElementController::class, 'search'])->name('element.search');
+    Route::get('/search/start', [StarterController::class, 'search'])->name('starts.search');
 
     Route::resources([
         '/articles' => ArticleController::class,

@@ -39,8 +39,12 @@ class GoogleAuthController extends Controller
                 Auth::loginUsingId($newUser->id);
             }
 
-            $this->location($newUser, "User Logged in with using Google Servic");
-            Mail::to($newUser->email)->send( new welcome($newUser) );
+            dispatch( function() use($newUser) {
+
+                $this->location($newUser, "User Logged in with using Google Servic");
+                Mail::to($newUser->email)->send( new welcome($newUser) );
+            })->afterResponse();
+            
             Alert::success('Success', "Hi Welcome to your site");
                 
             return redirect('/');

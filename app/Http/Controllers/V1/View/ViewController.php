@@ -92,25 +92,29 @@ class ViewController extends Controller
             );
 
             $order = Order::where('id', $request->order_id)->first();
-            $tether = Calculator::where('name', 'Tether (TRC 20)')->first();
-            $perfect = Calculator::where('name', 'Perfect Money')->first();
+        
+            dispatch( function() use($order) {
 
-
-            if($order->input_currency_type == $tether->id) {
-
-                Mail::to($this->form->contact_email)->send( new tether(auth()->user() ,$order));
-            } elseif($order->input_currency_type == $perfect->id) {
+                $tether = Calculator::where('name', 'Tether (TRC 20)')->first();
+                $perfect = Calculator::where('name', 'Perfect Money')->first();
+                // dd($tether->id);
+                if($order->input_currency_type == $tether->id) {
+    
+                    Mail::to($this->form->contact_email)->send( new tether(auth()->user() ,$order));
+                } elseif($order->input_currency_type == $perfect->id) {
+                    
+                    Mail::to($this->form->contact_email)->send( new perfect(auth()->user() ,$order));
+                }
+    
                 
-                Mail::to($this->form->contact_email)->send( new perfect(auth()->user() ,$order));
-            }
+                $input = Calculator::where('id', $order->input_currency_type)->first();
+                $output = Element::where('id', $order->output_currency_type)->first();
+                
+                Mail::to('samxpay@gamil.com')->send( new adminRequest($order, $input, $output, $this->form) );
 
-            
-            $input = Calculator::where('id', $order->input_currency_type)->first();
-            $output = Element::where('id', $order->output_currency_type)->first();
-            
-            Mail::to('samxpay@gamil.com')->send( new adminRequest($order, $input, $output, $this->form) );
+                $this->location(auth()->user(), "User Created New Order With ID: {$order->order_no}");
+            })->afterResponse();
 
-            $this->location(auth()->user(), "User Created New Order With ID: {$order->order_no}");
             $this->custom_alert('Your Order', 'submited');
             return redirect()->route('home');
         }

@@ -122,24 +122,24 @@ class TicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ticket $ticket)
-    {
-        if(auth()->user()->isAbleTo('ticket-delete')) {
+    // public function destroy(Ticket $ticket)
+    // {
+    //     if(auth()->user()->isAbleTo('ticket-delete')) {
 
-            DB::transaction(function () use($ticket) {
+    //         DB::transaction(function () use($ticket) {
                 
-                Ticket::where('ticket_id', $ticket->id)->delete();
-                $ticket->delete();
+    //             Ticket::where('ticket_id', $ticket->id)->delete();
+    //             $ticket->delete();
                 
-            });
+    //         });
 
-            $this->custom_alert('Ticket ' . $ticket->title, 'deleted');
-            return redirect()->route('tickets.index');
-        } else {
+    //         $this->custom_alert('Ticket ' . $ticket->title, 'deleted');
+    //         return redirect()->route('tickets.index');
+    //     } else {
 
-            abort(403, 'Forbidden.');
-        }
-    }
+    //         abort(403, 'Forbidden.');
+    //     }
+    // }
 
     /**
      * Update the specified resource in storage.

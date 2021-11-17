@@ -116,6 +116,7 @@ Route::post('/customer/forms/send', [ViewController::class, 'storeForm'])->name(
 
 Route::view('/terms', '/v1/view/layouts/term')->name('terms');
 Route::view('/aboutUs', '/v1/view/layouts/aboutUs')->name('aboutUs');
+Route::view('/contactUs', '/v1/view/layouts/contactUs')->name('contactUs');
 Route::get('/services/tether', [ViewController::class, 'tether'])->name('services.tether');
 Route::get('/services/perfect/money', [ViewController::class, 'perfect'])->name('services.perfect');
 Route::get('test/email', [ViewController::class, 'email']);

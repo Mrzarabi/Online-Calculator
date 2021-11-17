@@ -1,10 +1,85 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+:root {
+    --site-color: -webkit-linear-gradient( 90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%);
+}
 @font-face {
     font-family: roboto;
     src: url('/fonts/Roboto-Regular.ttf');
 }
 
+
+/* width */
+::-webkit-scrollbar {
+    width: 2px;
+}
+  
+  /* Track */
+ ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 5px;
+}
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%
+    ); 
+    border-radius: 10px;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #fff; 
+}
 .sold {
-    width: 100px;
+    width: 70px;
     animation-name: example;
     animation-duration: 4s;
 }
@@ -22,6 +97,18 @@
         -moz-transition: 4s ease all;
         /* -webkit-transition:  4s ease all; */
     }
+}
+
+.circle {
+    animation-name: rotate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotate{
+    from{ transform: rotate(-360deg); }
+    to{ transform: rotate(360deg); }
 }
 
 .text-come {
@@ -43,12 +130,76 @@
 }
 
 .site-color {
-    color: #f6fd09 !important;
+    font-weight: bolder;
+    background-image: var(--site-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
   
+.with-linear-gradient {
+    border-style: solid;
+    border-width: 1px;
+    border-image:  var(--site-color) 1;
+} 
+
+.with-bottom-linear-gradient-to-left {
+    text-align:center;
+    background: 
+    linear-gradient(
+        90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%
+    )
+    bottom 
+    no-repeat; 
+  background-size:100% 1px ;/* if linear-gradient, we need to resize it */
+}
+
+.option-styles {
+    overflow: hidden;   
+}
+
+.option-styles:before {
+    content: "";
+    background-image: linear-gradient(#5cb85c, transparent);
+    transform: rotate(90deg);
+    color: black;
+    max-width: 120px;
+    max-height: 40px;
+}
+
+.with-left-linear-gradient-to-bottom {
+    text-align: center;
+    background-size: 100% 1px;
+    border-width: 0px 0px 0px 2px;
+    border-style: solid;
+    border-image: linear-gradient(90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%) 1 100%;
+}
+
+.with-radius-gradient {
+    position:relative;
+}
+
+.with-radius-gradient::before {
+    position:absolute;
+    top: -4px;
+    left: -8px;
+    padding: .6rem;
+    font-size: .7rem;
+    color: rgb(251, 236, 161);
+    font-weight: 100;
+    content:""; 
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background: linear-gradient(
+        90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: clear;
+}
 
 .custom-font-size {
-    font-size: .8rem;
+    font-size: .67rem;
+    font-family: "Roboto";
+    
 }
 
 .custom-logout-btn {
@@ -141,7 +292,7 @@
 }
 
 .custom-btn-content {
-    background-color: #f6fd09; 
+    background-image: var(--site-color); 
     color: black; 
     margin-left: -1%;
 }
@@ -155,13 +306,6 @@
     position: absolute; 
     top: 8%; 
     left: 30%;
-}
-
-.footer-reserved-text {
-    position: absolute; 
-    bottom: 5%; 
-    left: 10%; 
-    color: #f6fd09;
 }
 
 .logo-styles {
@@ -184,9 +328,26 @@
 
 .custom-dropdown-link {
     all: unset;
-    font-size: .8rem;
+    font-size: .67rem;
     padding: .5rem 1rem;
-    color: #f6fd09;
+    font-weight: bolder;
+    background-image: var(--site-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #c78f1b !important;
+}
+
+.custom-back-signUp {
+    padding: .5rem 1.2rem;
+    border-radius: 4px;
+    background-image: var(--site-color);
+    color: black;  
+    font-weight: bolder;
+}
+
+.custom-back-signUp:hover {
+    background-image: var(--site-color);
+    color: black; 
 }
 
 .custom-text-decoration {
@@ -195,10 +356,6 @@
 
 .dropdown-item:hover {
     background-color: transparent !important;
-}
-
-.custom-margin-logo {
-    margin: 0 15px 0 -25px;
 }
 
 .custom-mr-5 {
@@ -232,7 +389,7 @@
 
 @media (min-width: 1024px) {
     .logo-styles {
-        left: 6%;
+        left: 12%;
         top: 3%;
     }
 
@@ -362,12 +519,6 @@
         top: 17%;
         left: 5%;
         right: 5%;
-    }
-
-    .c-display-logo-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     .input-background-size {

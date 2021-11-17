@@ -10,7 +10,7 @@
                         <form action=" {{route('customer.starters.store')}} " method="post">
                             @csrf
 
-                            <label for="title">Title</label>
+                            <label for="title">Please write a short title for your ticket</label>
                             <input type="text" class="form-control form-control-sm custom-form-control" id="title" name="title" value="{{isset($starter) ? $starter->title : old('title')}}">
                             @if ($errors->has('title'))
                                 <span class="d-block text-danger">{{ $errors->first('title') }}</span>

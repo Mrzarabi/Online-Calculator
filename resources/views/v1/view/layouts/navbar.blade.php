@@ -14,7 +14,7 @@
         <!--end navbar-toggler-->
         <div class="collapse navbar-collapse custom-font site-background-color rounded" id="navbarNavAltMarkup">
             <div class="navbar-nav d-block d-lg-flex ml-auto text-right p-3">
-                <a href=" {{route('home')}} "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">Index</li></a>
+                <a href=" {{route('home')}} "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">INDEX</li></a>
                 <a href=" {{route('aboutUs')}} "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">About Us</li></a>
                 @php
                     $tether = Calculator::where('name', 'Tether (TRC 20)')->first();

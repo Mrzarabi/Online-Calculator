@@ -10,7 +10,7 @@
             
             <form method="POST" action="{{route('customer.tickets.store', ['starter' => $starter->id])}}" class="mb-4" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="body">Body</label>
+                    <label for="body">Text</label>
                     <textarea class="form-control form-control-sm custom-form-control" id="body" rows="5" name="body">{{isset($ticket) ? $ticket->body : old('body')}}</textarea>
                     @if ($errors->has('body'))
                         <span class="d-block text-danger">{{ $errors->first('body') }}</span>

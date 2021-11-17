@@ -81,7 +81,7 @@
 
 </head>
 
-<body class="@yield('classes_body') custom-background-color" @yield('body_data') >
+<body class="@yield('classes_body') custom-background-color" @yield('body_data')>
 
     {{-- Body Content --}}
     @yield('body')

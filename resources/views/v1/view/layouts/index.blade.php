@@ -1,33 +1,10 @@
 @extends('v1.view.app')
 @section('content')
-    
-    {{-- @php
-        
-        $ip= \Request::ip();
-    $data = \Location::get($ip);
-    $position = Location::get('192.168.1.1');
-    dd($data);
-    @endphp --}}
-
-    <div class="row nav">
-        <div class="col-12">
-            @include('v1.view.layouts.navbar')
-        </div>
-    </div>
-    <div class="row logo-styles">
-        <img src="/defaultImages/samxpay-logo-removebg-preview.png" alt="logo">
-    </div>
-    <div class="col-md-12 custom-overflow-y">
-        <div class="row top-nav">
-            <div class="col-12">
-                @include('v1.view.layouts.top-navbar')
-            </div>
-        </div>
-        <div class="row content-style">
+    <div class="container" style="padding: 0; width: 100%; height: 100%;">
+        @include('v1.view.layouts.top')
+        <div class="middle" style="width: 100%; height: 70%;">
             @if (! $form && ! $tether && ! $perfect)
-                <div class="col-12">
-                    <livewire:view.layouts.index />
-                </div>
+                <livewire:view.layouts.index />
             @endif
             @if ($form && ! $tether && ! $perfect )
                 <div class="col-12 custom-overflow-y">
@@ -35,17 +12,36 @@
                 </div>
             @endif
             @if ($tether)
-                <div class="col-12 custom-overflow-y">
-                    <livewire:view.layouts.tether />
-                </div>
+                <livewire:view.layouts.tether />
             @endif
             @if($perfect)
-                <div class="col-12 custom-overflow-y">
-                    <livewire:view.layouts.perfect />
-                </div>
+                <livewire:view.layouts.perfect />
             @endif
+        </div>
+        <div class="footer" style="width: 100%; height: 12%;">
+            @include('v1.view.layouts.footer')
+        </div>
+    </div>
+    {{-- <div class="row logo-styles">
+        <div class="row nav">
+            <div class="col-12">
+                @include('v1.view.layouts.navbar')
+            </div>
+        </div>
+        <img src="/defaultImages/samxpay-logo-removebg-preview.png" alt="logo">
+    </div> --}}
+    <div class="">
+        {{-- <div class="row top-nav">
+            <div class="col-12">
+                @include('v1.view.layouts.top-navbar')
+            </div>
+        </div> --}}
+        <div class="row content-style">
+            
+            
+            
         </div>
     </div>
     
-    <small class="footer-reserved-text" >© SAMXPAY, All Rights Reserved</small>
+    
 @endsection

@@ -29,19 +29,19 @@
             </div>
         </div>
         <img src="/defaultImages/samxpay-logo-removebg-preview.png" alt="logo">
-    </div> --}}
+    </div>
     <div class="">
-        {{-- <div class="row top-nav">
+        <div class="row top-nav">
             <div class="col-12">
                 @include('v1.view.layouts.top-navbar')
             </div>
-        </div> --}}
+        </div>
         <div class="row content-style">
             
             
             
         </div>
-    </div>
+    </div> --}}
     
     
 @endsection

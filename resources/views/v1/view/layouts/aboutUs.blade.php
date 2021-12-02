@@ -4,13 +4,13 @@
 @section('content')
     <div class="container p-0"  style="height: 100%">
         @include('v1.view.layouts.top')
-        <div class="col-md-12" style="width: 100%; background-color: #0501003b;">
+        <div class="col-md-12" style="width: 100%; background-color: #0501003b; height: 70%;">
             <h6 class="site-color text-center mb-3"> ABOUT US </h6>
-            <div class="row d-flex justify-content-center" style="width: 100%">
+            <div class="row d-flex justify-content-center" style="width: 100%; height: 80%;">
                 <div class="p-4 with-linear-gradient" style="border-radius: 4px; width: 80%; height: 100%;">
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-md-8">
                                 <div class="left-aboutus">
                                     <div class="top-left-aboutus with-left-linear-gradient-to-bottom">
                                         <h5 class="text-left site-color pl-3 mb-3">We are the Market Leader Exchanger</h5>
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <div class="row">
                                     <div class="col-md-12 d-flex justify-content-center">
                                         <img class="p-4" src="/defaultImages/Circle.png" alt="image" width="280" height="280">

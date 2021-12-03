@@ -6,51 +6,55 @@ use App\Models\Calculator;
 use App\Models\Ticket;
 use Carbon\Carbon;
 @endphp
-<table class="table table-hover table-dark text-center show-table">
-    <thead>
-        <tr>
-            <th scope="col" class="custom-text-color">#</th>
-            <th scope="col" class="custom-text-color">Ticket No</th>
-            <th scope="col" class="custom-text-color">Title</th>
-            <th scope="col" class="custom-text-color">Receive New Ticket</th>
-            <th scope="col" class="custom-text-color">Session status</th>
-            <th scope="col" class="custom-text-color">Date</th>
-            <th scope="col" class="custom-text-color">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @php
-            $i = 1;
-        @endphp
-        @foreach ($starts as $start)
-        @php
-            $newTicket = $start->tickets()->with('user')->latest()->first();
-        @endphp
+@if (count($starts) != 0)
+    <table class="table table-hover text-center show-table">
+        <thead class="tbh">
             <tr>
-                <td scope="row"> {{$i++}} </td>
-                <td scope="row"> {{$start->start_no}} </td>
-                <td scope="row" class="text-truncate custom-size-title-ticket" title="{{$start->title}}"> {{$start->title}} </td>
-                @if (! empty($newTicket))
-                    @if ($newTicket->user->email == 'owner@gmail.com' || $newTicket->user->email == 'helper@gmail.com')
-                        <td class="custom-text-color">New ticket</td>
-                    @else
-                        <td>Nothing</td>
-                    @endif
-                @else
-                    <td>Nothing</td>
-                @endif
-                @if ($start->closed)
-                    <td class="text-danger">Closed</td>
-                @else
-                    <td class="text-success">Open</td>
-                @endif
-                <td>{{Carbon::parse($start->created_at)->format('d/m/Y')}}</td>
-                <td>
-                    <div class="d-flex justify-content-center mb-2">
-                        <a href=" {{route('customer.tickets.create', ['starter' => $start->id])}} " class="btn btn-warning btn-sm mr-1">Send Ticket</a>
-                    </div>
-                </td>
+                <th scope="col" class="color border-0">#</th>
+                <th scope="col" class="color border-0">TICKET No</th>
+                <th scope="col" class="color border-0">TITLE</th>
+                <th scope="col" class="color border-0">RECEIVE NEW TICKET</th>
+                <th scope="col" class="color border-0">SESSION STATUS</th>
+                <th scope="col" class="color border-0">DATE</th>
+                <th scope="col" class="color border-0">ACTIONS</th>
             </tr>
-        @endforeach
-    </tbody>
-</table>
+        </thead>
+        <tbody class="tb">
+            @php
+                $i = 1;
+            @endphp
+            @foreach ($starts as $start)
+            @php
+                $newTicket = $start->tickets()->with('user')->latest()->first();
+            @endphp
+                <tr class="with-bottom-linear-gradient-to-left">
+                    <td class="border-top-0 text-color"> {{$i++}} </td>
+                    <td class="border-top-0 text-color"> {{$start->start_no}} </td>
+                    <td class="border-top-0 text-color" class="text-truncate custom-size-title-ticket" title="{{$start->title}}"> {{$start->title}} </td>
+                    @if (! empty($newTicket))
+                        @if ($newTicket->user->email == 'owner@gmail.com' || $newTicket->user->email == 'helper@gmail.com')
+                            <td class="border-top-0 text-color">New ticket</td>
+                        @else
+                            <td class="border-top-0 text-color">Nothing</td>
+                        @endif
+                    @else
+                        <td class="border-top-0 text-color">Nothing</td>
+                    @endif
+                    @if ($start->closed)
+                        <td class="text-danger border-top-0">Closed</td>
+                    @else
+                        <td class="text-success border-top-0">Open</td>
+                    @endif
+                    <td class="border-top-0 text-color">{{Carbon::parse($start->created_at)->format('d/m/Y')}}</td>
+                    <td class="border-top-0">
+                        <div class="d-flex justify-content-center mb-2">
+                            <a href=" {{route('customer.tickets.create', ['starter' => $start->id])}} " class="btns color btn-sm mr-1">Send Ticket</a>
+                        </div>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@else
+    <p class="text-color text-center show-table">CURRENTLY THERE IS NO TICKET CREATED</p>
+@endif

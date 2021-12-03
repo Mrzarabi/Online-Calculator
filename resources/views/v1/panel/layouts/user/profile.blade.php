@@ -7,33 +7,34 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="d-flex justify-content-start">
-
-
-                    <div class="card custom-background-card">
+                    <div class="custom-card custom-background-card">
                         <div class="card-header d-flex align-items-center">
-
-                            <img src=" {{$user->avatar ? $user->avatar : '/defaultImages/avatar.png'}} " alt="user" class="rounded-circle" height="170" />
-                            <h4 class="ml-3">{{$user->name . ' ' . $user->family}}</h4>
+                            <img src=" {{$user->avatar ? $user->avatar : '/defaultImages/avatar.png'}} " alt="user" class="rounded-circle profile-image" height="165" width="165"/>
+                            <h4 class="ml-3 color">{{$user->name . ' ' . $user->family}}</h4>
                         </div>
                         <div class="card-body pb-0">
-                            <span class="tag tag-teal">{{$user->email}}</span>
-                            
-                            <h6>{{$user->address ? $user->address : 'NO ADDRESS'}}</h6>
-                            <h6>{{$user->phone ? $user->phone : 'NO PHONE'}}</h6>
-                            <div class="user">
-                                <div class="user-info">
-                                    <small class="custom-user-info"> {{ Carbon::parse($user->created_at)->format('d/m/Y') }} </small>
-                                </div>
+                            <div class="d-flex mb-3">
+                                <span class="mr-3">
+                                    <img src="/defaultImages/panel/profile/email.png" alt="email">    
+                                </span> 
+                                <h6 class="color mt-1">{{$user->email}}</h6>
+                            </div>
+                            <div class="d-flex">
+                                <span class="mr-3">
+                                    <img src="/defaultImages/panel/profile/address.png" alt="address">
+                                </span>
+                                <h6 class="color mt-1">{{$user->address ? $user->address : 'NO ADDRESS'}}</h6>
+                            </div>
+                            <div class="d-flex">
+                                <span class="mr-3">
+                                    <img src="/defaultImages/panel/profile/phone.png" alt="phone">
+                                </span>
+                                <h6 class="color mt-1">{{$user->phone ? $user->phone : 'NO PHONE'}}</h6>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center mb-2">
-                            <form action="{{route('users.destroy', ['user' => $user->id])}}" method="post">
-            
-                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#user-{{$user->id}}" data-whatever="@mdo">Edit</button>
-            
-                                @method('DELETE')
-                                @csrf
-                            </form>
+                        <div class="d-flex justify-content-between mb-2 p-4">
+                            <button type="button" class="btn-sm btns color" data-toggle="modal" data-target="#user-{{$user->id}}" data-whatever="@mdo">Edit Profile</button>
+                            <small class="custom-user-info color"> {{ Carbon::parse($user->created_at)->format('d/m/Y') }} </small>
                         </div>
                     </div>
                 </div>

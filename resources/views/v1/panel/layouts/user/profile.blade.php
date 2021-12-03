@@ -3,32 +3,45 @@
 @endphp
 @extends('adminlte::page')
 @section('content')
-    <div class="container">
-        <div class="card custom-card-color">
-            <div class="card-header">
-                <img src=" {{$user->avatar ? $user->avatar : '/defaultImages/avatar.png'}} " alt="user" />
-            </div>
-            <div class="card-body pb-0">
-                <span class="tag tag-teal">{{$user->email}}</span>
-                <h4>{{$user->name . ' ' . $user->family}}</h4>
-                <h6>{{$user->address ? $user->address : 'NO ADDRESS'}}</h6>
-                <h6>{{$user->phone ? $user->phone : 'NO PHONE'}}</h6>
-                <div class="user">
-                    <div class="user-info">
-                        <small class="custom-user-info"> {{ Carbon::parse($user->created_at)->format('d/m/Y') }} </small>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="d-flex justify-content-start">
+
+
+                    <div class="card custom-background-card">
+                        <div class="card-header d-flex align-items-center">
+
+                            <img src=" {{$user->avatar ? $user->avatar : '/defaultImages/avatar.png'}} " alt="user" class="rounded-circle" height="170" />
+                            <h4 class="ml-3">{{$user->name . ' ' . $user->family}}</h4>
+                        </div>
+                        <div class="card-body pb-0">
+                            <span class="tag tag-teal">{{$user->email}}</span>
+                            
+                            <h6>{{$user->address ? $user->address : 'NO ADDRESS'}}</h6>
+                            <h6>{{$user->phone ? $user->phone : 'NO PHONE'}}</h6>
+                            <div class="user">
+                                <div class="user-info">
+                                    <small class="custom-user-info"> {{ Carbon::parse($user->created_at)->format('d/m/Y') }} </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mb-2">
+                            <form action="{{route('users.destroy', ['user' => $user->id])}}" method="post">
+            
+                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#user-{{$user->id}}" data-whatever="@mdo">Edit</button>
+            
+                                @method('DELETE')
+                                @csrf
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center mb-2">
-                <form action="{{route('users.destroy', ['user' => $user->id])}}" method="post">
-
-                    {{-- <button type="submit" class="btn btn-sm btn-danger">Delete</button> --}}
-                    {{-- <a href=" {{route('change_password', ['user' => $user->id])}} " class="btn btn-warning btn-sm">Change</a> --}}
-                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#user-{{$user->id}}" data-whatever="@mdo">Edit</button>
-
-                    @method('DELETE')
-                    @csrf
-                </form>
+            <div class="col-md-3">
+                <div class="d-flex justify-content-end">
+                    <img src="/defaultImages/Right.png" alt="vector" height="780">
+                </div>
             </div>
         </div>
     </div>

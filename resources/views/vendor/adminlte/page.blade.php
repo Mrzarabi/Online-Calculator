@@ -33,7 +33,7 @@
         @endif
 
         {{-- Content Wrapper --}}
-        <div class="content-wrapper {{ config('adminlte.classes_content_wrapper') ?? '' }} custom-background-color">
+        <div class="content-wrapper {{ config('adminlte.classes_content_wrapper') ?? '' }} custom-background-content-image">
 
             {{-- Content Header --}}
             <div class="content-header">

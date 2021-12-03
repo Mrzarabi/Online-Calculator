@@ -8,11 +8,28 @@
 @extends('adminlte::page')
 @section('content')
     
-    {{-- create starts --}}
-    @include('v1.customer.layouts.start.create-starts')
 
-    {{-- table views --}}
-    @include('v1.customer.layouts.start.table-view-starts')
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-9">
+            {{-- create starts --}}
+            @include('v1.customer.layouts.start.create-starts')
+
+            {{-- table views --}}
+            @include('v1.customer.layouts.start.table-view-starts')
+
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex justify-content-end">
+                    <img src="/defaultImages/Right.png" alt="vector" height="780">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     
     {{-- card views --}}
     @include('v1.customer.layouts.start.card-view-starts')

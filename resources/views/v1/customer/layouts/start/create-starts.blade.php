@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center mb-5">
-    <button type="button" class="btn btn-primary justify-center" data-toggle="modal" data-target="#create-starter-sm" data-whatever="@mdo">Create New Session</button>
+    <button type="button" class="btns color justify-center pr-3 pl-3 pt-2 pb-2" data-toggle="modal" data-target="#create-starter-sm" data-whatever="@mdo">CREATE NEW SESSION</button>
 </div>
 {{-- modal --}}
     <div class="modal fade" id="create-starter-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -2,13 +2,56 @@
     --site-color: -webkit-linear-gradient( 90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%);
     --border: linear-gradient(90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%) 1;
 }
-.card {
+.custom-card {
     width: 40rem;
     height: auto;
 }
-.custom-background-color {
-    background-color: #292b30;
-    color: #f6fd09 !important;
+
+.color {
+    background-image: var(--site-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-color {
+    font-size: 16px;
+    color: #fbeca1;
+    text-transform: uppercase;
+}
+
+.with-bottom-linear-gradient-to-left {
+    background: 
+    linear-gradient(
+        90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%
+    )
+    bottom 
+    no-repeat; 
+  background-size:100% 0.8px ;/* if linear-gradient, we need to resize it */
+}
+
+.btns {
+    font-size: 18px;
+    font-family: "Roboto";
+    text-transform: uppercase;
+    border-radius: 4px;
+    background-color: rgba(5, 1, 0, 0);
+    border-style: solid;
+    border-width: 1px;
+    border-image:  var(--site-color) 1;
+}
+
+.profile-image {
+    max-width: 170px;
+    max-height: 170px;
+}
+
+.tbh {
+    background-color: rgb(34, 34, 34);
+    border: none;
+}
+
+.tb {
+    background: transparent;
 }
 
 .custom-background-content-image {
@@ -17,10 +60,8 @@
 
 }
 
-.custom-text-color {
+/* .custom-text-color {
     background-image: var(--site-color);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .custom-back-color-card {
@@ -29,17 +70,17 @@
 
 .custom-user-info, .swal2-title, .swal2-html-container {
     color: #fff !important;
-}
+} */
 
-.custom-form-control, .custom-icon-back-color, .custom-page-link {
+/* .custom-form-control, .custom-icon-back-color, .custom-page-link {
     background-color: #323233 !important;
     border: 1px solid #323233 !important;
     color: #fff !important;
-} 
+}  */
 
-.custom-card-color, .swal2-popup {
+/* .custom-card-color, .swal2-popup {
     background-color: #3c3d41 !important;
-}
+} */
 
 .custom-background-card {
     background: transparent;
@@ -57,13 +98,13 @@
     font-weight: 100;
 }
 
-.custom-border-ticket {
+/* .custom-border-ticket {
     border: 1px solid #f6fd09 !important;
 }
 
 .test {
     border: 1px solid #f6fd09 !important;
-}
+} */
 
 .custom-size-title-ticket {
     text-overflow: ellipsis; 

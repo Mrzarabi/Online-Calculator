@@ -5,48 +5,48 @@
     use App\Models\Element;
     use Carbon\Carbon;
 @endphp
-<table class="table table-hover table-dark text-center show-table">
-    <thead>
+<table class="table table-hover text-center show-table">
+    <thead class="tbh">
         <tr>
-            <th scope="col" class="custom-text-color">#</th>
-            <th scope="col" class="custom-text-color">Order NO</th>
-            <th scope="col" class="custom-text-color">Send</th>
-            <th scope="col" class="custom-text-color">Receive</th>
-            <th scope="col" class="custom-text-color">Date</th>
-            <th scope="col" class="custom-text-color">Actions</th>
+            <th scope="col" class="color border-0">#</th>
+            <th scope="col" class="color border-0">ORDER NO</th>
+            <th scope="col" class="color border-0">SEND</th>
+            <th scope="col" class="color border-0">RECEIVE</th>
+            <th scope="col" class="color border-0">DATE</th>
+            <th scope="col" class="color border-0">ACTIONS</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="tb">
         @php
             $i = 1;
         @endphp
         @foreach ($orders as $order)
-            <tr>
-                <td scope="row"> {{$i++}} </td>
-                <td scope="row"> {{$order->order_no}} </td>
+            <tr class="with-bottom-linear-gradient-to-left">
+                <td class="border-top-0 text-color"> {{$i++}} </td>
+                <td class="border-top-0 text-color"> {{$order->order_no}} </td>
                 @php
                     $input = Calculator::where('id', $order->input_currency_type)->first();
                     $output = Element::where('id', $order->output_currency_type)->first();
                 @endphp
-                <td>{{isset($input->name) ? $input->name : 'NO TEXT'}}  {{$order->input_number ? $order->input_number : 'NO TEXT'}} {{$order->input_currency_unit ? $order->input_currency_unit : 'NO TEXT'}}</td>
-                <td>{{$output->name ? $output->name : 'NO TEXT'}}  {{$order->output_number ? $order->output_number : 'NO TEXT'}} {{$order->output_currency_unit ? $order->output_currency_unit : 'NO TEXT'}}</td>
-                <td>{{Carbon::parse($order->created_at)->format('d/m/Y')}}</td>
-                <td>
+                <td class="border-top-0 text-color">{{isset($input->name) ? $input->name : 'NO TEXT'}}  {{$order->input_number ? $order->input_number : 'NO TEXT'}} {{$order->input_currency_unit ? $order->input_currency_unit : 'NO TEXT'}}</td>
+                <td class="border-top-0 text-color">{{$output->name ? $output->name : 'NO TEXT'}}  {{$order->output_number ? $order->output_number : 'NO TEXT'}} {{$order->output_currency_unit ? $order->output_currency_unit : 'NO TEXT'}}</td>
+                <td class="border-top-0 text-color">{{Carbon::parse($order->created_at)->format('d/m/Y')}}</td>
+                <td class="border-top-0 text-color">
                     <div class="d-flex justify-content-center mb-2">
                         @php
                             $clearing = Clearing::where('order_id', $order->id)->first();
                             $form = Form::where('order_id', $order->id)->first();
                         @endphp
                         @if ($clearing)
-                            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#clearing-{{$clearing->id}}" data-whatever="@mdo">Show Doc</button>
+                            <button type="button" class="btns btn-sm mr-1 color" data-toggle="modal" data-target="#clearing-{{$clearing->id}}" data-whatever="@mdo">Show Doc</button>
                         @endif
                         @if ($form)
-                            <button type="button" class="btn btn-sm btn-primary mr-1" data-toggle="modal" data-target="#form-{{$form->id}}" data-whatever="@mdo">Show Form</button>
+                            <button type="button" class="btns btn-sm mr-1 color" data-toggle="modal" data-target="#form-{{$form->id}}" data-whatever="@mdo">Show Form</button>
                         @endif
                         @if ($order->accept == true)
-                            <button type="submit" class="btn btn-sm btn-success">Accepted</button>
+                            <button type="submit" class="btns btn-sm color">Accepted</button>
                         @else 
-                            <button type="submit" class="btn btn-sm btn-secondary">Pending</button>
+                            <button type="submit" class="btns btn-sm color">Pending</button>
                         @endif
                     </div>
                 </td>

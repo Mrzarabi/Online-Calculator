@@ -39,7 +39,7 @@
     <!-- Font Icon -->
     <link rel="stylesheet" href="/form/fonts/material-icon/css/material-design-iconic-font.min.css">    
     {{-- form styles     --}}
-    <link rel="stylesheet" href="/profile/css/style.css">
+    {{-- <link rel="stylesheet" href="/profile/css/style.css"> --}}
     {{-- <link rel="stylesheet" href="/cards/css/style.css"> --}}
     <link rel="stylesheet" href="/vendor/adminlte/dist/css/custom.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">

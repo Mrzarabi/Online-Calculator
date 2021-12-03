@@ -1,10 +1,26 @@
+:root {
+    --site-color: -webkit-linear-gradient( 90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%);
+    --border: linear-gradient(90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%) 1;
+}
+.card {
+    width: 40rem;
+    height: auto;
+}
 .custom-background-color {
     background-color: #292b30;
     color: #f6fd09 !important;
 }
 
+.custom-background-content-image {
+    background-image: url('/defaultImages/hero.jpg');
+    background-position: center center;
+
+}
+
 .custom-text-color {
-    color: #f6fd09 !important;
+    background-image: var(--site-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .custom-back-color-card {
@@ -23,6 +39,13 @@
 
 .custom-card-color, .swal2-popup {
     background-color: #3c3d41 !important;
+}
+
+.custom-background-card {
+    background: transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-image: var(--border);
 }
 
 .custom-style-user {

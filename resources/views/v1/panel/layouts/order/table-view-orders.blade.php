@@ -5,72 +5,72 @@
     use App\Models\Element;
     use Carbon\Carbon;
 @endphp
-<table class="table table-hover table-dark text-center show-table">
-    <thead>
+<table class="table table-hover text-center show-table">
+    <thead class="tbh">
         <tr>
-            <th scope="col" class="custom-text-color">#</th>
-            <th scope="col" class="custom-text-color">Order NO</th>
-            <th scope="col" class="custom-text-color">Send</th>
-            <th scope="col" class="custom-text-color">Receive</th>
-            <th scope="col" class="custom-text-color">Date</th>
-            <th scope="col" class="custom-text-color">Actions</th>
+            <th scope="col" class="color border-0">#</th>
+            <th scope="col" class="color border-0">ORDER NO</th>
+            <th scope="col" class="color border-0">SEND</th>
+            <th scope="col" class="color border-0">RECEIVE</th>
+            <th scope="col" class="color border-0">DATE</th>
+            <th scope="col" class="color border-0">ACTIONS</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="tb">
         @php
             $i = 1;
         @endphp
         @foreach ($orders as $order)
-            <tr>
-                <td scope="row"> {{$i++}} </td>
-                <td scope="row"> {{$order->order_no}} </td>
+            <tr class="with-bottom-linear-gradient-to-left">
+                <td class="text-color border-top-0"> {{$i++}} </td>
+                <td class="text-color border-top-0"> {{$order->order_no}} </td>
                 @php
                 
                     $input = Calculator::where('id', $order->input_currency_type)->first();
                     $output = Element::where('id', $order->output_currency_type)->first();
                 @endphp
-                <td>{{isset($input->name) ? $input->name : 'NO TEXT'}}  {{$order->input_number ? $order->input_number : 'NO TEXT'}} {{$order->input_currency_unit ? $order->input_currency_unit : 'NO TEXT'}}</td>
-                <td>{{isset($output->name) ? $output->name : 'NO TEXT'}}  {{$order->output_number ? $order->output_number : 'NO TEXT'}} {{$order->output_currency_unit ? $order->output_currency_unit : 'NO TEXT'}}</td>
-                <td>{{Carbon::parse($order->created_at)->format('d/m/Y')}}</td>
-                <td>
+                <td class="text-color border-top-0">{{isset($input->name) ? $input->name : 'NO TEXT'}}  {{$order->input_number ? $order->input_number : 'NO TEXT'}} {{$order->input_currency_unit ? $order->input_currency_unit : 'NO TEXT'}}</td>
+                <td class="text-color border-top-0">{{isset($output->name) ? $output->name : 'NO TEXT'}}  {{$order->output_number ? $order->output_number : 'NO TEXT'}} {{$order->output_currency_unit ? $order->output_currency_unit : 'NO TEXT'}}</td>
+                <td class="text-color border-top-0">{{Carbon::parse($order->created_at)->format('d/m/Y')}}</td>
+                <td class="text-color border-top-0">
                     <div class="d-flex justify-content-center mb-2">
-                        <button type="button" class="btn btn-sm btn-danger mr-1" data-toggle="modal" data-target="#order-{{$order->id}}" data-whatever="@mdo">Delete</button>
+                        <button type="button" class="btns p-2 custom-font-size text-color mr-1" data-toggle="modal" data-target="#order-{{$order->id}}" data-whatever="@mdo">Delete</button>
                         @php
                             $clearing = Clearing::where('order_id', $order->id)->first();
                             $form = Form::where('order_id', $order->id)->first();
                         @endphp
-                        <a href=" {{route('clearing.create', ['order' => $order->id])}} " class="btn btn-warning btn-sm mr-1">{{$clearing ? "Update Doc" : "Add Doc" }}</a>
+                        <a href=" {{route('clearing.create', ['order' => $order->id])}} " class="btns text-color p-2 custom-font-size mr-1">{{$clearing ? "Update Doc" : "Add Doc" }}</a>
                         @if ($clearing)
-                            <button type="button" class="btn btn-sm btn-info mr-1" data-toggle="modal" data-target="#clearing-{{$clearing->id}}" data-whatever="@mdo">Show Doc</button>
+                            <button type="button" class="btns text-color p-2 custom-font-size mr-1" data-toggle="modal" data-target="#clearing-{{$clearing->id}}" data-whatever="@mdo">Show Doc</button>
                         @endif
-                        <button type="button" class="btn btn-sm btn-dark mr-1" data-toggle="modal" data-target="#user-{{$order->user->id}}" data-whatever="@mdo">User Info</button> 
+                        <button type="button" class="btns text-color p-2 custom-font-size mr-1" data-toggle="modal" data-target="#user-{{$order->user->id}}" data-whatever="@mdo">User Info</button> 
                         @if ($form)
-                            <button type="button" class="btn btn-sm btn-primary mr-1" data-toggle="modal" data-target="#form-{{$form->id}}" data-whatever="@mdo">Show Form</button>
+                            <button type="button" class="btns text-color p-2 custom-font-size mr-1" data-toggle="modal" data-target="#form-{{$form->id}}" data-whatever="@mdo">Show Form</button>
                         @endif
                         <form action="{{route('orders.accept', ['order' => $order->id])}} " method="POST" class="mr-1">
                             @if ($order->accept == true)
-                                <button type="submit" class="btn btn-sm btn-success">Accepted</button>
+                                <button type="submit" class="btns text-color p-2 custom-font-size">Accepted</button>
                             @else 
-                                <button type="submit" class="btn btn-sm btn-secondary">Pending</button>
+                                <button type="submit" class="btns text-color p-2 custom-font-size">Pending</button>
                             @endif
                             @csrf
                         </form>
                     </div>
-                </td>
+                </td class="text-color border-top-0">
             </tr>
             {{-- modal --}}
                 <div class="modal fade" id="order-{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content custom-card-color">
+                        <div class="modal-content background-color-modals custom-background-card">
                             <div class="modal-body">
                                 <form action="{{ route('orders.destroy', ['order' => $order->id]) }}" method="post">
                                     <div class="modal-body">
                                         @csrf
                                         @method('DELETE')
-                                        <h5 class="text-center">Are you sure you want to delete this order?</h5>
+                                        <h5 class="text-center text-color">ARE YOU SURE YOU WANT TO DELETE THIS ORDER?</h5>
                                         <div class="mt-3 d-flex justify-content-end">
-                                            <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-danger">Yes, Delete order</button>
+                                            <button type="button" class="btn text-color pr-4 pl-4 pt-2 pb-2 mr-2 custom-font-size" data-dismiss="modal">CANCEL</button>
+                                            <button type="submit" class="btns text-color pr-4 pl-4 pt-2 pb-2 custom-font-size">YES, DELETE ORDER</button>
                                         </div>
                                     </div>
                                 </form>

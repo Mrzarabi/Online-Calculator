@@ -25,7 +25,7 @@ class OrderController extends Controller
     {
         if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
 
-            $orders = Order::with('user')->latest()->paginate(9);
+            $orders = Order::with('user')->latest()->paginate(8);
             return view('v1.panel.layouts.order.orders', compact('orders'));
         } else {
 

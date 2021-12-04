@@ -4,7 +4,7 @@
 }
 .custom-card {
     width: 40rem;
-    height: auto;
+    height: 45rem;
 }
 
 .color {
@@ -40,6 +40,15 @@
     border-image:  var(--site-color) 1;
 }
 
+.text-color:hover {
+    color: #fbeca1;
+}
+
+.btns:hover {
+    color: #fbeca1;
+    text-decoration: none;
+}
+
 .profile-image {
     max-width: 170px;
     max-height: 170px;
@@ -60,13 +69,19 @@
 
 }
 
-/* .custom-text-color {
-    background-image: var(--site-color);
+.background-color-inputs {
+    background-color: #222222 !important;
+    color: #fff !important;
 }
 
-.custom-back-color-card {
-    background-color: #343a40 !important;
+.background-color-modals {
+    background-color: #020202 !important;
 }
+
+
+/*
+
+
 
 .custom-user-info, .swal2-title, .swal2-html-container {
     color: #fff !important;

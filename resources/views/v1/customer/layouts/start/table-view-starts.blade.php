@@ -41,9 +41,9 @@ use Carbon\Carbon;
                         <td class="border-top-0 text-color">Nothing</td>
                     @endif
                     @if ($start->closed)
-                        <td class="text-danger border-top-0">Closed</td>
+                        <td class="text-danger border-top-0">CLOSED</td>
                     @else
-                        <td class="text-success border-top-0">Open</td>
+                        <td class="text-success border-top-0">OPEN</td>
                     @endif
                     <td class="border-top-0 text-color">{{Carbon::parse($start->created_at)->format('d/m/Y')}}</td>
                     <td class="border-top-0">

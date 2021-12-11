@@ -2,9 +2,12 @@
     --site-color: -webkit-linear-gradient( 90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%);
     --border: linear-gradient(90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%) 1;
 }
-.custom-card {
-    width: 40rem;
-    height: 45rem;
+
+.custom-sm-card {
+    width: auto;
+    min-width: 40vw;
+    height: auto;
+    min-height: 25rem;
 }
 
 .color {
@@ -15,8 +18,12 @@
 
 .text-color {
     font-size: 16px;
-    color: #fbeca1;
+    color: #fbeca1 !important;
     text-transform: uppercase;
+}
+
+.file-input-text {
+    color: #fbeca1 !important;
 }
 
 .with-bottom-linear-gradient-to-left {
@@ -27,6 +34,13 @@
     bottom 
     no-repeat; 
   background-size:100% 0.8px ;/* if linear-gradient, we need to resize it */
+}
+
+.with-left-linear-gradient-to-bottom {
+    background-size: 100% 1px;
+    border-width: 0px 0px 0px 1px;
+    border-style: solid;
+    border-image: linear-gradient(90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%) 1 100%;
 }
 
 .btns {
@@ -69,9 +83,27 @@
 
 }
 
+.custom-background-sidebar {
+    background-image: url('/defaultImages/panel/sidebar/sidebar.png');
+    background-position: center center;
+}
+
+.sidebar-dark-primary, .layout-navbar-fixed .wrapper .sidebar-dark-primary .brand-link:not([class*=navbar]), .navbar-white {
+    background-color: #070200 !important;
+}
+
+.navbar-white {
+    background-color: #0b0602;
+}
+
+
 .background-color-inputs {
     background-color: #222222 !important;
     color: #fff !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.05rem #c89b36 !important;
 }
 
 .background-color-modals {
@@ -79,7 +111,10 @@
 }
 
 
-/*
+
+
+
+/* 
 
 
 
@@ -98,7 +133,26 @@
 } */
 
 .custom-background-card {
-    background: transparent;
+    background: transparent !important;
+    border-width: 1px;
+    border-style: solid;
+    border-image: var(--border);
+}
+
+.custom-background-modal {
+    background: transparent !important;
+    border-width: 1px;
+    border-style: solid;
+    border-image: var(--border);
+}
+
+.modal-border {
+    border-width: 1px;
+    border-style: solid;
+    border-image: var(--border) !important;
+}
+
+.modal-border:hover {
     border-width: 1px;
     border-style: solid;
     border-image: var(--border);
@@ -111,6 +165,17 @@
 
 .custom-font-weight {
     font-weight: 100;
+}
+
+.text-ellipsis{
+    white-space: nowrap; text-overflow: ellipsis;
+    overflow: hidden;
+    width: 15rem;
+}
+
+.h-indexes {
+    min-height: 84vh;
+    overflow: hidden;
 }
 
 /* .custom-border-ticket {

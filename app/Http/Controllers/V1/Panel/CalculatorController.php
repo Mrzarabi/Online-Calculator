@@ -21,7 +21,7 @@ class CalculatorController extends Controller
     {
         if(auth()->user()->isAbleTo('calculator-read')) {
 
-            $calculators = Calculator::latest()->paginate(9);
+            $calculators = Calculator::latest()->paginate(7);
             return view('v1.panel.layouts.calculator.calculator', compact('calculators'));
         } else {
 

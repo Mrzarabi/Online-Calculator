@@ -46,11 +46,11 @@ class InventoryController extends Controller
     public function store(InventoryRequest $request)
     {
         if(auth()->user()->isAbleTo('inventory-create')) {
-
+            
             $inventory = Inventory::latest()->first();
-    
+            
             if(! $inventory) {
-    
+                
                 DB::transaction(function () use($request) {
                     Inventory::create($request->all());
                 });

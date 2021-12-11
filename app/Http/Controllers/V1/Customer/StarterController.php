@@ -18,7 +18,7 @@ class StarterController extends Controller
      */
     public function index()
     {
-        $starts = Starter::where('user_id', auth()->user()->id)->latest()->paginate(9); 
+        $starts = Starter::where('user_id', auth()->user()->id)->latest()->paginate(8); 
         return view('v1.customer.layouts.start.starts', compact('starts'));
     }
 

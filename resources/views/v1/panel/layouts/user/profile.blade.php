@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="d-flex justify-content-start">
-                    <div class="custom-card custom-background-card">
+                    <div class="custom-card custom-background-card custom-sm-card">
                         <div class="card-header d-flex align-items-center">
                             <img src=" {{$user->avatar ? $user->avatar : '/defaultImages/avatar.png'}} " alt="user" class="rounded-circle profile-image" height="165" width="165"/>
                             <h4 class="ml-3 color">{{$user->name . ' ' . $user->family}}</h4>
@@ -49,49 +49,49 @@
     {{-- modal --}}
     <div class="modal fade" id="user-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content custom-card-color">
+            <div class="modal-content background-color-modals modal-border">
                 <div class="modal-body">
                     <form action="{{route('settings.profile', ['user' => $user->id])}}" method="post" enctype="multipart/form-data">
                         @method('PUT')
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control form-control-sm custom-form-control" id="name" name="name" value="{{isset($user) ? $user->name : '' }}">
+                            <label for="name" class="color custom-font-size">NAME</label>
+                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="name" name="name" value="{{isset($user) ? $user->name : '' }}">
                             @if ($errors->has('name'))
                                 <span class="d-block text-danger">{{ $errors->first('name') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="family">Family</label>
-                            <input type="text" class="form-control form-control-sm custom-form-control" id="family" name="family" value="{{isset($user) ? $user->family : '' }}">
+                            <label for="family" class="color custom-font-size">FAMILY</label>>
+                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="family" name="family" value="{{isset($user) ? $user->family : '' }}">
                             @if ($errors->has('family'))
                                 <span class="d-block text-danger">{{ $errors->first('family') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control form-control-sm custom-form-control" id="email" name="email" value="{{isset($user) ? $user->email : '' }}">
+                            <label for="email" class="color custom-font-size">EMAIL</label>
+                            <input type="email" class="form-control form-control-sm background-color-inputs border-0" id="email" name="email" value="{{isset($user) ? $user->email : '' }}">
                             @if ($errors->has('email'))
                                 <span class="d-block text-danger">{{ $errors->first('email') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="text" class="form-control form-control-sm custom-form-control" id="phone" name="phone" value="{{isset($user) ? $user->phone : '' }}">
+                            <label for="phone" class="color custom-font-size">PHONE</label>
+                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="phone" name="phone" value="{{isset($user) ? $user->phone : '' }}">
                             @if ($errors->has('phone'))
                                 <span class="d-block text-danger">{{ $errors->first('phone') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" class="form-control form-control-sm custom-form-control" id="address" name="address" value="{{isset($user) ? $user->address : '' }}">
+                            <label for="address" class="color custom-font-size">ADDRESS</label>
+                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="address" name="address" value="{{isset($user) ? $user->address : '' }}">
                             @if ($errors->has('address'))
                                 <span class="d-block text-danger">{{ $errors->first('address') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="avatar"> Avatar </label>
+                            <label class="control-label color custom-font-size" for="avatar"> AVATAR </label>
                             <div class="input-group">
-                                <input type="file" name="avatar" id="avatar"/>
+                                <input type="file" name="avatar" class="file-input-text border-0" id="avatar"/>
                             </div>
                             @if ($errors->has('avatar'))
                                 <span class="d-block text-danger">{{ $errors->first('avatar') }}</span>
@@ -103,8 +103,8 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mt-3">
-                            <button type="button" class="btn btn-secondary btn-sm mr-2" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success btn-sm">Submit</button>
+                            <button type="button" class="btn text-color custom-font-size pr-3 pl-3 btn-sm mr-2" data-dismiss="modal">CLOSE</button>
+                            <button type="submit" class="btns text-color custom-font-size pr-3 pl-3 btn-sm">SUBMIT</button>
                         </div>
                         @csrf
                     </form>

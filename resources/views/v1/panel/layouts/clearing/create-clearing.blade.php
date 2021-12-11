@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-8 offset-2">
             <div class="d-flex justify-content-start mt-4 ml-0 mb-4">
-                <a href=" {{route('customer.starters.index')}} "> <img src="/defaultImages/panel/ticket/back-left.png" alt="back left"></a>
+                <a href=" {{route('orders.index')}} "> <img src="/defaultImages/panel/ticket/back-left.png" alt="back left"></a>
             </div>
                 @php
                     $clearing = Clearing::where('order_id', $order->id)->first();
@@ -39,9 +39,9 @@
                     <label for="clear" class="color custom-font-size">CLEAR</label>
                     <div class="input-group">
                         <input type="radio" id="true" class="mt-2 mr-1 background-color-inputs border-0" name="clear" @isset($clearing->clear) @if($clearing->clear == 1) checked @endif value=1 @else value=1 @endisset >
-                        <label for="true" class="pr-3 color custom-font-size">CLEAR</label><br>
+                        <label for="true" class="pr-3 color">CLEAR</label><br>
                         <input type="radio" id="false" class="mt-2 mr-1" name="clear" @isset($clearing->clear) @if($clearing->clear == 0) checked @endif value=0 @else value=0 @endisset>
-                        <label for="false" class="pr-3 color ">NOT CLEAR</label><br>
+                        <label for="false" class="pr-3 color">NOT CLEAR</label><br>
                         <div class="input-group-addon"><i class="ti-layout-grid2-alt"></i></div>
                     </div>
                     @if( $errors->has('clear') )

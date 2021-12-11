@@ -52,37 +52,44 @@
         {{-- modal --}}
             <div class="modal fade" id="user-{{$order->user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content custom-card-color">
-                        <div class="modal-body">
-                            <div class="container">
-                                <div class="card custom-card-color">
-                                    <div class="card-header">
-                                        <img src=" {{$order->user->avatar ? $order->user->avatar : '/defaultImages/avatar.png'}} " alt="user" />
+                    <div class="modal-content background-color-modals modal-border">
+                        <div class="modal-body ">
+                            <div class="custom-card">
+                                <div class="d-flex justify-content-center">
+                                    <img class="rounded-circle "  width="140" height="140" src=" {{$order->user->avatar ? $order->user->avatar : '/defaultImages/avatar.png'}} " alt="user" />
+                                </div>
+                                <div class="card-body pb-0">
+                                    <h3 class="mb-2 color text-center">{{$order->user->name . ' ' . $order->user->family}}</h3>
+                                    <div class="d-flex mb-3">
+                                        <span class="mr-3">
+                                            <img src="/defaultImages/panel/profile/email.png" alt="email">    
+                                        </span> 
+                                        <h6 class="color mt-1">{{$order->user->email}}</h6>
                                     </div>
-                                    <div class="card-body pb-0">
-                                        <span class="tag tag-teal">{{$order->user->email}}</span>
-                                        <h4>{{$order->user->name . ' ' . $order->user->family}}</h4>
-                                        <h6>{{$order->user->address ? $order->user->address : 'NO ADDRESS'}}</h6>
-                                        <h6>{{$order->user->phone ? $order->user->phone : 'NO PHONE'}}</h6>
-                                        <div class="user">
-                                            <div class="user-info">
-                                                <small class="custom-user-info"> {{ Carbon::parse($order->user->created_at)->format('d/m/Y')}} </small>
-                                            </div>
-                                        </div>
+                                    <div class="d-flex">
+                                        <span class="mr-3">
+                                            <img src="/defaultImages/panel/profile/address.png" alt="address">
+                                        </span>
+                                        <h6 class="color mt-1">{{$order->user->address ? $order->user->address : 'NO ADDRESS'}}</h6>
+                                    </div>
+                                    <div class="d-flex">
+                                        <span class="mr-3">
+                                            <img src="/defaultImages/panel/profile/phone.png" alt="phone">
+                                        </span>
+                                        <h6 class="color mt-1">{{$order->user->phone ? $order->user->phone : 'NO PHONE'}}</h6>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <hr/>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div class="d-flex justify-content-end mt-2">
+                                <button type="button" class="btn color pr-4 pl-4 pt-2 pb-2 mr-2 custom-font-size" data-dismiss="modal">CANCEL</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         {{-- end modal --}}
         {{-- modal --}}
-            @if ($form)
+        @if ($form)
             <div class="modal fade" id="form-{{$form->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content custom-card-color">

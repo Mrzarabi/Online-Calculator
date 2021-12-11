@@ -8,9 +8,7 @@
 @extends('adminlte::page')
 @section('content')
 
-    {{-- order choosed card view--}}
-    @include('v1.panel.layouts.clearing.card-view-order-clearing')
-    <div class="custom-background-card p-4">
+    <div class="h-indexes custom-background-card p-4">
         {{-- order choosed  table view --}}
         @include('v1.panel.layouts.clearing.table-view-order-clearing')
     
@@ -18,5 +16,6 @@
         @include('v1.panel.layouts.clearing.create-clearing')
     </div>
     
-    
+    {{-- order choosed card view--}}
+    @include('v1.panel.layouts.clearing.card-view-order-clearing')
 @endsection

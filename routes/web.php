@@ -5,8 +5,6 @@ use App\Http\Controllers\V1\Customer\CustomerController;
 use App\Http\Controllers\V1\Customer\OrderController as CustomerOrderController;
 use App\Http\Controllers\V1\Customer\StarterController as CustomerStarterController;
 use App\Http\Controllers\V1\Customer\TicketController as CustomerTicketController;
-use App\Http\Controllers\V1\Panel\AboutUsController;
-use App\Http\Controllers\V1\Panel\ArticleController;
 use App\Http\Controllers\V1\Panel\CalculatorController;
 use App\Http\Controllers\V1\Panel\ClearingController;
 use App\Http\Controllers\V1\Panel\ElementController;
@@ -16,6 +14,7 @@ use App\Http\Controllers\V1\Panel\LocationController;
 use App\Http\Controllers\V1\Panel\OrderController;
 use App\Http\Controllers\V1\Panel\StarterController;
 use App\Http\Controllers\V1\Panel\TicketController;
+use App\Http\Controllers\V1\Panel\ContactUsController;
 use App\Http\Controllers\V1\Panel\UserController;
 use App\Http\Controllers\V1\View\ViewController;
 use App\Http\Livewire\View\Layouts\Perfect;
@@ -81,8 +80,10 @@ Route::prefix('admin')
     Route::get('/search/element', [ElementController::class, 'search'])->name('element.search');
     Route::get('/search/start', [StarterController::class, 'search'])->name('starts.search');
 
+    Route::get('/contactUses', [ContactUsController::class, 'index'])->name('contactUs.index');
+    Route::delete('/contactUses/{contactUs}', [ContactUsController::class, 'destroy'])->name('contactUs.destroy');
+
     Route::resources([
-        '/articles' => ArticleController::class,
         '/users' => UserController::class,
         '/orders' => OrderController::class,
         '/forms' => FormController::class,
@@ -113,12 +114,14 @@ Route::get('/', [ViewController::class, 'index'])->name('home');
 Route::post('/customer/order/send', [ViewController::class, 'store'])->name('customer.orders.send');
 Route::get('/customer/forms', [ViewController::class, 'createForms'])->name('customer.forms');
 Route::post('/customer/forms/send', [ViewController::class, 'storeForm'])->name('customer.forms.send');
+Route::post('/customer/contact/us/send', [ViewController::class, 'contacUs'])->name('customer.contactUs.send');
 
 Route::view('/terms', '/v1/view/layouts/term')->name('terms');
 Route::view('/aboutUs', '/v1/view/layouts/aboutUs')->name('aboutUs');
 Route::view('/contactUs', '/v1/view/layouts/contactUs')->name('contactUs');
 Route::get('/services/tether', [ViewController::class, 'tether'])->name('services.tether');
 Route::get('/services/perfect/money', [ViewController::class, 'perfect'])->name('services.perfect');
-Route::get('test/email', [ViewController::class, 'email']);
+// Route::get('test/email', [ViewController::class, 'email']);
 
 Route::get('refresh-captcha', [ViewController::class, 'refreshCaptcha'])->name('refreshCaptcha');
+// Route::view('test', '/index');

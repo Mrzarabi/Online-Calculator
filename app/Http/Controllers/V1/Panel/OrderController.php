@@ -23,6 +23,7 @@ class OrderController extends Controller
      */
     public function index()
     {
+        // todo
         if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
 
             $orders = Order::with('user')->latest()->paginate(8);

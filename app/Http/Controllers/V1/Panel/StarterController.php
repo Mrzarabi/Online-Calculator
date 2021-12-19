@@ -17,7 +17,7 @@ class StarterController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->isAbleto('ticket-read')) {
+        if(auth()->user()->isAbleto('starter-read')) {
 
             $starts = Starter::with('user')->latest()->paginate(9);
             return view('v1.panel.layouts.start.starts', compact('starts'));
@@ -100,7 +100,7 @@ class StarterController extends Controller
      */
     public function close(Starter $starter)
     {
-        if(auth()->user()->isAbleto('ticket-read')) {
+        if(auth()->user()->isAbleto('starter-close')) {
 
             DB::transaction(function () use($starter) {
                 $starter->update([

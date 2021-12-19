@@ -72,6 +72,7 @@ class Form extends Component
                 $this->isDisabled = false;
             }
         }
+
     }
 
     public function render()

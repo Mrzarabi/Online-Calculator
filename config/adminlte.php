@@ -107,7 +107,7 @@ return [
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_btn' => 'btn-flat',
 
     /*
     |--------------------------------------------------------------------------
@@ -244,7 +244,7 @@ return [
         // ],
         ['header' => 'YOU CAN ACCESS TO'],
         [
-            'text' => 'Profile',
+            'text' => 'PROFILE',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
             'can'  => 'admin'
@@ -255,58 +255,70 @@ return [
         //     'icon' => 'fas fa-fw fa-lock',
         // ],
         [
-            'text' => 'Cost',
+            'text' => 'COSTS',
             'url'  => 'admin/define/currencies',
             'icon' => 'fas fa-coins',
             'can'  => 'admin'
             
         ],
         [
-            'text' => 'Element',
+            'text' => 'ELEMENTS',
             'url'  => 'admin/elements/create',
             'icon' => 'fas fa-money-check-alt',
             'can'  => 'admin'
             
         ],
         [
-            'text' => 'Inventory',
+            'text' => 'INVENTORIES',
             'url'  => 'admin/define/inventories',
             'icon' => 'fas fa-wallet',
             'can'  => 'admin'
             
         ],
         [
-            'text' => 'Users',
+            'text' => 'USERS',
             'url'  => 'admin/users',
             'icon' => 'fa fa-users',
             'can'  => 'admin'
         ],
         [
-            'text' => 'Orders',
+            'text' => 'ORDERS',
             'url'  => 'admin/orders',
             'icon' => 'fas fa-align-justify',
             'can'  => 'admin'
         ],
         [
-            'text' => 'Tickets',
+            'text' => 'FEEDBACKS',
+            'url'  => 'admin/feedbacks',
+            'icon' => 'fas fa-comment-dots',
+            'can'  => 'admin'
+        ],
+        [
+            'text' => 'TICKETS',
             'url'  => 'admin/starters',
             'icon' => 'fas fa-envelope-open-text',
             'can'  => 'admin'
         ],
         [
-            'text' => 'Profile',
+            'text' => 'CONTACT USES',
+            'url'  => 'admin/contactUses',
+            'icon' => 'fas fa-envelope-open-text',
+            'can'  => 'admin'
+        ],
+        [
+            'text' => 'PROFILE',
             'url'  => 'customer/home',
             'icon' => 'fas fa-fw fa-user',
             'can'  => 'customer'
         ],
         [
-            'text' => 'Orders',
+            'text' => 'ORDERS',
             'url'  => 'customer/orders',
             'icon' => 'fas fa-align-justify',
             'can'  => 'customer'
         ],
         [
-            'text' => 'Tickets',
+            'text' => 'TICKETS',
             'url'  => 'customer/starters',
             'icon' => 'fas fa-envelope-open-text',
             'can'  => 'customer'

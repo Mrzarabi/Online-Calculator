@@ -13,17 +13,19 @@ return [
 
     'roles_structure' => [
         '100e82ba-e1c0-4153-8633-e1bd228f7399' => [
-            'user' => 'r,d',
-            'aboutUs' => 'c,r,u,d',
-            'image' => 'c,r,u,d',
-            'ticket' => 'c,r,u,d,a,an',
-            'article' => 'c,r,u,d',
-            'form' => 'r,d',
-            'order' => 'r,d,a',
             'calculator' => 'c,r,d',
-            'element' => 'c,r,u,d',
-            'inventory' => 'c,r,u',
             'clearing' => 'c,r,u',
+            'contactUs' => 'r,d',
+            'element' => 'c,r,u,d',
+            'feedback' => 'r,d',
+            'form' => 'r,d',
+            'image' => 'c,r,u,d',
+            'inventory' => 'c,r,u',
+            'location' => 'r',
+            'order' => 'r,d,a',
+            'starter' => 'r,cl',
+            'user' => 'r,d',
+            'ticket' => 'c,r,u,d,a,an',
             
         ],
 
@@ -52,6 +54,7 @@ return [
         'd' => 'delete',
         'w' => 'watch',
         'an' => 'answer',
-        'a' => 'accept'
+        'a' => 'accept',
+        'cl' => 'close'
     ]
 ];

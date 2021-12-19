@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1\View;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Form\CustomerFormRequest;
+use App\Http\Requests\V1\ContactUs\ContactUsRequest;
 use App\Http\Requests\V1\Order\OrderRequest;
 use App\Mail\accept;
 use App\Mail\adminRequest;
@@ -11,12 +12,13 @@ use App\Mail\perfect;
 use App\Mail\tether;
 use App\Mail\welcome;
 use App\Models\Calculator;
+use App\Models\ContactUs;
 use App\Models\Element;
+use App\Models\Feedback;
 use App\Models\Form;
 use App\Models\Inventory;
 use App\Models\Order;
 use Carbon\Carbon;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -118,6 +120,24 @@ class ViewController extends Controller
             $this->custom_alert('Your Order', 'submited');
             return redirect()->route('home');
         }
+    }
+
+    public function contacUs(ContactUsRequest $request) 
+    {
+        $contactUs = new ContactUs();
+
+        $contactUs->create($request->all());
+        $this->custom_alert('Your Message', 'Received');
+        return redirect()->back();
+    }
+
+    public function feedbacks()
+    {
+        $feedbacks = Feedback::with('order')->where('show', true)->latest()->paginate(5);
+        
+        return view('v1.view.layouts.feedback', [
+            'feedbacks' => $feedbacks,
+        ]);
     }
 
     // ================================================

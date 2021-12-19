@@ -15,6 +15,14 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('order_id')->references('id')->on('orders')
+                            ->onDelete('cascade')
+                            ->onUpdate('cascade');
+
+            $table->text('body');
+            $table->boolean('show')->default(false);
+
             $table->timestamps();
         });
     }

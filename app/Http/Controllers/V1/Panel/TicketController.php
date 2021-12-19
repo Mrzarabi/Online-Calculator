@@ -122,8 +122,8 @@ class TicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy(Ticket $ticket)
-    // {
+    public function destroy(Ticket $ticket)
+    {
     //     if(auth()->user()->isAbleTo('ticket-delete')) {
 
     //         DB::transaction(function () use($ticket) {
@@ -139,7 +139,7 @@ class TicketController extends Controller
 
     //         abort(403, 'Forbidden.');
     //     }
-    // }
+    }
 
     /**
      * Update the specified resource in storage.

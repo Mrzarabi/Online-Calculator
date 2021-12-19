@@ -104,4 +104,14 @@ class Order extends Model
     {
         return $this->hasOne(Form::class);
     }
+
+    /**
+     * Get the user that owns the form
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function feedback()
+    {
+        return $this->hasOne(Feedback::class);
+    }
 }

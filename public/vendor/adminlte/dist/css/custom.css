@@ -29,7 +29,7 @@
 .with-bottom-linear-gradient-to-left {
     background: 
     linear-gradient(
-        90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%
+        90deg, rgb(183,131,24) 0%, #c4952e 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%
     )
     bottom 
     no-repeat; 
@@ -80,7 +80,48 @@
 .custom-background-content-image {
     background-image: url('/defaultImages/hero.jpg');
     background-position: center center;
+    background-attachment: fixed;
+}
 
+.custom-style-pagination {
+    height: 5rem;
+    position: absolute;
+    bottom: 0 !important;
+}
+
+.page-link {
+    border-radius: 50%;
+    background-color: transparent !important;
+    padding: .25rem .5rem !important;
+    border: 1px solid #c89b36 !important;
+    font-weight: bolder;
+}
+
+.page-link:not(:disabled):not(.disabled) {
+    background-color: transparent !important;
+    border-radius: 50%;
+    border: 1px solid #fbeca1;
+    padding: .25rem .5rem;
+}
+
+.page-item:first-child .page-link {
+    padding: .20rem .6rem .30rem !important;
+    border-radius: 50% !important;
+    border: 1px solid #fbeca1 !important;
+}
+
+.page-item:last-child .page-link {
+    padding: .20rem .6rem .30rem !important;
+    border-radius: 50% !important;
+    border: 1px solid #fbeca1 !important;
+}
+
+.page-link:focus {
+    box-shadow: none !important;
+}
+
+.page-link:hover {
+    border: 1px solid #fbeca1;
 }
 
 .custom-background-sidebar {
@@ -110,8 +151,13 @@
     background-color: #020202 !important;
 }
 
+.card, .card-body {
+    background-color: transparent !important;
+}
 
-
+.card-primary.card-outline {
+    border-top: none;
+}
 
 
 /* 
@@ -132,7 +178,7 @@
     background-color: #3c3d41 !important;
 } */
 
-.custom-background-card {
+.custom-background-card, .login-box, .register-box {
     background: transparent !important;
     border-width: 1px;
     border-style: solid;

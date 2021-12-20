@@ -213,3 +213,17 @@
         </script>
     @endsection
 </div>
+{{-- <div class="with-bottom-linear-gradient-to-left p-position mb-4">
+    <label for="email" class="site-color float-left label-position" id="l_email">YOUR PayPal E-mail ADDRESS: *</label>
+    <div class="form-group d-flex align-items-baseline mb-0 w100">
+        <input type="email" class="form-control form-control-sm input-style-form z-index-input" 
+            id="email" name="email" wire:model.lazy="email" wire:model.defer="inputValue" required 
+            onclick="animation('l_email')" onchange="getVal('email')">
+        <div class="cmb">
+            <img src="/defaultImages/view/form/paypal email.png" alt="paypal email" width="18">
+        </div>
+    </div>
+</div>
+@if ($errors->has('email'))
+    <span class="d-block text-danger">{{ $errors->first('email') }}</span>
+@endif --}}

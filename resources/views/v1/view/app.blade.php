@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="/view/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/view/assets/css/style.css">
     <link rel="stylesheet" href="/view/assets/css/custom.css">
-    
+
+    {{-- forms --}}
+    <link rel="stylesheet" type="text/css" href="/form/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/form/css/main.css">
     @yield('script')
 
 	<title>SAMXPAY</title>
@@ -57,6 +60,8 @@
 	<script src="/view/assets/js/odometer.min.js"></script>
 	<script src="/view/assets/js/owl.carousel.min.js"></script>
     <script src="/view/assets/js/custom.js"></script>
+    {{-- forms --}}
+    <script src="/form/js/main.js"></script>
     <livewire:scripts />
     
     <script>

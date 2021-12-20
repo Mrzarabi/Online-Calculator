@@ -10,7 +10,7 @@
     <div class="col-md-12">
         <div class="row">
             @foreach ($users as $user)
-                <div class="col-md-4">
+                <div class="col-md-4 mb-4">
                     <div class="custom-card custom-background-card">
                         <div class="card-header d-flex align-items-center">
                             <img src=" {{$user->avatar ? $user->avatar : '/defaultImages/avatar.png'}} " alt="user" class="rounded-circle profile-image" height="165" width="165"/>
@@ -69,9 +69,10 @@
             @endforeach
         </div>
     </div>
-
-    <div class="d-flex justify-content-center">
-        {!! $users->render('/vendor.pagination.bootstrap-4') !!}
+    <div class="custom-style-pagination mt-3">
+        <div class="mt-auto">
+            {!! $users->render('/vendor.pagination.bootstrap-4') !!}
+        </div>
     </div>
 @endsection
 

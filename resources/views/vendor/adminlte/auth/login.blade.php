@@ -28,27 +28,27 @@
 @section('auth_body')
     <div>
         @if (isset($inventory->paypalInv))
-            <h6 class="custom-text-color text-sm text-nowrap text-center">PayPal Reserve Balance: {{$inventory->paypalInv}}</h6>
+            <h6 class="text-color text-sm text-nowrap text-center">PayPal Reserve Balance: {{$inventory->paypalInv}}</h6>
         @endif
         @if (isset($inventory->cashInv))
-            <h6 class="custom-text-color text-sm text-nowrap text-center @if (empty($inventory->perfectMoneyInv) && empty($inventory->webMoneyInv) && empty($inventory->tetherInv) ) mb-4 @endif ">Cash Reserve Balance: {{$inventory->cashInv}}</h6>
+            <h6 class="text-color text-sm text-nowrap text-center @if (empty($inventory->perfectMoneyInv) && empty($inventory->webMoneyInv) && empty($inventory->tetherInv) ) mb-4 @endif ">Cash Reserve Balance: {{$inventory->cashInv}}</h6>
         @endif
         @if (isset($inventory->perfectMoneyInv))
-            <h6 class="custom-text-color text-sm text-nowrap text-center @if (empty($inventory->webMoneyInv) && empty($inventory->tetherInv) ) mb-4 @endif">Perfect Money Balance Reserve: {{$inventory->perfectMoneyInv}}</h6>
+            <h6 class="text-color text-sm text-nowrap text-center @if (empty($inventory->webMoneyInv) && empty($inventory->tetherInv) ) mb-4 @endif">Perfect Money Balance Reserve: {{$inventory->perfectMoneyInv}}</h6>
         @endif
         @if (isset($inventory->webMoneyInv))
-            <h6 class="custom-text-color text-sm text-nowrap text-center @if (empty($inventory->tetherInv)) mb-4 @endif">Web Money Balance Reserve: {{$inventory->webMoneyInv}}</h6>
+            <h6 class="text-color text-sm text-nowrap text-center @if (empty($inventory->tetherInv)) mb-4 @endif">Web Money Balance Reserve: {{$inventory->webMoneyInv}}</h6>
         @endif
         @if (isset($inventory->tetherInv))
-            <h6 class="custom-text-color text-sm text-nowrap text-center @if (isset($inventory->tetherInv)) mb-4 @endif">Tether Balance Reserve: {{$inventory->tetherInv}}</h6>
+            <h6 class="text-color text-sm text-nowrap text-center @if (isset($inventory->tetherInv)) mb-4 @endif">Tether Balance Reserve: {{$inventory->tetherInv}}</h6>
         @endif
     </div>
     
     <form action="{{ $login_url }}" method="post">
         {{ csrf_field() }}
 
-        <div class="d-flex justify-content-center mb-3">
-            <a href=" {{route('auth.google')}} " class="btn btn-sm btn-success">Use Your Google Account</a>
+        <div class="mb-3">
+            <a href=" {{route('auth.google')}} " class="btns custom-font-size btn-sm pt-2 pb-2 text-color d-block text-center">Sign in with google</a>
         </div>
 
         {{-- Email field --}}
@@ -69,10 +69,10 @@
 
         {{-- Password field --}}
         <div class="input-group mb-3">
-            <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }} custom-form-control"
+            <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }} background-color-inputs"
                    placeholder="{{ __('adminlte::adminlte.password') }}">
             <div class="input-group-append">
-                <div class="input-group-text custom-icon-back-color">
+                <div class="input-group-text background-color-inputs">
                     <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
                 </div>
             </div>
@@ -85,17 +85,21 @@
 
         {{-- Login field --}}
         <div class="row">
-            <div class="col-7">
+            {{-- <div class="col-7">
                 <div class="icheck-primary">
                     <input type="checkbox" name="remember" id="remember">
                     <label for="remember">{{ __('adminlte::adminlte.remember_me') }}</label>
                 </div>
-            </div>
-            <div class="col-5">
-                <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }} rounded">
-                    <span class="fas fa-sign-in-alt"></span>
-                    {{ __('adminlte::adminlte.sign_in') }}
-                </button>
+            </div> --}}
+            <div class="col-12">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-5">
+                        <button type="submit" class="btns text-color custom-font-size pt-2 pb-2 btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat') }} rounded">
+                            <span class="fas fa-sign-in-alt"></span>
+                            {{ __('adminlte::adminlte.sign_in') }}
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -106,7 +110,7 @@
     {{-- Password reset link --}}
     @if($password_reset_url)
         <p class="my-0">
-            <a href="{{ $password_reset_url }}">
+            <a href="{{ $password_reset_url }}" class="color">
                 {{ __('adminlte::adminlte.i_forgot_my_password') }}
             </a>
         </p>
@@ -115,7 +119,7 @@
     {{-- Register link --}}
     @if($register_url)
         <p class="my-0">
-            <a href="{{ $register_url }}">
+            <a href="{{ $register_url }}" class="color">
                 {{ __('adminlte::adminlte.register_a_new_membership') }}
             </a>
         </p>

@@ -10,8 +10,10 @@
                 {{-- table view --}}
                 @include('v1.panel.layouts.order.table-view-orders')
                 
-                <div class="d-flex justify-content-center show-table">
-                    {!! $orders->render('/vendor.pagination.bootstrap-4') !!}
+                <div class="custom-style-pagination mt-3 show-table">
+                    <div class="mt-auto">
+                        {!! $orders->render('/vendor.pagination.bootstrap-4') !!}
+                    </div>
                 </div>
             </div>
 

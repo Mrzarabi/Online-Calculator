@@ -22,25 +22,25 @@
 @section('auth_body')
     <div>
         @if (isset($inventory->paypalInv))
-            <h6 class="custom-text-color text-sm text-nowrap text-center">PayPal Reserve Balance: {{$inventory->paypalInv}}</h6>
+            <h6 class="text-color text-sm text-nowrap text-center">PayPal Reserve Balance: {{$inventory->paypalInv}}</h6>
         @endif
         @if (isset($inventory->cashInv))
-            <h6 class="custom-text-color text-sm text-nowrap text-center @if (empty($inventory->perfectMoneyInv) && empty($inventory->webMoneyInv) && empty($inventory->tetherInv) ) mb-4 @endif ">Cash Reserve Balance: {{$inventory->cashInv}}</h6>
+            <h6 class="text-color text-sm text-nowrap text-center @if (empty($inventory->perfectMoneyInv) && empty($inventory->webMoneyInv) && empty($inventory->tetherInv) ) mb-4 @endif ">Cash Reserve Balance: {{$inventory->cashInv}}</h6>
         @endif
         @if (isset($inventory->perfectMoneyInv))
-            <h6 class="custom-text-color text-sm text-nowrap text-center @if (empty($inventory->webMoneyInv) && empty($inventory->tetherInv) ) mb-4 @endif">Perfect Money Balance Reserve: {{$inventory->perfectMoneyInv}}</h6>
+            <h6 class="text-color text-sm text-nowrap text-center @if (empty($inventory->webMoneyInv) && empty($inventory->tetherInv) ) mb-4 @endif">Perfect Money Balance Reserve: {{$inventory->perfectMoneyInv}}</h6>
         @endif
         @if (isset($inventory->webMoneyInv))
-            <h6 class="custom-text-color text-sm text-nowrap text-center @if (empty($inventory->tetherInv)) mb-4 @endif">Web Money Balance Reserve: {{$inventory->webMoneyInv}}</h6>
+            <h6 class="text-color text-sm text-nowrap text-center @if (empty($inventory->tetherInv)) mb-4 @endif">Web Money Balance Reserve: {{$inventory->webMoneyInv}}</h6>
         @endif
         @if (isset($inventory->tetherInv))
-            <h6 class="custom-text-color text-sm text-nowrap text-center @if (isset($inventory->tetherInv)) mb-4 @endif">Tether Balance Reserve: {{$inventory->tetherInv}}</h6>
+            <h6 class="text-color text-sm text-nowrap text-center @if (isset($inventory->tetherInv)) mb-4 @endif">Tether Balance Reserve: {{$inventory->tetherInv}}</h6>
         @endif
     </div>
     <form action="{{ $register_url }}" method="post">
         {{ csrf_field() }}
-            <div class="d-flex justify-content-center mb-3">
-                <a href=" {{route('auth.google')}} " class="btn btn-sm btn-success">Use Your Google Account</a>
+            <div class="mb-3">
+                <a href=" {{route('auth.google')}} " class="btns custom-font-size text-color text-center d-block btn-sm">Sign up with Google</a>
             </div>
 
         {{-- Name field --}}
@@ -110,17 +110,21 @@
         </div>
 
         {{-- Register button --}}
-        <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }} rounded">
-            <span class="fas fa-user-plus"></span>
-            {{ __('adminlte::adminlte.register') }}
-        </button>
+        <div class="row d-flex justify-content-center">
+            <div class="col-6">
+                <button type="submit" class="btns custom-font-size pt-2 pb-2 btn-block text-color {{ config('adminlte.classes_auth_btn', 'btn-flat') }} rounded">
+                    <span class="fas fa-user-plus"></span>
+                    {{ __('adminlte::adminlte.register') }}
+                </button>
+            </div>
+        </div>
 
     </form>
 @stop
 
 @section('auth_footer')
     <p class="my-0">
-        <a href="{{ $login_url }}">
+        <a href="{{ $login_url }}" class="color">
             {{ __('adminlte::adminlte.i_already_have_a_membership') }}
         </a>
     </p>

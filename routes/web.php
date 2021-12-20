@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\V1\Customer\CustomerController;
+use App\Http\Controllers\V1\Customer\FeedbackController as CustomerFeedbackController;
 use App\Http\Controllers\V1\Customer\OrderController as CustomerOrderController;
 use App\Http\Controllers\V1\Customer\StarterController as CustomerStarterController;
 use App\Http\Controllers\V1\Customer\TicketController as CustomerTicketController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\V1\Panel\OrderController;
 use App\Http\Controllers\V1\Panel\StarterController;
 use App\Http\Controllers\V1\Panel\TicketController;
 use App\Http\Controllers\V1\Panel\ContactUsController;
+use App\Http\Controllers\V1\Panel\FeedbackController;
 use App\Http\Controllers\V1\Panel\UserController;
 use App\Http\Controllers\V1\View\ViewController;
 use App\Http\Livewire\View\Layouts\Perfect;
@@ -72,16 +74,18 @@ Route::prefix('admin')
     Route::get('/create/ticket/{starter}', [TicketController::class, 'create'])->name('tickets.create');
     Route::post('/create/ticket/{starter}', [TicketController::class, 'store'])->name('tickets.store');
     Route::put('/close/ticket/{starter}', [StarterController::class, 'close'])->name('starters.close');
-
+    
     Route::post('loacations/{user}', [LocationController::class, 'index'])->name('locations.index');
-
+    
     Route::get('/search/order', [OrderController::class, 'search'])->name('order.search');
     Route::get('/search/user', [UserController::class, 'search'])->name('user.search');
     Route::get('/search/element', [ElementController::class, 'search'])->name('element.search');
     Route::get('/search/start', [StarterController::class, 'search'])->name('starts.search');
-
+    
     Route::get('/contactUses', [ContactUsController::class, 'index'])->name('contactUs.index');
     Route::delete('/contactUses/{contactUs}', [ContactUsController::class, 'destroy'])->name('contactUs.destroy');
+    
+    Route::put('/update/feedback/{feedback}', [FeedbackController::class, 'watch'])->name('feedbacks.watch');
 
     Route::resources([
         '/users' => UserController::class,
@@ -89,6 +93,7 @@ Route::prefix('admin')
         '/forms' => FormController::class,
         '/elements' => ElementController::class,
         '/starters' => StarterController::class,
+        '/feedbacks' => FeedbackController::class,
     ]);
 });
 
@@ -104,6 +109,8 @@ Route::prefix('customer')->middleware('auth')->name('customer.')->group(function
         // '/tickets' => CustomerTicketController::class,
         '/orders' => CustomerOrderController::class,
         '/starters' => CustomerStarterController::class,
+        '/feedbacks' => CustomerFeedbackController::class,
+
     ]);
 
 });
@@ -119,9 +126,11 @@ Route::post('/customer/contact/us/send', [ViewController::class, 'contacUs'])->n
 Route::view('/terms', '/v1/view/layouts/term')->name('terms');
 Route::view('/aboutUs', '/v1/view/layouts/aboutUs')->name('aboutUs');
 Route::view('/contactUs', '/v1/view/layouts/contactUs')->name('contactUs');
+
 Route::get('/services/tether', [ViewController::class, 'tether'])->name('services.tether');
 Route::get('/services/perfect/money', [ViewController::class, 'perfect'])->name('services.perfect');
+Route::get('/feedbacks', [ViewController::class, 'feedbacks'])->name('feedbacks');
 // Route::get('test/email', [ViewController::class, 'email']);
 
 Route::get('refresh-captcha', [ViewController::class, 'refreshCaptcha'])->name('refreshCaptcha');
-// Route::view('test', '/index');
+Route::view('test', '/index');

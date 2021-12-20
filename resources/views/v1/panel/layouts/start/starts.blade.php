@@ -1,11 +1,3 @@
-@php
-    use App\Models\Clearing;
-    use App\Models\Form;
-    use App\Models\Calculator;
-    use App\Models\Ticket;
-    use App\Models\Starter;
-    use Carbon\Carbon;
-@endphp
 @extends('adminlte::page')
 @section('content')
 

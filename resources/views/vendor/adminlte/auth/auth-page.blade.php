@@ -19,8 +19,8 @@
     <div class="{{ $auth_type ?? 'login' }}-box">
 
         {{-- Logo --}}
-        <div class="{{ $auth_type ?? 'login' }}-logo">
-            <a href="{{ $dashboard_url }}" class="custom-text-color">
+        <div class="{{ $auth_type ?? 'login' }}-logo with-bottom-linear-gradient-to-left">
+            <a href="{{ $dashboard_url }}" class="text-color">
                 <img src="{{ asset(config('adminlte.logo_img')) }}" height="50">
                 {!! config('adminlte.logo', '<b>Admin</b>LTE') !!}
             </a>
@@ -30,16 +30,16 @@
         <div class="card {{ config('adminlte.classes_auth_card', 'card-outline card-primary') }} custom-card-color">
 
             {{-- Card Header --}}
-            @hasSection('auth_header')
+            {{-- @hasSection('auth_header')
                 <div class="card-header {{ config('adminlte.classes_auth_header', '') }} custom-text-color">
                     <h3 class="card-title float-none text-center">
                         @yield('auth_header')
                     </h3>
                 </div>
-            @endif
+            @endif --}}
 
             {{-- Card Body --}}
-            <div class="card-body {{ $auth_type ?? 'login' }}-card-body {{ config('adminlte.classes_auth_body', '') }} custom-card-color">
+            <div class="card-body {{ $auth_type ?? 'login' }}-card-body {{ config('adminlte.classes_auth_body', '') }}">
                 @yield('auth_body')
             </div>
 
@@ -53,6 +53,14 @@
         </div>
 
     </div>
+    <footer class="d-flex" style="width: 100%; height: 12%;">
+        <div class="row">
+            <div class="col-md-12">
+
+                @include('v1.view.layouts.footer')
+            </div>
+        </div>
+    </footer>
 @stop
 
 @section('adminlte_js')

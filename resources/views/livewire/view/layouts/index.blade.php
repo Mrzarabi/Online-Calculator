@@ -103,7 +103,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="number" step="0.01" class="form-control form-control-sm mb-2" id="input_number" placeholder="ENTER THE AMOUNT" name="input_number"  wire:model.lazy="input_number" required style="
+                                                        <input type="number" step="0.01" class="form-control form-control-sm mb-2" id="input_number" min="100.00" max="10000.00" placeholder="ENTER THE AMOUNT" name="input_number"  wire:model.lazy="input_number" required style="
                                                             border-top: 1px solid #b78318;
                                                             border-bottom: 1px solid #b78318;
                                                             background-color: #070200;

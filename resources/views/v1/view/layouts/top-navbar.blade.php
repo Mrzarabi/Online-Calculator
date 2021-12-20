@@ -18,7 +18,7 @@
         <a href=" {{route('services.perfect')}} " class="dropdown-item site-color custom-font-size" onclick="document.getElementById('sound').play();">PERFECT MONEY</a>
     @endif
 </div>
-<a href=" {{route('terms')}} "><li class="nav-item nav-link ts-scroll custom-font-size float-left site-color"  onclick="document.getElementById('sound').play();">FEEDBACK</li></a>
+<a href=" {{route('feedbacks')}} "><li class="nav-item nav-link ts-scroll custom-font-size float-left site-color"  onclick="document.getElementById('sound').play();">FEEDBACK</li></a>
 <a href=" {{route('terms')}} "><li class="nav-item nav-link ts-scroll custom-font-size float-left site-color" onclick="document.getElementById('sound').play();">TERMS</li></a>
 <a href=" "><li class="nav-item nav-link ts-scroll custom-font-size float-left site-color" onclick="document.getElementById('sound').play();">REFERRAL</li></a>
 {{-- <a href=" "><li class="nav-item nav-link ts-scroll custom-font-size float-left site-color" onclick="document.getElementById('sound').play();">SAMPLE</li></a> --}}

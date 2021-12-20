@@ -3,6 +3,7 @@
     use App\Models\Form;
     use App\Models\Calculator;
     use App\Models\Element;
+    use App\Models\Feedback;
     use Carbon\Carbon;
 @endphp
 @if (count($orders) != 0)
@@ -46,6 +47,17 @@
                             @endif
                             @if ($order->accept == true)
                                 <button type="submit" class="btns btn-sm color">Accepted</button>
+                                @php
+                                    $feedback = Feedback::where('order_id', $order->id)->first();
+                                @endphp
+
+                                @if ($feedback)
+                                    
+                                    <button type="button" class="btns btn-sm ml-1 color" data-toggle="modal" data-target="#readFeedback-{{$feedback->id}}" data-whatever="@mdo">Reed Feedback</button>
+                                @else
+
+                                    <button type="button" class="btns btn-sm ml-1 color" data-toggle="modal" data-target="#showFeedback-{{$order->id}}" data-whatever="@mdo">Write Feedback</button>
+                                @endif
                             @else 
                                 <button type="submit" class="btns btn-sm color">Pending</button>
                             @endif
@@ -152,6 +164,54 @@
                         </div>
                     </div>
                 @endif
+                {{-- end modal --}}
+                {{-- modal --}}
+                    @if (isset($feedback))
+                        <div class="modal fade" id="readFeedback-{{$feedback->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content background-color-modals modal-border">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label class="text-color custom-font-size">Your Feedback to this Transition: </label>
+                                            <p class="ml-3 mr-3 text-justify text-color"> {{$feedback->body ? $feedback->body : 'NO TEXT'}} </p>
+                                            
+                                            <div class="d-flex justify-content-end mt-3">
+                                                <button type="button" class="btn color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                {{-- end modal --}}
+                {{-- modal --}}
+                    <div class="modal fade" id="showFeedback-{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content background-color-modals modal-border">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <form action=" {{route('customer.feedbacks.store')}} " method="post">
+                                            @csrf
+
+                                            <input type="hidden" name="order_id" value=" {{$order->id}} ">
+
+                                            <label for="body" class="color custom-font-size">TEXT</label>
+                                            <textarea class="form-control form-control-sm background-color-inputs border-0" id="body" rows="5" name="body">{{old('body')}}</textarea>
+                                            @if ($errors->has('body'))
+                                                <span class="d-block text-danger">{{ $errors->first('body') }}</span>
+                                            @endif
+                
+                                            <div class="d-flex justify-content-end mt-3">
+                                                <button type="button" class="btn color pr-4 pl-4 mr-1 btn-sm custom-font-size" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btns color pr-4 pl-4 btn-sm custom-font-size">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {{-- end modal --}}
             @endforeach
         </tbody>

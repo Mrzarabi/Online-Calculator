@@ -20,7 +20,7 @@ class FeedbackController extends Controller
         //todo
         if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
 
-            $feedbacks = Feedback::latest()->paginate(9);
+            $feedbacks = Feedback::latest()->paginate(10);
             return view('v1.panel.layouts.feedback.feedbacks', compact('feedbacks'));
         } else {
 

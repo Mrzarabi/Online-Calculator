@@ -69,10 +69,9 @@
             @endforeach
         </div>
     </div>
-    <div class="custom-style-pagination mt-3">
-        <div class="mt-auto">
-            {!! $users->render('/vendor.pagination.bootstrap-4') !!}
-        </div>
+
+    <div class="d-flex justify-content-start align-items-end show-table">
+        {!! $users->render('/vendor.pagination.bootstrap-4') !!}
     </div>
 @endsection
 

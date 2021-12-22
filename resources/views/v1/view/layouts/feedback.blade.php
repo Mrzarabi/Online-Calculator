@@ -70,10 +70,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="custom-style-pagination mt-3">
-                        <div class="mt-auto">
-                            {!! $feedbacks->render('/vendor.pagination.bootstrap-4') !!}
-                        </div>
+                    <div class="d-flex justify-content-start align-items-end show-table">
+                        {!! $feedbacks->render('/vendor.pagination.bootstrap-4') !!}
                     </div>
                 </div>
             </div>

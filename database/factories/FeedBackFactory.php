@@ -13,6 +13,7 @@ class FeedBackFactory extends Factory
      * @return array
      */
     protected $model = Feedback::class;
+    
     public function definition()
     {
         return [

@@ -21,9 +21,8 @@ class CalculatorFactory extends Factory
             'Tether', 
             'Paypal'
         );
-
         return [
-            'name' => array_rand($input),
+            'name' => $input[array_rand($input)],
         ];
     }
 }

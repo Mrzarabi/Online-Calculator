@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\contactUs;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ContactUsFactory extends Factory
@@ -11,6 +12,8 @@ class ContactUsFactory extends Factory
      *
      * @return array
      */
+    protected $model = contactUs::class;
+    
     public function definition()
     {
         return [

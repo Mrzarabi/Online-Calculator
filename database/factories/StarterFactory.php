@@ -13,6 +13,7 @@ class StarterFactory extends Factory
      * @return array
      */
     protected $model = Starter::class;
+    
     public function definition()
     {
         return [

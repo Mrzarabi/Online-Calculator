@@ -13,7 +13,7 @@ class ElementFactory extends Factory
      * @return array
      */
 
-     protected $model = Element::class;
+    protected $model = Element::class;
 
     public function definition()
     {
@@ -23,7 +23,7 @@ class ElementFactory extends Factory
         );
 
         return [
-            'name' => array_rand($output),
+            'name' => $output[array_rand($output)],
             'price' => $this->faker->numberBetween(3, 6)
         ];
     }

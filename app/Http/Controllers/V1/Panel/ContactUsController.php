@@ -17,7 +17,7 @@ class ContactUsController extends Controller
     {
         if(auth()->user()->isAbleTo('contactUs-read')) {
 
-            $contactUses = ContactUs::latest()->paginate(7);
+            $contactUses = ContactUs::latest()->paginate(10);
             return view('v1.panel.layouts.contactUs.contactUs', compact('contactUses'));
         } else {
 

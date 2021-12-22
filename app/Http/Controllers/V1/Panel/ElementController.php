@@ -33,7 +33,7 @@ class ElementController extends Controller
         if (auth()->user()->isAbleto('element-create')) {
             
             $calculators = Calculator::all();
-            $elements = Element::latest()->paginate(3);
+            $elements = Element::latest()->paginate(4);
             return view('v1.panel.layouts.element.elements', compact('elements', 'calculators'));
         } else {
 

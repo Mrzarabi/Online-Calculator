@@ -202,8 +202,13 @@ iframe {
 
     font-family: "Roboto";
     font-size: 13px;
-    color: #fbeca1;
     line-height: 1.2;
+
+    font-weight: bolder;
+    background-image: var(--site-color);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;

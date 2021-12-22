@@ -188,6 +188,22 @@ table {
     width: 100%;
 }
 
+.w80 {
+    width: 80%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.h70 {
+    height: 70%;
+}
+
+.pbc {
+    background-color: #0501003b;
+}
+
 .cmb {
     margin-bottom: -7px;
 }
@@ -315,12 +331,6 @@ table {
     border-width: 1px;
     border-style: solid;
     border-image: var(--border);
-}
-
-.custom-style-pagination {
-    height: 5rem;
-    position: absolute;
-    bottom: 0 !important;
 }
 
 .page-link {
@@ -478,7 +488,6 @@ table {
 .custom-btn-form-terms {
     all: unset;
     text-decoration: underline;
-    color: #f6fd09 !important;
 }
 
 .custom-ml-1 {

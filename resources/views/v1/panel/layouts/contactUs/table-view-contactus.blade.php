@@ -38,7 +38,7 @@
                     <div class="modal-content background-color-modals modal-border">
                         <div class="modal-body">
                             <div class="modal-body">
-                                <h5 class="text-center text-color"> {{$contactUs->body}} </h5>
+                                <h5 class="text-justify text-color"> {{$contactUs->body}} </h5>
                                 <div class="mt-3 d-flex justify-content-end mt-3">
                                     <button type="button" class="btn color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">CANCLE</button>
                                 </div>

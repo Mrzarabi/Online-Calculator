@@ -1,8 +1,8 @@
 @extends('v1.view.app')
 @section('content')
-    <div class="container" style="padding: 0; width: 100%; height: 100%;">
+    <div class="container p-0 w100 h100">
         @include('v1.view.layouts.top')
-        <div class="middle" style="width: 100%; height: 70%;">
+        <div class="middle w100 h70">
             @if (! $form && ! $tether && ! $perfect)
                 <livewire:view.layouts.index />
             @endif
@@ -18,7 +18,7 @@
                 <livewire:view.layouts.perfect />
             @endif
         </div>
-        <div class="footer" style="width: 100%; height: 12%;">
+        <div class="footer w100 h100">
             @include('v1.view.layouts.footer')
         </div>
     </div>

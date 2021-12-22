@@ -83,12 +83,6 @@
     background-attachment: fixed;
 }
 
-.custom-style-pagination {
-    height: 5rem;
-    position: absolute;
-    bottom: 0 !important;
-}
-
 .page-link {
     border-radius: 50%;
     background-color: transparent !important;

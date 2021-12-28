@@ -83,6 +83,14 @@
     background-attachment: fixed;
 }
 
+.h80 {
+    height: 80%;
+}
+
+.list_style_type_none {
+    list-style-type: none;
+}
+
 .page-link {
     border-radius: 50%;
     background-color: transparent !important;

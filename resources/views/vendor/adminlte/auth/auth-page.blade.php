@@ -16,8 +16,9 @@
 @section('classes_body'){{ ($auth_type ?? 'login') . '-page' }}@stop
 
 @section('body')
-    <div class="{{ $auth_type ?? 'login' }}-box">
 
+    <div class="{{ $auth_type ?? 'login' }}-box">
+        
         {{-- Logo --}}
         <div class="{{ $auth_type ?? 'login' }}-logo with-bottom-linear-gradient-to-left">
             <a href="{{ $dashboard_url }}" class="text-color">
@@ -53,14 +54,11 @@
         </div>
 
     </div>
-    <footer class="d-flex" style="width: 100%; height: 12%;">
-        <div class="row">
-            <div class="col-md-12">
-
-                @include('v1.view.layouts.footer')
-            </div>
-        </div>
-    </footer>
+    {{-- <div class="container">
+        <footer class="" style=" height: 12%;">
+            @include('v1.view.layouts.footer')
+        </footer>
+    </div> --}}
 @stop
 
 @section('adminlte_js')

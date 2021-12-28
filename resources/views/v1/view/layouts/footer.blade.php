@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="col-md-7 d-flex  align-items-center justify-content-end">
-                <ul class="d-flex">
+                <ul class="d-flex list_style_type_none">
                     <li class="m-1"><img src="/defaultImages/wu-gold.png" alt="wu-gold" width="30"></li>
                     <li class="m-1"><img src="/defaultImages/tether-gold.png" alt="tether-gold" width="30"></li>
                     <li class="m-1"><img src="/defaultImages/pm-gold.png" alt="pm-gold" width="30"></li>

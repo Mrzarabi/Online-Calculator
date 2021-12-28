@@ -200,6 +200,18 @@ table {
     height: 70%;
 }
 
+.h30 {
+    height: 30%;
+}
+
+.h18 {
+    height: 18%;
+}
+
+.h12 {
+    height: 12%;
+}
+
 .pbc {
     background-color: #0501003b;
 }

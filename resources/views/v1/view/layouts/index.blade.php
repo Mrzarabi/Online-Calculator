@@ -18,7 +18,7 @@
                 <livewire:view.layouts.perfect />
             @endif
         </div>
-        <div class="footer w100 h100">
+        <div class="footer w100 h12">
             @include('v1.view.layouts.footer')
         </div>
     </div>

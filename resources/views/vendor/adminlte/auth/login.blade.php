@@ -52,7 +52,7 @@
         </div>
 
         {{-- Email field --}}
-        <div class="input-group mb-3">
+        {{-- <div class="input-group mb-3">
             <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }} custom-form-control"
                    value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
             <div class="input-group-append">
@@ -65,10 +65,16 @@
                     <strong>{{ $errors->first('email') }}</strong>
                 </div>
             @endif
+        </div> --}}
+        <div class="form-group mb-3">
+            <input type="email" class="form-control form-control-sm background-color-inputs border-0" id="email" name="email" value="{{old('email')}}" placeholder="{{ __('adminlte::adminlte.email') }}" required autofocus>
+            @if ($errors->has('email'))
+                <span class="d-block text-danger">{{ $errors->first('email') }}</span>
+            @endif
         </div>
 
         {{-- Password field --}}
-        <div class="input-group mb-3">
+        {{-- <div class="input-group mb-3">
             <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }} background-color-inputs"
                    placeholder="{{ __('adminlte::adminlte.password') }}">
             <div class="input-group-append">
@@ -80,6 +86,13 @@
                 <div class="invalid-feedback">
                     <strong>{{ $errors->first('password') }}</strong>
                 </div>
+            @endif
+        </div> --}}
+
+        <div class="form-group mb-3">
+            <input type="password" class="form-control form-control-sm background-color-inputs border-0" id="password" name="password" value="{{old('password')}}" placeholder="{{ __('adminlte::adminlte.password') }}" required>
+            @if ($errors->has('password'))
+                <span class="d-block text-danger">{{ $errors->first('password') }}</span>
             @endif
         </div>
 

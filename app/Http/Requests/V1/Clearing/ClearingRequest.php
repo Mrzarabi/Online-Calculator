@@ -28,7 +28,7 @@ class ClearingRequest extends FormRequest
             'body' => 'nullable|string',
             'clear' => 'nullable',
             
-            //Relation
+            //* Relation
             'orders.*' => 'nullable|integer|exists:orders,id',
         ];
 

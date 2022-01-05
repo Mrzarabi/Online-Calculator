@@ -15,8 +15,9 @@ class Calculator extends Model
      * @var array
      */
     protected $fillable = [
-        // 'price_paypal',
         'name',
+        'min',
+        'max'
     ];
 
     /**
@@ -35,8 +36,13 @@ class Calculator extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    // Relations
+    //* Relations
 
+    /**
+     * Get the elements for the blog calculator.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
     public function elements()
     {
         return $this->hasMany(Element::class);

@@ -22,7 +22,6 @@ class TicketFactory extends Factory
     public function definition()
     {
         return [
-            // 'title' => $this->faker->title(),
             'body' => $this->faker->text,
             'image' => $this->faker->imageUrl(300, 300),
             'importance' => $this->faker->numberBetween(0, 3),

@@ -15,8 +15,8 @@ class Clearing extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'order_id',
+
         'title',
         'body',
         'clear'
@@ -39,10 +39,10 @@ class Clearing extends Model
         'clear' => 'boolean'
     ];
 
-    // Relations
+    //* Relations
 
     /**
-     * Get the user that owns the Clearing
+     * Get the user that owns the clearing
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -52,17 +52,17 @@ class Clearing extends Model
     }
 
     /**
-     * Get the user that owns the Clearing
+     * Get the order that owns the Clearing
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function form()
+    public function order()
     {
-        return $this->belongsTo(Form::class);
+        return $this->belongsTo(Order::class);
     }
 
      /**
-     * Get the images for the clearing.
+     * Get the images for the blog clearing.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */

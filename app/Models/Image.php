@@ -16,6 +16,7 @@ class Image extends Model
      */
     protected $fillable = [
         'clearing_id',
+        
         'image',
     ];
 
@@ -35,19 +36,10 @@ class Image extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    // Relations
-
+    //* Relations
+    
     /**
-     * Get the user that owns the Article
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function about_us()
-    {
-        return $this->belongsTo(AboutUs::class);
-    }
-    /**
-     * Get the image that owns the clearing
+     * Get the clearing that owns the image
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

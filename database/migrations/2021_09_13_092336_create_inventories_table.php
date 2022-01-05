@@ -16,11 +16,11 @@ class CreateInventoriesTable extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
 
-            $table->string('paypalInv')->nullable();
-            $table->string('cashInv')->nullable();
-            $table->string('perfectMoneyInv')->nullable();
-            $table->string('webMoneyInv')->nullable();
-            $table->string('tetherInv')->nullable();
+            $table->string('paypal_inventory')->nullable();
+            $table->string('cash_inventory')->nullable();
+            $table->string('perfect_money_inventory')->nullable();
+            $table->string('web_money_inventory')->nullable();
+            $table->string('tether_inventory')->nullable();
 
             $table->timestamps();
         });

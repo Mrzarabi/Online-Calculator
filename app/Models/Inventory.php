@@ -15,11 +15,11 @@ class Inventory extends Model
      * @var array
      */
     protected $fillable = [
-        'paypalInv',
-        'cashInv',
-        'perfectMoneyInv',
-        'webMoneyInv',
-        'tetherInv',
+        'paypal_inventory',
+        'cash_inventory',
+        'perfect_money_inventory',
+        'web_money_inventory',
+        'tether_inventory',
     ];
 
     /**
@@ -38,5 +38,5 @@ class Inventory extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    // Relations
+    //* Relations
 }

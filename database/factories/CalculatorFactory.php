@@ -23,6 +23,8 @@ class CalculatorFactory extends Factory
         );
         return [
             'name' => $input[array_rand($input)],
+            'min' => $this->faker->numberBetween(100, 10000),
+            'max' => $this->faker->numberBetween(100, 10000),
         ];
     }
 }

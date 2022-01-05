@@ -36,5 +36,5 @@ class contactUs extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    // Relations
+    //* Relations
 }

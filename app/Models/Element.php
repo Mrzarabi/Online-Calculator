@@ -56,8 +56,13 @@ class Element extends Model
         ],
     ];
 
-    // Relations
+    //* Relations
 
+    /**
+     * Get the calculator that owns the element
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function calculator()
     {
         return $this->belongsTo(Calculator::class);

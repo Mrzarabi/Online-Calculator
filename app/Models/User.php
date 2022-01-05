@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Models\Article;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -80,7 +81,7 @@ class User extends Authenticatable
         static::creating(function ($model) {
             if ( ! $model->getKey()) {
                 
-                $model->{$model->getKeyName()} = (string) \Str::uuid();
+                $model->{$model->getKeyName()} = (string) Str::uuid();
             }
         });
     } 
@@ -103,19 +104,10 @@ class User extends Authenticatable
         return 'string';
     }
 
-    // Relations
+    //* Relations
 
     /**
-     * Get the articles for the user.
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\hasMany
-     */
-    public function articles() {
-        return $this->hasMany(Article::class);
-    }
-
-    /**
-     * Get the starters for the user.
+     * Get the starters for the blog user.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
@@ -124,7 +116,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the tickets for the user.
+     * Get the ticket for the blog user.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
@@ -133,7 +125,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the forms for the user.
+     *Get the form for the blog user.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
@@ -142,7 +134,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the forms for the user.
+     * Get the order for the blog user.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
@@ -151,16 +143,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the about us for the user.
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\hasMany
-     */
-    public function about_us() {
-        return $this->hasMany(AboutUs::class);
-    }
-
-    /**
-     * Get the clearing for the user.
+     * Get the clearing for the blog user.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
@@ -169,7 +152,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the lccation for the user.
+     * Get the location for the blog user.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */

@@ -20,7 +20,7 @@
             @endif
             <div class="text-center w-100">
 
-                <h6 class="mr-2">Order NO: {{$order->order_no}}</h6>
+                <h6 class="mr-2">Order NO: {{$order->order_number}}</h6>
                 <div class="d-flex justify-content-center align-items-center">
 
                     <h6 class="mr-2">{{isset($input->name) ? $input->name : 'NO TEXT'}}</h6>

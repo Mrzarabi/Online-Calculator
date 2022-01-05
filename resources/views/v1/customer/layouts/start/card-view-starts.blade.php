@@ -15,7 +15,7 @@
                         $newTicket = $start->tickets()->with('user')->latest()->first();
                     @endphp
                     <div class="text-center w-100">
-                        <h6>Ticket NO: {{$start->start_no}}</h6>
+                        <h6>Ticket NO: {{$start->start_number}}</h6>
                         <div>
                             <div class="d-flex justify-content-center">
                                 <h6 class=" text-truncate custom-size-title-ticket" title="{{$start->title}}""> {{$start->title}} </h6>

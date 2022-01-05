@@ -19,7 +19,7 @@ class Starter extends Model
         'title',
         'answerd',
         'closed',
-        'start_no'
+        'start_number'
     ];
 
     /**
@@ -30,7 +30,7 @@ class Starter extends Model
     protected $hidden = [
         'answerd',
         'closed',
-        'start_no'
+        'start_number'
     ];
 
     /**
@@ -40,6 +40,8 @@ class Starter extends Model
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'closed' => 'boolean',
+        'answerd' => 'boolean'
     ];
 
     /**
@@ -56,7 +58,7 @@ class Starter extends Model
          * @var array
          */
         'columns' => [
-            'starters.start_no' => 10,
+            'starters.start_number' => 10,
             'starters.title' => 10,
             'users.name' => 10,
             'users.family' => 10,
@@ -66,10 +68,10 @@ class Starter extends Model
         ]
     ];
     
-    // Relations
+    //* Relations
 
     /**
-     * Get the user that owns the ticket
+     * Get the user that owns the starter
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -79,7 +81,7 @@ class Starter extends Model
     }
 
     /**
-     * Get the tickets for the ticket.
+     * Get the tickets for the blog starter.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */

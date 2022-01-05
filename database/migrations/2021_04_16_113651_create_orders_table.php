@@ -30,7 +30,7 @@ class CreateOrdersTable extends Migration
             $table->float('output_number')->nullable();
             $table->string('output_currency_unit')->nullable();
 
-            $table->bigInteger('order_no')->unique();
+            $table->bigInteger('order_number')->unique();
 
             $table->boolean('accept')->default(false);
 

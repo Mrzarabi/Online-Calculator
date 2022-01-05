@@ -18,7 +18,6 @@ class Feedback extends Model
         'order_id',
 
         'body',
-        'show',
     ];
 
     /**
@@ -38,7 +37,7 @@ class Feedback extends Model
         'show' => 'boolean',
     ];
 
-    // Relations
+    //* Relations
 
     /**
      * Get the order that owns the feedback

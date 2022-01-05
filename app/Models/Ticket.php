@@ -16,6 +16,7 @@ class Ticket extends Model
      */
     protected $fillable = [
         'starter_id',
+
         'body',
         'importance',
         'image'
@@ -26,9 +27,7 @@ class Ticket extends Model
      *
      * @var array
      */
-    protected $hidden = [
-        'is_accept',
-    ];
+    protected $hidden = [];
 
     /**
      * The attributes that should be cast to native types.
@@ -39,7 +38,7 @@ class Ticket extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    // Relations
+    //* Relations
 
     /**
      * Get the starter that owns the ticket

@@ -25,15 +25,18 @@ class CustomerFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|email|max:255|confirmed',
-            'contact_email' => 'required|string|email|max:255|confirmed',
+            'email' => 'required|string|email|max:100|confirmed',
+            'contact_email' => 'required|string|email|max:100|confirmed',
             'wallet' => 'required|string|max:255',
-            'telegram' => 'nullable|string|max:255',
-            'whatsApp' => 'nullable|string|max:255',
-            'skype' => 'nullable|string|max:255',
+            'telegram' => 'nullable|string|max:50',
+            'whatsApp' => 'nullable|string|max:50',
+            'skype' => 'nullable|string|max:50',
             'extra' => 'nullable|string|max:255',
             'cheack' => 'boolean',
             'captcha' => 'required|captcha',
+
+            //* Relations
+            'orders.*' => 'required|integer|exists:orders,id' 
         ];
     }
 }

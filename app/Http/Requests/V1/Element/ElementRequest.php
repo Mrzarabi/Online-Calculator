@@ -25,8 +25,9 @@ class ElementRequest extends FormRequest
     {
         return [
             'name' => 'string|required',
-            'price' => 'numeric|nullable',
+            'price' => 'numeric|required',
 
+            //* Relations
             'calculators.*' => 'required|integer|exists:calculators,id'
         ];
     }

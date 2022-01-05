@@ -17,6 +17,8 @@ class CreateCalculatorsTable extends Migration
             $table->id();
             
             $table->string('name');
+            $table->float('min')->nullable()->default(0);
+            $table->float('max')->nullable();
 
             $table->timestamps();
         });

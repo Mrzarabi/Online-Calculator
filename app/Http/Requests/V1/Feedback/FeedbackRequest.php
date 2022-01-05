@@ -24,7 +24,10 @@ class FeedbackRequest extends FormRequest
     public function rules()
     {
         return [
-            'body' => 'required|string'
+            'body' => 'required|string|max:255',
+
+            //* Relations
+            'orders.*' => 'required|exists:orders,id|integer'
         ];
     }
 }

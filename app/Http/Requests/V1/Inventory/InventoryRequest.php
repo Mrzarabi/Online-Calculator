@@ -24,11 +24,11 @@ class InventoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'paypalInv' => 'nullable|string|max:255',
-            'cashInv' => 'nullable|string|max:255',
-            'perfectMoneyInv' => 'nullable|string|max:255',
-            'webMoneyInv' => 'nullable|string|max:255',
-            'tetherInv' => 'nullable|string|max:255',
+            'paypal_inventory' => 'nullable|string|max:255',
+            'cash_inventory' => 'nullable|string|max:255',
+            'perfect_money_inventory' => 'nullable|string|max:255',
+            'web_money_inventory' => 'nullable|string|max:255',
+            'tether_inventory' => 'nullable|string|max:255',
         ];
     }
 }

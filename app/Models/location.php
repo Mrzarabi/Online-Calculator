@@ -18,17 +18,8 @@ class location extends Model
         'title',
         'ip',
         'countryName',
-        'countryCode',
-        'regionCode',
-        'regionName',
-        'cityName',
-        'zipCode',
-        'isoCode',
-        'postalCode',
         'latitude',
         'longitude',
-        'metroCode',
-        'areaCode',
     ];
 
     /**
@@ -36,7 +27,11 @@ class location extends Model
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden = [
+        'ip',
+        'latitude',
+        'longitude'
+    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -47,7 +42,7 @@ class location extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    // Relations
+    //* Relations
 
     /**
      * Get the user that owns the location

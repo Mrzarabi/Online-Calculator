@@ -41,7 +41,7 @@ class OrderFactory extends Factory
             'output_currency_type' => $output[array_rand($output)],
             'output_number' => $this->faker->numberBetween(1000, 10000),
             'output_currency_unit' => $type[array_rand($type)],
-            'order_no' => $this->faker->numberBetween(100, 10000),
+            'order_number' => $this->faker->numberBetween(100, 10000),
             'accept' => $this->faker->boolean(),
         ];
     }

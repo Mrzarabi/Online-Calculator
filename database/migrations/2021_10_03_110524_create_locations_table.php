@@ -23,18 +23,8 @@ class CreateLocationsTable extends Migration
             $table->string('title', 255)->nullable();
             $table->string('ip')->nullable();
             $table->string('countryName')->nullable();
-            $table->string('countryCode')->nullable();
-            $table->string('regionCode')->nullable();
-            $table->string('regionName')->nullable();
-            $table->string('cityName')->nullable();
-            $table->string('zipCode')->nullable();
-            $table->string('isoCode')->nullable();
-            $table->string('postalCode')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
-            $table->string('metroCode')->nullable();
-            $table->string('areaCode')->nullable();
-            // $table->string('driver')->nullable();
 
             $table->timestamps();
         });

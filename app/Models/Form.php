@@ -44,7 +44,7 @@ class Form extends Model
         'cheack' => 'boolean',
     ];
 
-    // Relations
+    //* Relations
 
     /**
      * Get the user that owns the form
@@ -57,7 +57,7 @@ class Form extends Model
     }
 
     /**
-     * Get the user that owns the form
+     * Get the order that owns the form
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

@@ -25,7 +25,7 @@ class Order extends Model
         'output_currency_unit',
 
         'accept',
-        'order_no'
+        'order_number'
     ];
 
     /**
@@ -34,7 +34,8 @@ class Order extends Model
      * @var array
      */
     protected $hidden = [
-        'order_no'
+        'order_number',
+        'accept'
     ];
 
     /**
@@ -61,7 +62,7 @@ class Order extends Model
          * @var array
          */
         'columns' => [
-            'orders.order_no' => 10,
+            'orders.order_number' => 10,
             'calculators.name' => 10,
             'elements.name' => 10,
             'orders.input_number' => 9,
@@ -73,10 +74,10 @@ class Order extends Model
         ],
     ];
 
-    // Relations
+    //* Relations
 
     /**
-     * Get the user that owns the form
+     * Get the user that owns the order
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -85,10 +86,11 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    // TODO cheack what is this relation
     /**
-     * Get the user that owns the form
+     * Get the clearing that owns the order
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function clearing()
     {
@@ -96,9 +98,9 @@ class Order extends Model
     }
 
     /**
-     * Get the user that owns the form
+     * Get the form that owns the order
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function form()
     {
@@ -106,9 +108,9 @@ class Order extends Model
     }
 
     /**
-     * Get the user that owns the form
+     * Get the feedback that owns the order
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HadOne
      */
     public function feedback()
     {

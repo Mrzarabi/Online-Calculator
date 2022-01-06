@@ -19,9 +19,9 @@
                     <thead class="tbh">
                         <tr>
                             <th scope="col" class="color border-0">#</th>
-                            <th scope="col" class="color border-0">ORDER NO</th>
-                            <th scope="col" class="color border-0">SEND</th>
-                            <th scope="col" class="color border-0">RECEIVE</th>
+                            <th scope="col" class="color border-0">USER SEND</th>
+                            <th scope="col" class="color border-0">COST</th>
+                            <th scope="col" class="color border-0">USER RECEIVE</th>
                             <th scope="col" class="color border-0">DATE</th>
                             <th scope="col" class="color border-0">ACTIONS</th>
                         </tr>
@@ -32,11 +32,11 @@
                         @endphp
                         @foreach ($elements as $element)
                             @php
-                                $calculator = Calculator::where('id', $element->calculator_id)->first();
+                                // $calculator = Calculator::where('id', $element->calculator_id)->first();
                             @endphp
                             <tr class="with-bottom-linear-gradient-to-left">
                                 <td class="text-color border-top-0"> {{$i++}} </td>
-                                <td class="text-color border-top-0"> {{$calculator->name}} </td>
+                                <td class="text-color border-top-0"> {{$element->calculator->name}} </td>
                                 <td class="text-color border-top-0"> {{$element->price}} </td>
                                 <td class="text-color border-top-0"> {{$element->name}} </td>
                                 <td class="text-color border-top-0">{{Carbon::parse($element->created_at)->format('d/m/Y')}}</td>
@@ -80,7 +80,7 @@
                                                         <div class="form-group">
                                                             <label for="name" class="color">YOUR USER WILL SENT TO YOU (LEFT SIDE)</label>
                                                             <select name="calculator_id" class="form-control form-control-sm background-color-inputs border-0" id="calculator_id" name="calculator_id" selected required>
-                                                                <option selected value="{{$calculator->id}}" >{{ isset($element->calculator_id) && $element->calculator_id == $calculator->id ? $calculator->name : ''}} </option>
+                                                                <option selected value="{{$element->calculator->id}}" >{{ isset($element->calculator_id) && $element->calculator_id == $element->calculator->id ? $element->calculator->name : ''}} </option>
                                                                 @foreach ($calculators as $calculator)
                                                                     @if ($element->calculator_id != $calculator->id)
                                                                             <option value="{{$calculator->id}}"> {{$calculator->name}} </option>
@@ -103,6 +103,7 @@
                                                             @endif
                                                         </div>
                                                         <div class="d-flex justify-content-end mt-3">
+                                                            <button type="button" class="btn text-color pr-4 pl-4 pt-2 pb-2 mr-2 custom-font-size" data-dismiss="modal">CANCEL</button>
                                                             <button type="submit" class="btns text-color pr-3 pl-3 btn-sm">UPDATE</button>
                                                         </div>
                                                     </div>

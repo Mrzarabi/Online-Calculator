@@ -30,7 +30,7 @@
                                     @endif
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <a href=" {{route('customer.starters.index')}} " class="btn text-color btn-sm mr-2 pr-3 pl-3">CANCEL</a>
+                                    <a href=" {{route('starters.index')}} " class="btn text-color btn-sm mr-2 pr-3 pl-3">CANCEL</a>
                                     <button type="submit" class="btns text-color btn-sm pr-3 pl-3">SUBMIT</button>
                                 </div>
                                 @csrf

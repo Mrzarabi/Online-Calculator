@@ -33,7 +33,7 @@ class ElementController extends Controller
         if (auth()->user()->isAbleto('element-create')) {
             
             $calculators = Calculator::all();
-            $elements = Element::latest()->paginate(4);
+            $elements = Element::with('calculator')->latest()->paginate(10);
             return view('v1.panel.layouts.element.elements', compact('elements', 'calculators'));
         } else {
 
@@ -63,7 +63,7 @@ class ElementController extends Controller
                     $element =  Element::create(array_merge($request->all() , [
                         'calculator_id' => $request->calculator_id,
                     ]));
-                    $this->custom_alert("$element->name", 'created');
+                    $this->custom_alert("your request", 'created');
                 });
             }
 
@@ -106,13 +106,11 @@ class ElementController extends Controller
     public function update(ElementRequest $request, Element $element)
     {
         if(auth()->user()->isAbleTo('element-update')) {
-
+            
             if(Element::where([
                     'name' =>  $request->name,
-                    'price' => $request->price,
                     'calculator_id' => $request->calculator_id   
-                    ])->exists() ) {
-                
+                    ])->exists() && $element->price == $request->price ) {
                 Alert::error('Error', "$element->name could not be updated");
             } else {
 
@@ -124,6 +122,7 @@ class ElementController extends Controller
                 
                 $this->custom_alert("$element->name", 'updated');
             }
+
             return redirect()->route('elements.create');
         } else {
 
@@ -145,7 +144,7 @@ class ElementController extends Controller
                 $element->delete();
             });
             
-            $this->custom_alert('name', 'deleted');
+            $this->custom_alert('your request', 'deleted');
             return redirect()->back();
         } else {
 

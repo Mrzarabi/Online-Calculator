@@ -47,10 +47,10 @@ class StarterController extends Controller
 
             $starter = auth()->user()->starters()->create(
                 array_merge( $request->all(), [
-                    'start_no' => rand(0, 9999) . $day. $second,
+                    'start_number' => rand(0, 9999) . $day. $second,
                 ])
             );
-            $this->location(auth()->user(), "User started session {$starter->start_no}.");
+            $this->location(auth()->user(), "User started session {$starter->start_number}.");
             $this->custom_alert('Session ' . $starter->title, 'created');
         });
         

@@ -30,8 +30,8 @@ class TicketController extends Controller
     {
         if(auth()->user()->isAbleTo('ticket-answer')) {
 
-            // $ticket = Ticket::with('user')->where('ticket_id', $starter->)
-            return view('v1.panel.layouts.ticket.ticket', compact('starter'));
+            $tickets = Ticket::with('user')->where('starter_id', $starter->id)->get();
+            return view('v1.panel.layouts.ticket.ticket', compact('starter', 'tickets'));
         } else {
 
             abort(403, 'Forbidden.');
@@ -46,7 +46,7 @@ class TicketController extends Controller
      */
     public function store(TicketRequest $request, Starter $starter)
     {
-        if(auth()->user()->isAbleTo('ticket-answer')) {
+        if(auth()->user()->isAbleTo('ticket-answer') && $starter->closed == false) {
 
             DB::transaction(function () use($request, $starter) {
                 if($request->hasFile('image')) {
@@ -67,7 +67,7 @@ class TicketController extends Controller
                     );
                 }
 
-                $this->custom_alert('Ticket ', 'answerd');
+                $this->custom_alert('Ticket ', 'Answerd');
             });
             return redirect()->back();
         } else {
@@ -95,13 +95,7 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        if(auth()->user()->isAbleTo('ticket-update')) {
-
-            return view('v1.panel.layouts.ticket.ticket', compact('ticket'));
-        } else {
-
-            abort(403, 'Forbidden.');
-        }
+        //
     }
 
     /**
@@ -124,45 +118,6 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-    //     if(auth()->user()->isAbleTo('ticket-delete')) {
-
-    //         DB::transaction(function () use($ticket) {
-                
-    //             Ticket::where('ticket_id', $ticket->id)->delete();
-    //             $ticket->delete();
-                
-    //         });
-
-    //         $this->custom_alert('Ticket ' . $ticket->title, 'deleted');
-    //         return redirect()->route('tickets.index');
-    //     } else {
-
-    //         abort(403, 'Forbidden.');
-    //     }
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function watched(Ticket $ticket)
-    {
-        if(auth()->user()->isAbleTo('ticket-answer')) {
-
-            DB::transaction(function () use($ticket) {
-                $ticket = $ticket->update([
-                    'watched' => true
-                ]);
-            });
-            
-            $this->custom_alert('Ticket ' . $ticket->title, 'watched');
-            return redirect()->route('tickets.index');
-        } else {
-
-            abort(403, 'Forbidden.');
-        }
+        //
     }
 }

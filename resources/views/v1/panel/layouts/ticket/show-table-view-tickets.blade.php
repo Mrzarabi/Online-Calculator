@@ -1,5 +1,4 @@
 @php
-    use App\Models\Ticket;
     use Carbon\Carbon;
 @endphp
 
@@ -11,9 +10,6 @@
             </div>
         @endif
         <div class="d-flex justify-content-center m-4">
-            @php
-                $tickets = Ticket::with('user')->where('starter_id', $starter->id)->get();
-            @endphp
             @if ($tickets)
             <div class="container">
                 @foreach ($tickets as $ticket)

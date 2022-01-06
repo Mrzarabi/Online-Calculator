@@ -17,9 +17,9 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->isAbleTo('calculator-read')) {
+        if(auth()->user()->isAbleTo('inventory-read')) {
 
-            $inventory = Inventory::latest()->first();
+            $inventory = Inventory::latest()->firstOrFail();
             return view('v1.panel.layouts.inventory.inventory', compact('inventory'));
         } else {
 
@@ -47,7 +47,7 @@ class InventoryController extends Controller
     {
         if(auth()->user()->isAbleTo('inventory-create')) {
             
-            $inventory = Inventory::latest()->first();
+            $inventory = Inventory::latest()->firstOrFail();
             
             if(! $inventory) {
                 
@@ -60,10 +60,9 @@ class InventoryController extends Controller
                 DB::transaction(function () use($request, $inventory) {
                     $inventory->update($request->all());
                 });
-                $this->custom_alert('Data', 'updated');
+                $this->custom_alert('Inventory', 'Updated');
             }
 
-    
             return redirect()->route('inventories.index');
         } else {
 

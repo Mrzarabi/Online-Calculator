@@ -96,11 +96,17 @@ class UserController extends Controller
         if( auth()->user()->isAbleTo('user-delete')) {
 
             DB::transaction(function () use($user) {
-                $user = $user->delete();
+                if($user->email == "owner@gmail.com" || $user->email == "helper@gmail.com" ) {
+                    
+                    $this->custom_alert(null, 'Cannot Deleted');
+                } else {
+
+                    $user = $user->delete();
+                    $this->custom_alert('User', 'Deleted');
+                }
             });
-            
-            $this->custom_alert($user->name . ' ' . $user->family, 'deleted');
             return redirect()->route('users.index');
+            
         } else {
 
             abort(403, 'Forbidden.');
@@ -117,7 +123,7 @@ class UserController extends Controller
     {
         if(auth()->user()->isAbleTo('user-read')) {
 
-            $user = User::where('id', auth()->user()->id)->first();
+            $user = User::where('id', auth()->user()->id)->firstOrFail();
             return view('v1.panel.layouts.user.profile', compact('user'));
         } else {
 

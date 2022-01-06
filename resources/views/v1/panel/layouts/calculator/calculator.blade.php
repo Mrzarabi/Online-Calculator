@@ -13,7 +13,9 @@
                         <thead class="tbh">
                             <tr>
                                 <th scope="col" class="color border-0">#</th>
-                                <th scope="col" class="color border-0">NAME</th>
+                                <th scope="col" class="color border-0">USER SEND</th>
+                                <th scope="col" class="color border-0">MIN AMOUNT</th>
+                                <th scope="col" class="color border-0">MAX AMOUNT</th>
                                 <th scope="col" class="color border-0">DATE</th>
                                 <th scope="col" class="color border-0">ACTIONS</th>
                             </tr>
@@ -26,6 +28,8 @@
                                 <tr class="with-bottom-linear-gradient-to-left">
                                     <td class="text-color border-top-0"> {{$i++}} </td>
                                     <td class="text-color border-top-0"> {{$calculator->name}} </td>
+                                    <td class="text-color border-top-0"> {{$calculator->min}} </td>
+                                    <td class="text-color border-top-0"> {{$calculator->max}} </td>
                                     <td class="text-color border-top-0">{{ Carbon::parse($calculator->created_at)->format('d/m/Y') }}</td>
                                     <td class="text-color border-top-0">
                                         <div class="d-flex justify-content-center mb-2">

@@ -1,16 +1,11 @@
 @php
-    use App\Models\Clearing;
-    use App\Models\Form;
-    use App\Models\Calculator;
-    use App\Models\Ticket;
-    use App\Models\Starter;
     use Carbon\Carbon;
 @endphp
 <table class="table table-hover text-center show-table">
     <thead class="tbh">
         <tr>
             <th scope="col" class="color border-0">#</th>
-            <th scope="col" class="color border-0">TICKET NO</th>
+            <th scope="col" class="color border-0">TICKET NUMBER</th>
             <th scope="col" class="color border-0">USER</th>
             <th scope="col" class="color border-0">TITLE</th>
             <th scope="col" class="color border-0">RECEIVE NEW TICKET</th>
@@ -29,7 +24,7 @@
         @endphp
             <tr class="with-bottom-linear-gradient-to-left">
                 <td class="border-top-0 text-color"> {{$i++}} </td>
-                <td class="border-top-0 text-color"> {{$start->start_no}} </td>
+                <td class="border-top-0 text-color"> {{$start->start_number}} </td>
                 <td class="border-top-0 text-color"> {{ $start->user->name . ' ' . $start->user->family }} </td>
                 <td class="border-top-0 text-color"  title="{{$start->title}}"> <h6 class="text-ellipsis float-right">{{$start->title}}</h6> </td>
                 @if (isset($newTicket))
@@ -51,8 +46,10 @@
                     <div class="d-flex justify-content-center mb-2">
                         @if (! $start->closed)
                             <button type="button" class="btns btn-sm color mr-1" data-toggle="modal" data-target="#start-{{$start->id}}" data-whatever="@mdo">CLOSE</button>
+                            <a href=" {{route('tickets.create', ['starter' => $start->id])}} " class="btns color btn-sm mr-1">SEND TICKET</a>
+                        @else 
+                            <a href=" {{route('tickets.create', ['starter' => $start->id])}} " class="btns color btn-sm mr-1">WATCH TICKET</a>
                         @endif
-                        <a href=" {{route('tickets.create', ['starter' => $start->id])}} " class="btns color btn-sm mr-1">SEND TICKET</a>
                     </div>
                 </td>
             </tr>

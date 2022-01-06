@@ -21,7 +21,7 @@ class CalculatorController extends Controller
     {
         if(auth()->user()->isAbleTo('calculator-read')) {
 
-            $calculators = Calculator::latest()->paginate(7);
+            $calculators = Calculator::latest()->paginate(10);
             return view('v1.panel.layouts.calculator.calculator', compact('calculators'));
         } else {
 
@@ -110,7 +110,7 @@ class CalculatorController extends Controller
                 $calculator->delete();
             });
             
-            $this->custom_alert('name', 'deleted');
+            $this->custom_alert( "{$calculator->name}", 'deleted');
             return redirect()->back();
         } else {
 

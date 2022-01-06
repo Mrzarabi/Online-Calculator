@@ -33,10 +33,10 @@ class Controller extends BaseController
     {
         if (isset( $data )) {
             
-            Alert::success('Success', "$data $message successfully");
+            Alert::success('Success', "$data $message Successfully");
         } else {
             
-            Alert::error('Error', 'Something went wrong');
+            Alert::error('Error', 'Something Went Wrong');
         }
     }
 

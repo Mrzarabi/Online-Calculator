@@ -28,7 +28,6 @@
                 <td class="border-top-0">
                     <div class="d-flex justify-content-center mb-2">
                         <button type="button" class="btns btn-sm color mr-1" data-toggle="modal" data-target="#delete-{{$contactUs->id}}" data-whatever="@mdo">DELETE</button>
-                        {{-- <a href=" {{route('tickets.create', ['starter' => $start->id])}} " class="btns color btn-sm mr-1">SEND TICKET</a> --}}
                     </div>
                 </td>
             </tr>

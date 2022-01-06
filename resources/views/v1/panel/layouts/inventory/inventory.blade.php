@@ -7,38 +7,38 @@
                 <div class="col-8 offset-2">
                     <form method="POST" action="{{route('inventories.store') }}" class="mb-4 mt-4">
                         <div class="form-group custom-text-color">
-                            <label for="paypalInv" class="color">PAYPAL INVENTORY</label>
-                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="paypalInv" name="paypalInv" value="{{isset($inventory) ? $inventory->paypalInv : old('paypalInv')}}">
-                            @if ($errors->has('paypalInv'))
-                                <span class="d-block text-danger">{{ $errors->first('paypalInv') }}</span>
+                            <label for="paypal_inventory" class="color">PAYPAL INVENTORY</label>
+                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="paypal_inventory" name="paypal_inventory" value="{{isset($inventory) ? $inventory->paypal_inventory : old('paypal_inventory')}}">
+                            @if ($errors->has('paypal_inventory'))
+                                <span class="d-block text-danger">{{ $errors->first('paypal_inventory') }}</span>
                             @endif
                         </div>
                         <div class="form-group custom-text-color">
-                            <label for="cashInv" class="color">CASH INVENTORY</label>
-                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="cashInv" name="cashInv" value="{{isset($inventory) ? $inventory->cashInv : old('cashInv')}}">
-                            @if ($errors->has('cashInv'))
-                                <span class="d-block text-danger">{{ $errors->first('cashInv') }}</span>
+                            <label for="cash_inventory" class="color">CASH INVENTORY</label>
+                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="cash_inventory" name="cash_inventory" value="{{isset($inventory) ? $inventory->cash_inventory : old('cash_inventory')}}">
+                            @if ($errors->has('cash_inventory'))
+                                <span class="d-block text-danger">{{ $errors->first('cash_inventory') }}</span>
                             @endif
                         </div>
                         <div class="form-group custom-text-color">
-                            <label for="perfectMoneyInv" class="color">PERFECT MONEY INVENTORY</label>
-                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="perfectMoneyInv" name="perfectMoneyInv" value="{{isset($inventory) ? $inventory->perfectMoneyInv : old('perfectMoneyInv')}}">
-                            @if ($errors->has('perfectMoneyInv'))
-                                <span class="d-block text-danger">{{ $errors->first('perfectMoneyInv') }}</span>
+                            <label for="perfect_money_inventory" class="color">PERFECT MONEY INVENTORY</label>
+                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="perfect_money_inventory" name="perfect_money_inventory" value="{{isset($inventory) ? $inventory->perfect_money_inventory : old('perfect_money_inventory')}}">
+                            @if ($errors->has('perfect_money_inventory'))
+                                <span class="d-block text-danger">{{ $errors->first('perfect_money_inventory') }}</span>
                             @endif
                         </div>
                         <div class="form-group custom-text-color">
-                            <label for="webMoneyInv" class="color">WEB MONEY INVENTORY</label>
-                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="webMoneyInv" name="webMoneyInv" value="{{isset($inventory) ? $inventory->webMoneyInv : old('webMoneyInv')}}">
-                            @if ($errors->has('webMoneyInv'))
-                                <span class="d-block text-danger">{{ $errors->first('webMoneyInv') }}</span>
+                            <label for="web_money_inventory" class="color">WEB MONEY INVENTORY</label>
+                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="web_money_inventory" name="web_money_inventory" value="{{isset($inventory) ? $inventory->web_money_inventory : old('web_money_inventory')}}">
+                            @if ($errors->has('web_money_inventory'))
+                                <span class="d-block text-danger">{{ $errors->first('web_money_inventory') }}</span>
                             @endif
                         </div>
                         <div class="form-group custom-text-color">
-                            <label for="tetherInv" class="color">TETHER INVENTORY</label>
-                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="tetherInv" name="tetherInv" value="{{isset($inventory) ? $inventory->tetherInv : old('tetherInv')}}">
-                            @if ($errors->has('tetherInv'))
-                                <span class="d-block text-danger">{{ $errors->first('tetherInv') }}</span>
+                            <label for="tether_inventory" class="color">TETHER INVENTORY</label>
+                            <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="tether_inventory" name="tether_inventory" value="{{isset($inventory) ? $inventory->tether_inventory : old('tether_inventory')}}">
+                            @if ($errors->has('tether_inventory'))
+                                <span class="d-block text-danger">{{ $errors->first('tether_inventory') }}</span>
                             @endif
                         </div>
                         <div class="d-flex justify-content-end mt-3">

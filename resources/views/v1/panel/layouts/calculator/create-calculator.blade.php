@@ -10,6 +10,20 @@
                             <span class="d-block text-danger">{{ $errors->first('name') }}</span>
                         @endif
                     </div>
+                    <div class="form-group">
+                        <label for="min" class="color">GIVE THE MINIMUM AMOUNT</label>
+                        <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="min" name="min" value="{{old('min')}}" required>
+                        @if ($errors->has('min'))
+                            <span class="d-block text-danger">{{ $errors->first('min') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="max" class="color">GIVE THE MAXIMUM AMOUNT</label>
+                        <input type="text" class="form-control form-control-sm background-color-inputs border-0" id="max" name="max" value="{{old('max')}}" required>
+                        @if ($errors->has('max'))
+                            <span class="d-block text-danger">{{ $errors->first('max') }}</span>
+                        @endif
+                    </div>
                     <div class="d-flex justify-content-end mt-3">
                         <button type="submit" class="btns text-color pr-3 pl-3 btn-sm">SUBMIT</button>
                     </div>

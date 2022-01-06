@@ -19,7 +19,7 @@ class StarterController extends Controller
     {
         if(auth()->user()->isAbleto('starter-read')) {
 
-            $starts = Starter::with('user')->latest()->paginate(9);
+            $starts = Starter::with('user')->latest()->paginate(10);
             return view('v1.panel.layouts.start.starts', compact('starts'));
         } else {
 

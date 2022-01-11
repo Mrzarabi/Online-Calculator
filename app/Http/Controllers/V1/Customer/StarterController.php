@@ -29,7 +29,7 @@ class StarterController extends Controller
      */
     public function create()
     {
-        return view('v1.customer.layouts.start.start');
+        //
     }
 
     /**

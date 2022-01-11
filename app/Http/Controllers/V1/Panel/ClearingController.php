@@ -5,7 +5,9 @@ namespace App\Http\Controllers\V1\Panel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Clearing\ClearingRequest;
 use App\Http\Requests\V1\Image\ImageRequest;
+use App\Models\Calculator;
 use App\Models\Clearing;
+use App\Models\Element;
 use App\Models\Form;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -31,8 +33,11 @@ class ClearingController extends Controller
     public function create(Order $order)
     {
         if (auth()->user()->isAbleto('clearing-create')) {
-            
-            return view('v1.panel.layouts.clearing.clearing', compact('order'));
+
+            $order->with(['clearing', 'form'])->firstOrFail();
+            $input = Calculator::where('id', $order->input_currency_type)->firstOrFail();
+            $output = Element::where('id', $order->output_currency_type)->firstOrFail();
+            return view('v1.panel.layouts.clearing.clearing', compact('order', 'input', 'output'));
         } else {
 
             abort(403, 'Forbidden.');
@@ -49,13 +54,7 @@ class ClearingController extends Controller
     {
         if (auth()->user()->isAbleto('clearing-create')) {
             
-            $clearing = auth()->user()->clearings()->create(
-                array_merge($request->all(), [
-                    'order_id' => $request->order_id
-                ]
-            ));
-
-            // return redirect()->route('forms.index');
+            $clearing = auth()->user()->clearings()->create( $request->all() );
             return redirect()->route('image.create', ['clearing' => $clearing->id]);
         } else {
 
@@ -84,10 +83,10 @@ class ClearingController extends Controller
                             $clearing->images()->create(['image' => $photo]);
                         }
 
-                        $this->custom_alert('Images', 'images');
+                        $this->custom_alert('Images', 'Images');
                     } else {
 
-                        $this->custom_alert('Form', 'submited');
+                        $this->custom_alert('Form', 'Submited');
                     }
                 });
                 return redirect()->route('orders.index');
@@ -114,15 +113,9 @@ class ClearingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clearing $clearing)
+    public function edit()
     {
-        if (auth()->user()->isAbleto('clearing-create')) {
-            
-            return view('v1.panel.layouts.clearing.clearing', compact('clearing'));
-        } else {
-
-            abort(403, 'Forbidden.');
-        }
+        //
     }
 
     /**

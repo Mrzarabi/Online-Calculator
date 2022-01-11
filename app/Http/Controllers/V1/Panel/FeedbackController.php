@@ -18,7 +18,7 @@ class FeedbackController extends Controller
     public function index()
     {
         //todo
-        if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
+        if(auth()->user()->isAbleto('feedback-read')) {
 
             $feedbacks = Feedback::latest()->paginate(10);
             return view('v1.panel.layouts.feedback.feedbacks', compact('feedbacks'));
@@ -89,9 +89,20 @@ class FeedbackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Feedback $feedback)
     {
-        //
+        if(auth()->user()->isAbleTo('feedback-delete')) {
+            DB::transaction(function() use($feedback) {
+
+                $feedback->delete();
+            });
+            
+            $this->custom_alert('Feedback ', 'Deleted');
+            return redirect()->route('feedbacks.index');
+        } else {
+
+            abort(403, 'Forbidden');
+        }
     }
 
     /**
@@ -107,16 +118,17 @@ class FeedbackController extends Controller
         if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
 
             DB::transaction(function () use($feedback) {
-                if($feedback->show != true) {
+                if($feedback->show == true) {
 
-                    $feedback = $feedback->update([
-                        'show' => true
-                    ]);
-                } else {
-
-                    $feedback = $feedback->update([
+                    $feedback->update([
                         'show' => false
                     ]);
+                    
+                } else {
+                    $feedback->update([
+                        'show' => true
+                    ]);
+                    
                 }
             });
             

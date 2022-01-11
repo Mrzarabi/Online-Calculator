@@ -23,10 +23,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // todo
-        if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
-
-            $orders = Order::with('user')->latest()->paginate(8);
+        $input = [];
+        if(auth()->user()->isAbleTo('order-read')) {
+            $orders = Order::with(['clearing', 'user', 'form'])->latest()->paginate(10);
             return view('v1.panel.layouts.order.orders', compact('orders'));
         } else {
 
@@ -46,27 +45,28 @@ class OrderController extends Controller
             if($order->accept == false) {
 
                 DB::transaction(function () use($order) {
-                    $form = $order->update([
+                    $order->update([
                         'accept' => true
                     ]);
                 });
                 
-                $form = Form::where('order_id', $order->id)->first();
-                $input = Calculator::where('id', $order->input_currency_type)->first();
-                $output = Element::where('id', $order->output_currency_type)->first();
+                // TODO
+                $form = Form::where('order_id', $order->id)->firstOrFail();
+                $input = Calculator::where('id', $order->input_currency_type)->firstOrFail();
+                $output = Element::where('id', $order->output_currency_type)->firstOrFail();
                 Mail::to($form->contact_email)->send( new accept($order, $input, $output) );
 
-                $this->custom_alert('Order', 'accepted');
+                $this->custom_alert('Order', 'Accepted');
                 
             } else {
 
                 DB::transaction(function () use($order) {
-                    $form = $order->update([
+                    $order->update([
                         'accept' => false
                     ]);
                 });
 
-                $this->custom_alert('Order', 'is not accept');
+                $this->custom_alert('Order', 'Is Not Accept');
             }
             return redirect()->back();
         } else {
@@ -138,13 +138,13 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        if(auth()->user()->isAbleTo('form-delete')) {
+        if(auth()->user()->isAbleTo('order-delete')) {
 
             DB::transaction(function () use($order) {
                 $order->delete();
             });
             
-            $this->custom_alert('Order', 'deleted');
+            $this->custom_alert('Order', 'Deleted');
             return redirect()->back();
         } else {
 

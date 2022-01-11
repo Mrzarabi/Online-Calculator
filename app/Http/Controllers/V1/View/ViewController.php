@@ -29,11 +29,23 @@ class ViewController extends Controller
 {
     public function index()
     {
+        //TODO
         $inventory = Inventory::latest()->first();
         $perfect = false;
-        $form = false;
         $tether = false;
-        return view('v1.view.layouts.index', compact('form', 'tether', 'perfect', 'inventory'));
+        return view('v1.view.layouts.index', compact('tether', 'perfect', 'inventory'));
+    }
+
+    public function tether()
+    {
+        $tether = true;
+        return view('v1.view.layouts.index', compact('tether'));
+    }
+
+    public function perfect()
+    {
+        $perfect = true;
+        return view('v1.view.layouts.index', compact('perfect'));
     }
 
     public function store(OrderRequest $request)
@@ -45,37 +57,20 @@ class ViewController extends Controller
             $second = carbon::now()->second;
                 $order = auth()->user()->orders()->create(
                     array_merge($request->all(), [
-                        'order_no' => rand(0, 9999) . $day. $second,
+                        'order_number' => rand(0, 9999) . $day. $second,
                     ])
                 ); 
 
-            return redirect()->route('customer.forms');
+            return redirect()->route('customer.forms', ['order' => $order->id]);
         }
 
     }
 
-    public function createForms()
+    public function createForms(Order $order)
     {
-        $perfect = false;
-        $tether = false;
-        $form = true;
-        return view('v1.view.layouts.index', compact('form', 'tether', 'perfect'));
-    }
-
-    public function tether()
-    {
-        $perfect = false;
-        $form  = false;
-        $tether = true;
-        return view('v1.view.layouts.index', compact('tether', 'form', 'perfect'));
-    }
-
-    public function perfect()
-    {
-        $tether = false;
-        $form = false;
-        $perfect = true;
-        return view('v1.view.layouts.index', compact('perfect', 'form', 'tether'));
+        $input = Calculator::where('id', $order->input_currency_type)->firstOrFail();
+        $output = Element::where('id', $order->output_currency_type)->firstOrFail();
+        return view('v1.view.layouts.form', compact('order', 'input', 'output'));
     }
 
     public function storeForm(CustomerFormRequest $request)
@@ -114,7 +109,7 @@ class ViewController extends Controller
                 
                 Mail::to('samxpay@gamil.com')->send( new adminRequest($order, $input, $output, $this->form) );
 
-                $this->location(auth()->user(), "User Created New Order With ID: {$order->order_no}");
+                $this->location(auth()->user(), "User Created New Order With ID: {$order->order_number}");
             })->afterResponse();
 
             $this->custom_alert('Your Order', 'submited');

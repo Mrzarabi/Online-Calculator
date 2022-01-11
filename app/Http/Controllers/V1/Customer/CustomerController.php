@@ -18,7 +18,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $user = User::where('id', auth()->user()->id)->first();
+        $user = User::where('id', auth()->user()->id)->firstOrFail();
         return view('v1.customer.index', compact('user'));
     }
 

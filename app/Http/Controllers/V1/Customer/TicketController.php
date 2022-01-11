@@ -18,8 +18,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::where('user_id', auth()->user()->id)->latest()->paginate(9); 
-        return view('v1.customer.layouts.ticket.tickets', compact('tickets'));
+        // $tickets = Ticket::where('user_id', auth()->user()->id)->latest()->paginate(9); 
+        // return view('v1.customer.layouts.ticket.tickets', compact('tickets'));
     }
 
     /**
@@ -29,7 +29,8 @@ class TicketController extends Controller
      */
     public function create(Starter $starter)
     {
-        return view('v1.customer.layouts.ticket.ticket', compact('starter'));
+        $tickets = Ticket::with('user')->where('starter_id', $starter->id)->get();
+        return view('v1.customer.layouts.ticket.ticket', compact('starter', 'tickets'));
     }
 
     /**

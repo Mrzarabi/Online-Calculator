@@ -17,7 +17,11 @@ class OrderController extends Controller
     {
         if(auth()->user()) {
 
-            $orders = Order::where('user_id', auth()->user()->id)->latest()->paginate(8);
+            $orders = Order::where('user_id', auth()->user()->id)->with([
+                'clearing', 'form', 'feedback'
+            ])->latest()
+            ->paginate(8);
+
             return view('v1.customer.layouts.order.orders', compact('orders'));
         } else {
 

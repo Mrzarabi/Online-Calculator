@@ -18,8 +18,14 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $user = User::where('id', auth()->user()->id)->firstOrFail();
-        return view('v1.customer.index', compact('user'));
+        if(auth()->user()) {
+
+            $user = User::where('id', auth()->user()->id)->firstOrFail();
+            return view('v1.customer.index', compact('user'));
+        } else {
+
+            abort(403, 'Forbidden');
+        }
     }
 
     /**

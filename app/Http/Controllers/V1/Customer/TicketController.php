@@ -18,8 +18,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        // $tickets = Ticket::where('user_id', auth()->user()->id)->latest()->paginate(9); 
-        // return view('v1.customer.layouts.ticket.tickets', compact('tickets'));
+        //
     }
 
     /**
@@ -29,8 +28,14 @@ class TicketController extends Controller
      */
     public function create(Starter $starter)
     {
-        $tickets = Ticket::with('user')->where('starter_id', $starter->id)->get();
-        return view('v1.customer.layouts.ticket.ticket', compact('starter', 'tickets'));
+        if(auth()->user()) {
+
+            $tickets = Ticket::with('user')->where('starter_id', $starter->id)->get();
+            return view('v1.customer.layouts.ticket.ticket', compact('starter', 'tickets'));
+        } else {
+
+            abort(403, 'Forbidden');
+        }
     }
 
     /**
@@ -41,31 +46,36 @@ class TicketController extends Controller
      */
     public function store(TicketRequest $request, Starter $starter)
     {
-        DB::transaction(function () use($request, $starter) {
-            if($request->hasFile('image')) {
+        if(auth()->user()) {
 
-                $photo = $this->upload($request->file('image'));
-                $ticket = auth()->user()->tickets()->create( 
-                    array_merge($request->all(), [
-                        'image' => $photo,
-                        'starter_id' => $starter->id,
-                    ])
-                );
-            } else {
+            DB::transaction(function () use($request, $starter) {
+                if($request->hasFile('image')) {
+    
+                    $photo = $this->upload($request->file('image'));
+                    $ticket = auth()->user()->tickets()->create( 
+                        array_merge($request->all(), [
+                            'image' => $photo,
+                            'starter_id' => $starter->id,
+                        ])
+                    );
+                } else {
+    
+                    $ticket = auth()->user()->tickets()->create(
+                        array_merge($request->all(), [
+                            'starter_id' => $starter->id,
+                        ])
+                    );
+                }
+    
+                $this->location(auth()->user(), 'User sended a ticket');
+                $this->custom_alert('Ticket ' . $ticket->title, 'submited');
+            });
+    
+            return redirect()->back();
+        } else {
 
-                $ticket = auth()->user()->tickets()->create(
-                    array_merge($request->all(), [
-                        'starter_id' => $starter->id,
-                    ])
-                );
-            }
-
-            $this->location(auth()->user(), 'User sended a ticket');
-            $this->custom_alert('Ticket ' . $ticket->title, 'submited');
-        });
-
-
-        return redirect()->back();
+            abort(403, 'Forbidden');
+        }
     }
 
     /**

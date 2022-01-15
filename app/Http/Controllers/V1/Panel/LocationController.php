@@ -16,7 +16,7 @@ class LocationController extends Controller
      */
     public function index(User $user)
     {
-        if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
+        if(auth()->user()->isAbleTo('location-read')) {
 
             $locations = location::where('user_id', $user->id)->paginate(50);
             return view('v1.panel.layouts.location.locations', compact('locations'));

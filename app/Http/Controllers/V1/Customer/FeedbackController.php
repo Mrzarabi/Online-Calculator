@@ -40,13 +40,11 @@ class FeedbackController extends Controller
     {
         if(auth()->user()) {
 
-            $feedback = new Feedback();
-    
-            $feedback->create($request->all());
-    
-            $this->custom_alert('Your Feedlback', 'Submited');
+            Feedback::create($request->all());
+            $this->custom_alert('Your Feedback', 'Submited');
             return Redirect()->back();
         } else {
+
             return abort(403, 'Forbidden');
         }
     }

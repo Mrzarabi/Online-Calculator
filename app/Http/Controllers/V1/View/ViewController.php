@@ -51,8 +51,10 @@ class ViewController extends Controller
     public function store(OrderRequest $request)
     {
         if(! auth()->user()) {
+
             return redirect()->route('login');
         } else {
+
             $day = Carbon::now()->day;
             $second = carbon::now()->second;
                 $order = auth()->user()->orders()->create(
@@ -80,7 +82,6 @@ class ViewController extends Controller
 
             return redirect()->route('login');
         } else {
-
                 
             $this->form = auth()->user()->forms()->create(
                 array_merge($request->all(), [
@@ -119,9 +120,7 @@ class ViewController extends Controller
 
     public function contacUs(ContactUsRequest $request) 
     {
-        $contactUs = new ContactUs();
-
-        $contactUs->create($request->all());
+        ContactUs::create($request->all());
         $this->custom_alert('Your Message', 'Received');
         return redirect()->back();
     }

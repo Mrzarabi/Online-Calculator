@@ -17,7 +17,7 @@ class StarterController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->isAbleto('starter-read')) {
+        if(auth()->user()->isAbleTo('starter-read')) {
 
             $starts = Starter::with('user')->latest()->paginate(10);
             return view('v1.panel.layouts.start.starts', compact('starts'));
@@ -100,7 +100,7 @@ class StarterController extends Controller
      */
     public function close(Starter $starter)
     {
-        if(auth()->user()->isAbleto('starter-close')) {
+        if(auth()->user()->isAbleTo('starter-close')) {
 
             DB::transaction(function () use($starter) {
                 $starter->update([
@@ -117,7 +117,7 @@ class StarterController extends Controller
     public function search(SearchRequest $request)
     {
         // Search only active users
-        if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
+        if(auth()->user()->isAbleTo('starter-search')) {
             
             if ($request->has('search')) {
      

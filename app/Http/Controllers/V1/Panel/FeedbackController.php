@@ -18,7 +18,7 @@ class FeedbackController extends Controller
     public function index()
     {
         //todo
-        if(auth()->user()->isAbleto('feedback-read')) {
+        if(auth()->user()->isAbleTo('feedback-read')) {
 
             $feedbacks = Feedback::latest()->paginate(10);
             return view('v1.panel.layouts.feedback.feedbacks', compact('feedbacks'));
@@ -92,6 +92,7 @@ class FeedbackController extends Controller
     public function destroy(Feedback $feedback)
     {
         if(auth()->user()->isAbleTo('feedback-delete')) {
+
             DB::transaction(function() use($feedback) {
 
                 $feedback->delete();
@@ -114,8 +115,7 @@ class FeedbackController extends Controller
      */
     public function watch(Feedback $feedback)
     {
-        //todo
-        if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
+        if(auth()->user()->isAbleTo('feedback-accept')) {
 
             DB::transaction(function () use($feedback) {
                 if($feedback->show == true) {

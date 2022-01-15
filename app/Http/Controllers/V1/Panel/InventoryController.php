@@ -19,7 +19,7 @@ class InventoryController extends Controller
     {
         if(auth()->user()->isAbleTo('inventory-read')) {
 
-            $inventory = Inventory::latest()->firstOrFail();
+            $inventory = Inventory::latest()->first();
             return view('v1.panel.layouts.inventory.inventory', compact('inventory'));
         } else {
 
@@ -47,7 +47,7 @@ class InventoryController extends Controller
     {
         if(auth()->user()->isAbleTo('inventory-create')) {
             
-            $inventory = Inventory::latest()->firstOrFail();
+            $inventory = Inventory::latest()->first();
             
             if(! $inventory) {
                 

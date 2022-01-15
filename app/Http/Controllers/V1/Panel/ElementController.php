@@ -30,7 +30,7 @@ class ElementController extends Controller
      */
     public function create()
     {
-        if (auth()->user()->isAbleto('element-create')) {
+        if (auth()->user()->isAbleTo('element-create')) {
             
             $calculators = Calculator::all();
             $elements = Element::with('calculator')->latest()->paginate(10);
@@ -138,7 +138,7 @@ class ElementController extends Controller
      */
     public function destroy(Element $element)
     {
-        if(auth()->user()->isAbleTo('calculator-delete')) {
+        if(auth()->user()->isAbleTo('element-delete')) {
 
             DB::transaction(function () use($element) {
                 $element->delete();
@@ -154,7 +154,7 @@ class ElementController extends Controller
 
     public function search(SearchRequest $request)
     {
-        if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
+        if(auth()->user()->isAbleTo('element-search')) {
 
             if($request->has('search')) {
 

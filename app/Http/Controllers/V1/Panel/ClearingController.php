@@ -32,7 +32,7 @@ class ClearingController extends Controller
      */
     public function create(Order $order)
     {
-        if (auth()->user()->isAbleto('clearing-create')) {
+        if (auth()->user()->isAbleTo('clearing-create')) {
 
             $order->with(['clearing', 'form'])->firstOrFail();
             $input = Calculator::where('id', $order->input_currency_type)->firstOrFail();
@@ -52,7 +52,7 @@ class ClearingController extends Controller
      */
     public function store(ClearingRequest $request)
     {
-        if (auth()->user()->isAbleto('clearing-create')) {
+        if (auth()->user()->isAbleTo('clearing-create')) {
             
             $clearing = auth()->user()->clearings()->create( $request->all() );
             return redirect()->route('image.create', ['clearing' => $clearing->id]);
@@ -70,7 +70,7 @@ class ClearingController extends Controller
      */
     public function uploadImages(Request $request, Clearing $clearing)
     {
-        if (auth()->user()->isAbleto('image-create')) {
+        if (auth()->user()->isAbleTo('image-create')) {
 
             DB::transaction(function () use($request, $clearing) {
                     if($request->hasFile('image')) {
@@ -126,7 +126,7 @@ class ClearingController extends Controller
      */
     public function editUploadImages(Clearing $clearing)
     {
-        if (auth()->user()->isAbleto('image-read')) {
+        if (auth()->user()->isAbleTo('image-read')) {
             
             return view('v1.panel.layouts.image.image', compact('clearing'));
         } else {
@@ -144,7 +144,7 @@ class ClearingController extends Controller
      */
     public function update(ClearingRequest $request, Clearing $clearing)
     {
-        if (auth()->user()->isAbleto('clearing-update')) {
+        if (auth()->user()->isAbleTo('clearing-update')) {
 
             $clearing->update($request->all());
             return redirect()->route('image.create', ['clearing' => $clearing->id]);

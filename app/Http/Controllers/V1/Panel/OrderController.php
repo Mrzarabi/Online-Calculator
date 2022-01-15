@@ -23,7 +23,6 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $input = [];
         if(auth()->user()->isAbleTo('order-read')) {
             $orders = Order::with(['clearing', 'user', 'form'])->latest()->paginate(10);
             return view('v1.panel.layouts.order.orders', compact('orders'));
@@ -155,7 +154,7 @@ class OrderController extends Controller
     public function search(SearchRequest $request)
     {
         // Search only active users
-        if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
+        if(auth()->user()->isAbleTo('order-search')) {
             
             if ($request->has('search')) {
      

@@ -121,7 +121,7 @@ class UserController extends Controller
      */
     public function show_profile()
     {
-        if(auth()->user()->isAbleTo('user-read')) {
+        if(auth()->user()->isAbleTo('profile-read')) {
 
             $user = User::where('id', auth()->user()->id)->firstOrFail();
             return view('v1.panel.layouts.user.profile', compact('user'));
@@ -139,7 +139,7 @@ class UserController extends Controller
      */
     public function update_profile(ProfileRequest $request, User $user)
     {
-        if(auth()->user()->isAbleTo('user-read')) {
+        if(auth()->user()->isAbleTo('profile-update')) {
 
             DB::transaction(function () use($request, $user) {
                 
@@ -187,7 +187,7 @@ class UserController extends Controller
 
     public function search(SearchRequest $request)
     {
-        if(auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
+        if(auth()->user()->isAbleTo('user-search')) {
 
             if($request->has('search')) {
 

@@ -54,7 +54,7 @@ class InventoryController extends Controller
                 DB::transaction(function () use($request) {
                     Inventory::create($request->all());
                 });
-                $this->custom_alert('Data', 'submited');
+                $this->custom_alert('Data', 'Submited');
             } else {
     
                 DB::transaction(function () use($request, $inventory) {

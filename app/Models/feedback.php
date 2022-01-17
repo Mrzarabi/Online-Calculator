@@ -18,6 +18,7 @@ class Feedback extends Model
         'order_id',
 
         'body',
+        'show'
     ];
 
     /**

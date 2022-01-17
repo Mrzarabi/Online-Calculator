@@ -40,8 +40,6 @@ class Form extends Component
     public function mount()
     {
         $order = auth()->user()->orders()->latest()->first();
-        $this->input = Calculator::where('id', $order->input_currency_type)->first();
-        $this->output = Element::where('id', $order->output_currency_type)->first();
         $this->order = $order;
     }
 

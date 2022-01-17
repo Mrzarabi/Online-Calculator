@@ -86,7 +86,6 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    // TODO cheack what is this relation
     /**
      * Get the clearing that owns the order
      *

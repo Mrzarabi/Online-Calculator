@@ -68,7 +68,7 @@ class TicketController extends Controller
                 }
     
                 $this->location(auth()->user(), 'User sended a ticket');
-                $this->custom_alert('Ticket ' . $ticket->title, 'submited');
+                $this->custom_alert('Ticket ' . $ticket->title, 'Submited');
             });
     
             return redirect()->back();

@@ -113,7 +113,7 @@ class ViewController extends Controller
                 $this->location(auth()->user(), "User Created New Order With ID: {$order->order_number}");
             })->afterResponse();
 
-            $this->custom_alert('Your Order', 'submited');
+            $this->custom_alert('Your Order', 'Submited');
             return redirect()->route('home');
         }
     }

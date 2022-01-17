@@ -20,7 +20,6 @@ class StarterFactory extends Factory
             'title' => $this->faker->title(),
             'start_number' => $this->faker->numberBetween(100, 10000),
             'closed' => $this->faker->boolean(),
-            'answerd' => $this->faker->boolean(),
         ];
     }
 }

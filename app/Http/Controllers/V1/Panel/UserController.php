@@ -155,7 +155,7 @@ class UserController extends Controller
                     $user->update($request->all());
                 }
 
-                $this->custom_alert( 'Dear ' . $user->name. ' ' . $user->family, 'Your profile updated');
+                $this->custom_alert( 'Dear ' . $user->name. ' ' . $user->family, 'Your Profile Updated');
             });
 
             return redirect()->route('settings');
@@ -175,7 +175,7 @@ class UserController extends Controller
                     $user->update($request->all());
                 }
 
-                $this->custom_alert( 'Dear ' . $user->name. ' ' . $user->family, 'Your profile updated');
+                $this->custom_alert( 'Dear ' . $user->name. ' ' . $user->family, 'Your Profile Updated');
             });
 
             return redirect()->route('customer.index');

@@ -63,7 +63,7 @@ class ElementController extends Controller
                     $element =  Element::create(array_merge($request->all() , [
                         'calculator_id' => $request->calculator_id,
                     ]));
-                    $this->custom_alert("your request", 'created');
+                    $this->custom_alert("Your Request", 'Created');
                 });
             }
 
@@ -120,7 +120,7 @@ class ElementController extends Controller
                     ]));
                 });
                 
-                $this->custom_alert("$element->name", 'updated');
+                $this->custom_alert("$element->name", 'Updated');
             }
 
             return redirect()->route('elements.create');
@@ -144,7 +144,7 @@ class ElementController extends Controller
                 $element->delete();
             });
             
-            $this->custom_alert('your request', 'deleted');
+            $this->custom_alert('Your request', 'Deleted');
             return redirect()->back();
         } else {
 

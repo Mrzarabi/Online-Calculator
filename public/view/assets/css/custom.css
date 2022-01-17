@@ -280,7 +280,9 @@ table {
     left: 20%;
 }
 
-.site-color {
+.site-color,
+.swal2-title,
+.swal2-html-container {
     font-weight: bolder;
     background-image: var(--site-color);
     background-size: 100%;
@@ -488,13 +490,11 @@ table {
     background-color: #343a40 !important;
 }
 
-.swal2-title,
-.swal2-html-container {
-    color: #fff !important;
-}
-
 .swal2-popup {
-    background-color: #3c3d41 !important;
+    background-color: rgba(5, 1, 0, 0.719) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    border-image: var(--site-color) 1 !important;
 }
 
 .custom-btn-form-terms {

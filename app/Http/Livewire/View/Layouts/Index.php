@@ -23,6 +23,8 @@ class Index extends Component
     public $inputs; 
     public $element;
     public $isDisabled = true;
+    public $min;
+    public $max;
 
     // This is all rules for input properties
     protected $rules = [

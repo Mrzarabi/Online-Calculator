@@ -17,7 +17,6 @@ class Starter extends Model
      */
     protected $fillable = [
         'title',
-        'answerd',
         'closed',
         'start_number'
     ];
@@ -28,7 +27,6 @@ class Starter extends Model
      * @var array
      */
     protected $hidden = [
-        'answerd',
         'closed',
         'start_number'
     ];
@@ -41,7 +39,6 @@ class Starter extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
         'closed' => 'boolean',
-        'answerd' => 'boolean'
     ];
 
     /**

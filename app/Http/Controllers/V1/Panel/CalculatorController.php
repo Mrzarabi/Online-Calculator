@@ -53,7 +53,7 @@ class CalculatorController extends Controller
             DB::transaction(function () use($request) {
                 Calculator::create($request->all());
             });
-            $this->custom_alert('Data', 'submited');
+            $this->custom_alert('Data', 'Submited');
     
             return redirect()->route('calculators.index');
         } else {
@@ -110,7 +110,7 @@ class CalculatorController extends Controller
                 $calculator->delete();
             });
             
-            $this->custom_alert( "{$calculator->name}", 'deleted');
+            $this->custom_alert( "{$calculator->name}", 'Deleted');
             return redirect()->back();
         } else {
 

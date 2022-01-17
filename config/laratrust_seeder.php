@@ -16,17 +16,16 @@ return [
             'calculator' => 'c,r,d',
             'clearing' => 'c,r,u',
             'contactUs' => 'r,d',
-            'element' => 'c,r,u,d',
-            'feedback' => 'r,d',
-            'form' => 'r,d',
-            'image' => 'c,r,u,d',
-            'inventory' => 'c,r,u',
+            'element' => 'c,u,d,s',
+            'feedback' => 'r,d,a',
+            'image' => 'c,r',
+            'inventory' => 'c,r',
             'location' => 'r',
-            'order' => 'r,d,a',
-            'starter' => 'r,cl',
-            'user' => 'r,d',
-            'ticket' => 'c,r,u,d,a,an',
-            
+            'order' => 'r,d,a,s',
+            'starter' => 'r,cl,s',
+            'ticket' => 'an',
+            'user' => 'r,d,s',
+            'profile' => 'r,u'
         ],
 
         // '3362c127-65aa-4950-b14f-2fc86b53ea88' => [
@@ -55,6 +54,7 @@ return [
         'w' => 'watch',
         'an' => 'answer',
         'a' => 'accept',
-        'cl' => 'close'
+        'cl' => 'close',
+        's' => 'search'
     ]
 ];

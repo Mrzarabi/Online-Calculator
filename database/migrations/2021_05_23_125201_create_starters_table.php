@@ -23,7 +23,6 @@ class CreateStartersTable extends Migration
             $table->string('title', 255);
             $table->string('start_number')->unique();
             $table->boolean('closed')->default(false);
-            $table->boolean('answerd')->delfault(false);
 
             $table->timestamps();
         });

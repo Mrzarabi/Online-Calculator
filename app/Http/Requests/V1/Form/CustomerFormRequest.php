@@ -32,7 +32,7 @@ class CustomerFormRequest extends FormRequest
             'whatsApp' => 'nullable|string|max:50',
             'skype' => 'nullable|string|max:50',
             'extra' => 'nullable|string|max:255',
-            'cheack' => 'boolean',
+            'cheack' => 'required|boolean',
             'captcha' => 'required|captcha',
 
             //* Relations

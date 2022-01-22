@@ -24,12 +24,14 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'input_currency_type' => 'required|string|',
             'input_number' => 'required|numeric',
             'input_currency_unit' => 'required|string',
-            'output_currency_type' => 'required|string',
             'output_number' => 'required|numeric',
             'output_currency_unit' => 'required|string',
+
+            //* Relations
+            'calculators.*' => 'required|integer|exists:calculators,id',
+            'elements.*' => 'required|integer|exists:elements,id',
         ];
     }
 }

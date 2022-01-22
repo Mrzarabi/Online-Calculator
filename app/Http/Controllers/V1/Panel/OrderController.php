@@ -24,7 +24,7 @@ class OrderController extends Controller
     public function index()
     {
         if(auth()->user()->isAbleTo('order-read')) {
-            $orders = Order::with(['clearing', 'user', 'form'])->latest()->paginate(10);
+            $orders = Order::with(['clearing', 'user', 'form', 'calculator', 'element'])->latest()->paginate(10);
             return view('v1.panel.layouts.order.orders', compact('orders'));
         } else {
 
@@ -51,9 +51,8 @@ class OrderController extends Controller
                 
                 // TODO
                 $form = Form::where('order_id', $order->id)->firstOrFail();
-                $input = Calculator::where('id', $order->input_currency_type)->firstOrFail();
-                $output = Element::where('id', $order->output_currency_type)->firstOrFail();
-                Mail::to($form->contact_email)->send( new accept($order, $input, $output) );
+                
+                Mail::to($form->contact_email)->send( new accept($order, $order->calculator->name, $order->element->name) );
 
                 $this->custom_alert('Order', 'Accepted');
                 

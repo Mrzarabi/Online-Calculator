@@ -16,11 +16,12 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'input_currency_type',
+        'calculator_id',
+        'element_id',
+
         'input_number',
         'input_currency_unit',
 
-        'output_currency_type',
         'output_number',
         'output_currency_unit',
 
@@ -114,5 +115,25 @@ class Order extends Model
     public function feedback()
     {
         return $this->hasOne(Feedback::class);
+    }
+
+    /**
+     * Get the calculator that owns the order
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function calculator()
+    {
+        return $this->belongsTo(Calculator::class);
+    }
+
+    /**
+     * Get the element that owns the order
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function element()
+    {
+        return $this->belongsTo(Element::class);
     }
 }

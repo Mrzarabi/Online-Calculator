@@ -62,15 +62,12 @@ class LaratrustSeeder extends Seeder
             // Attach all permissions to the role
             $role->permissions()->sync($permissions);
             
-            //TODO فیلد نام کاربر رو درست کنم و اعتبار سنحی بر اساس پرمیشن
-            
             $users->each( function($item) use($role, $permissions) {
                 $user = User::firstOrCreate([
-                    'email' => $item
-                ], [
+                    'email' => $item,
                     'password' => bcrypt(123456),
+                    'name' => strtok($item, '@') 
                 ]);
-
                 $user->attachRole($role);
                 $user->permissions()->sync($permissions);
             });

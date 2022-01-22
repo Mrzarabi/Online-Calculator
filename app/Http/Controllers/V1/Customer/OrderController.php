@@ -18,7 +18,7 @@ class OrderController extends Controller
         if(auth()->user()) {
 
             $orders = Order::where('user_id', auth()->user()->id)->with([
-                'clearing', 'form', 'feedback'
+                'clearing', 'form', 'feedback', 'calculator', 'element'
             ])->latest()
             ->paginate(8);
 

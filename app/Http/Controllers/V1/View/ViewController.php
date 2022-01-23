@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Form\CustomerFormRequest;
 use App\Http\Requests\V1\ContactUs\ContactUsRequest;
 use App\Http\Requests\V1\Order\OrderRequest;
+use App\Jobs\ProcessForm;
 use App\Mail\accept;
 use App\Mail\adminRequest;
 use App\Mail\perfect;
@@ -70,49 +71,29 @@ class ViewController extends Controller
 
     public function createForms(Order $order)
     {
-        $input = Calculator::where('id', $order->input_currency_type)->firstOrFail();
-        $output = Element::where('id', $order->output_currency_type)->firstOrFail();
-        return view('v1.view.layouts.form', compact('order', 'input', 'output'));
+        return view('v1.view.layouts.form', compact('order'));
     }
 
     public function storeForm(CustomerFormRequest $request)
-    {
-        $form = [];
+    {;
         if(! auth()->user()) {
 
             return redirect()->route('login');
         } else {
                 
-            $this->form = auth()->user()->forms()->create(
+            // $time  = -microtime(true);
+            $form = auth()->user()->forms()->create(
                 array_merge($request->all(), [
                     'order_id' => $request->order_id
                 ]) 
             );
+            
+            
+            $order = Order::where('id', $request->order_id)->with('user', 'form', 'calculator', 'element')->first();  
 
-            $order = Order::where('id', $request->order_id)->first();
-        
-            dispatch( function() use($order) {
+            ProcessForm::dispatch($order)->delay(now()->addSeconds(20));
 
-                $tether = Calculator::where('name', 'Tether (TRC 20)')->first();
-                $perfect = Calculator::where('name', 'Perfect Money')->first();
-                // dd($tether->id);
-                if($order->input_currency_type == $tether->id) {
-    
-                    Mail::to($this->form->contact_email)->send( new tether(auth()->user() ,$order));
-                } elseif($order->input_currency_type == $perfect->id) {
-                    
-                    Mail::to($this->form->contact_email)->send( new perfect(auth()->user() ,$order));
-                }
-    
-                
-                $input = Calculator::where('id', $order->input_currency_type)->first();
-                $output = Element::where('id', $order->output_currency_type)->first();
-                
-                Mail::to('samxpay@gamil.com')->send( new adminRequest($order, $input, $output, $this->form) );
-
-                $this->location(auth()->user(), "User Created New Order With ID: {$order->order_number}");
-            })->afterResponse();
-
+            // dd($time + microtime(true));
             $this->custom_alert('Your Order', 'Submited');
             return redirect()->route('home');
         }
@@ -148,12 +129,11 @@ class ViewController extends Controller
     
     public function email()
     {  
-        $order = Order::with('user')->latest()->first();
-        $form = Form::where('order_id', $order->id)->first();
-        $input = Calculator::where('id', $order->input_currency_type)->first();
-        $output = Element::where('id', $order->output_currency_type)->first();
 
+        $order = Order::with('user')->with('form', 'calculator', 'element')->latest()->first();
 
-        return new adminRequest($order, $input, $output, $form);
+        // return new accept($order);
+        ProcessForm::dispatch($order);
+        // return back();
     }
 }

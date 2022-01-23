@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ProcessWelcom;
 use App\Mail\welcome;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -72,10 +73,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
         
-        dispatch( function() use($user) {
-
-            Mail::to($user->email)->send( new welcome($user) );
-        })->afterResponse();
+        ProcessWelcom::dispatch($user)->delay(now()->addSecond(15));
 
         $this->location($user, 'User Registered');
         return $user;

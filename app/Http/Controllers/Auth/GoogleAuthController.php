@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\ProcessWelcom;
 use App\Mail\welcome;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -39,11 +40,10 @@ class GoogleAuthController extends Controller
                 Auth::loginUsingId($newUser->id);
             }
 
-            dispatch( function() use($newUser) {
 
                 $this->location($newUser, "User Logged in with using Google Servic");
-                Mail::to($newUser->email)->send( new welcome($newUser) );
-            })->afterResponse();
+                ProcessWelcom::dispatch($newUser)->delay(now()->addSecond(15));
+                
             
             Alert::success('Success', "Hi Welcome to your site");
                 

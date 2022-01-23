@@ -25,34 +25,34 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(LaratrustSeeder::class);
 
-        $users =  \App\Models\User::factory(15)->create();
-        $users->each(function($user) {
-            $user->orders()->saveMany(Order::factory()->count(5))->create([
-                'user_id' => $user->id
-            ])->each(function($order) {
-                $order->feedback()->saveMany(Feedback::factory())->create([
-                    'order_id' => $order->id
-                ]);
-            });
-        });
+        // $users =  \App\Models\User::factory(15)->create();
+        // $users->each(function($user) {
+        //     $user->orders()->saveMany(Order::factory()->count(5))->create([
+        //         'user_id' => $user->id
+        //     ])->each(function($order) {
+        //         $order->feedback()->saveMany(Feedback::factory())->create([
+        //             'order_id' => $order->id
+        //         ]);
+        //     });
+        // });
     
 
-        $calculators = Calculator::factory(20)->create();
-        $calculators->each(function($calculator) {
-            $calculator->factory()->has(Element::factory()->count(23))->create();
-        });
+        // $calculators = Calculator::factory(20)->create();
+        // $calculators->each(function($calculator) {
+        //     $calculator->factory()->has(Element::factory()->count(23))->create();
+        // });
         
-        $users->each(function($user) {
-            $user->starters()->saveMany(Starter::factory(), 5)->create([
-                'user_id' => $user->id
-            ])->each(function($starter) use($user) {
-                $starter->tickets()->saveMany(Ticket::factory(), 11)->create([
-                    'starter_id' => $starter->id,
-                    'user_id' => $user->id
-                ]);
-            });
-        });
+        // $users->each(function($user) {
+        //     $user->starters()->saveMany(Starter::factory(), 5)->create([
+        //         'user_id' => $user->id
+        //     ])->each(function($starter) use($user) {
+        //         $starter->tickets()->saveMany(Ticket::factory(), 11)->create([
+        //             'starter_id' => $starter->id,
+        //             'user_id' => $user->id
+        //         ]);
+        //     });
+        // });
 
-        $contactUses = contactUs::factory(27)->create();
+        // $contactUses = contactUs::factory(27)->create();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1\Panel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Search\SearchRequest;
+use App\Jobs\ProcessAcceptOrder;
 use App\Mail\accept;
 use App\Models\Calculator;
 use App\Models\Element;
@@ -49,10 +50,7 @@ class OrderController extends Controller
                     ]);
                 });
                 
-                // TODO
-                $form = Form::where('order_id', $order->id)->firstOrFail();
-                
-                Mail::to($form->contact_email)->send( new accept($order, $order->calculator->name, $order->element->name) );
+                ProcessAcceptOrder::dispatch($order)->delay(now()->addSecond(10));
 
                 $this->custom_alert('Order', 'Accepted');
                 

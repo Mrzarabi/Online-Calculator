@@ -11,21 +11,16 @@ class adminRequest extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
-    public $input;
-    public $output;
-    public $form;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order, $input, $output, $form)
+    // public function __construct($order, $input, $output, $form)
+    public function __construct($order)
     {
         $this->order = $order;
-        $this->input = $input;
-        $this->output = $output;
-        $this->form = $form;
     }
 
     /**
@@ -38,10 +33,7 @@ class adminRequest extends Mailable
         return $this->subject('You Have New Request')
                     ->view('mail.adminRequest')
                     ->with([
-                        'order' => $this->order,  
-                        'input' => $this->input,
-                        'output' => $this->output,
-                        'form' => $this->form
+                        'order' => $this->order,
                     ]);
     }
 }

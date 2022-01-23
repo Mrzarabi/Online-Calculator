@@ -10,16 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class welcome extends Mailable
 {
     use Queueable, SerializesModels;
-    public $data;
+    public $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($user)
     {
-        $this->data = $data;
+        $this->user = $user;
     }
 
     /**
@@ -31,6 +31,6 @@ class welcome extends Mailable
     {
         return $this->subject('Welcome To SAMXPAY')
                     ->view('mail.welcome')
-                    ->with('data', $this->data);
+                    ->with('user', $this->user);
     }
 }

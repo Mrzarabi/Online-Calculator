@@ -11,19 +11,15 @@ class accept extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
-    public $input;
-    public $output;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order, $input, $output)
+    public function __construct($order)
     {
         $this->order = $order;
-        $this->input = $input;
-        $this->output = $output;
     }
 
     /**
@@ -37,8 +33,6 @@ class accept extends Mailable
                     ->view('mail.accept')
                     ->with([
                         'order' => $this->order,
-                        'input' => $this->input,
-                        'output' => $this->output,
                     ]);
 
                     

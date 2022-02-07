@@ -5,57 +5,60 @@
     use App\Models\Ticket;
     use Carbon\Carbon;
 @endphp
-@if (count($starts) != 0)
-    <div class="container show-card">
+<div class="container show-card">
+
+    {{-- create starts --}}
+    @include('v1.customer.layouts.start.create-starts-sm')
+
+    @if (count($starts) != 0)
         @foreach ($starts as $start)
-            <div class="card custom-back-color-card">
+            <div class="custom-background-card mb-2">
                 <div class="card-body pb-0">
-                    <span class="custom-font-weight badge badge-pill mb-1 badge-success"> {{Carbon::parse($start->created_at)->format('d/m/Y')}} </span>
+                    <h4 class="custom-font-size color"> New Ticket: 
+                        @if (! empty($newTicket))
+                            @if ($newTicket->user->email == 'owner@gmail.com' || $newTicket->user->email == 'helper@gmail.com')
+                                <span class="custom-font-size">You Have</span>
+                            @else
+                                <span class="custom-font-size">Nothing</span>
+                            @endif
+                        @else
+                            <span class="custom-font-size">Nothing</span>
+                        @endif    
+                    </h4>
                     @php
                         $newTicket = $start->tickets()->with('user')->latest()->first();
                     @endphp
+                    <h6 class="mr-2 color custom-font-size">Ticket Number: {{$start->start_number}}</h6>
+                    <h6 class="mr-2 color mb-4 custom-font-size">Session Status: 
+                        @if ($start->closed)
+                            <span class="custom-font-size">CLOSED</span>
+                        @else
+                            <span class="custom-font-size">OPEN</sp>
+                        @endif
+                    </h6>
                     <div class="text-center w-100">
-                        <h6>Ticket NO: {{$start->start_number}}</h6>
                         <div>
                             <div class="d-flex justify-content-center">
-                                <h6 class=" text-truncate custom-size-title-ticket" title="{{$start->title}}""> {{$start->title}} </h6>
+                                <h6 class="text-truncate custom-size-title-ticket text-color" title="{{$start->title}}"> {{$start->title}} </h6>
                             </div>
-                            <h6 class="d-flex justify-content-center">
-                                @if (! empty($newTicket))
-                                    @if ($newTicket->user->email == 'owner@gmail.com' || $newTicket->user->email == 'helper@gmail.com')
-                                        <p class="custom-text-color text-center mb-0"> New ticket</p>
-                                    @else
-                                        <p class="text-center mb-0 text-white">Nothing</p> 
-                                    @endif
-                                @else
-                                    <p class="text-center mb-0 text-white">Nothing</p>
-                                @endif
-                            </h6>
-                            <h5 class="d-flex justify-content-center">
-                                @if ($start->closed)
-                                    <p class="text-danger text-center mb-1">Closed</p>
-                                @else
-                                    <p class="text-success text-center mb-1">Open</p>
-                                @endif
-                            </h5>
                         </div>
                     </div>
-                    <div class="user">
-                        <img src=" {{$start->user->avatar ? $start->user->avatar : '/defaultImages/avatar.png'}} " alt="user" />
-                        <div class="user-info">
-                            <h5 class="custom-user-info"> {{$start->user->name . ' ' . $start->user->family}} </h5>
-                            <small class="custom-user-info"> {{$start->user->email}} </small>
-                        </div>
+                    <div class="d-flex justify-content-start">
+                        <h6 class="mr-2 mb-2 custom-font-size text-color">{{Carbon::parse($start->created_at)->format('d/m/Y')}}</h6>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mb-2">
                     <div class="d-flex justify-content-center mb-2">
-                        <a href=" {{route('customer.tickets.create', ['starter' => $start->id])}} " class="btn btn-warning btn-sm mr-1">Send Ticket</a>
+                        @if (! $start->closed)
+                            <a href=" {{route('customer.tickets.create', ['starter' => $start->id])}} " class="btns custom-mobile-font-size text-color pr-3 pl-3 btn-sm">SEND TICKET</a>
+                        @else 
+                            <a href=" {{route('customer.tickets.create', ['starter' => $start->id])}} " class="btns custom-mobile-font-size text-color pr-3 pl-3 btn-sm">WATCH TICKETS</a>
+                        @endif
                     </div>
                 </div>
             </div>
         @endforeach
-    </div>
-@else
-    <p class="text-color text-center show-card">CURRENTLY THERE IS NO TICKET CREATED</p>
-@endif
+    @else
+        <p class="text-color text-center show-card">CURRENTLY THERE IS NO TICKET CREATED</p>
+    @endif
+</div>

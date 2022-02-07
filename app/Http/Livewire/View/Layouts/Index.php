@@ -45,6 +45,7 @@ class Index extends Component
     public function updated($name)
     {
         $this->validateOnly($name);
+        $this->show_min_max($this->input_currency_type);
         $this->find_output_currncy_type($this->input_currency_type);
         $this->calculate($this->output_currency_type); 
         $this->money_type( $this->input_currency_unit );
@@ -53,6 +54,14 @@ class Index extends Component
             
             $this->isDisabled = false;
         }
+    }
+
+    // this function show min and max value of each input currency where selected
+    public function show_min_max($input_currency_type)
+    {
+        $input = Calculator::findOrFail($input_currency_type);
+        $this->min = $input->min;
+        $this->max = $input->max;
     }
 
     // this function for finding output currency name and currency price
@@ -68,6 +77,7 @@ class Index extends Component
 
             $element = Element::where('id', $output_currency_type)->firstOrFail();
             $this->cost = $element->price;
+
     
             $this->output_number = ($this->input_number * $element->price) / 100;
             $this->output_number = $this->input_number - $this->output_number;

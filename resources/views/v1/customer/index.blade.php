@@ -5,7 +5,7 @@
 @section('content')
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-9 col-sm-12">
+            <div class="col-md-10 col-sm-12 custom-justify-content-center">
                 <div class="d-flex justify-content-start">
                     <div class="custom-card custom-background-card custom-sm-card">
                         <div class="card-header d-flex align-items-center">
@@ -33,16 +33,14 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between mb-2 p-4">
-                            <button type="button" class="btn-sm btns color custom-font-size pr-3 pl-3" data-toggle="modal" data-target="#user-{{$user->id}}" data-whatever="@mdo">Edit Profile</button>
+                            <button type="button" class="btn-sm btns text-color custom-font-size pr-3 pl-3" data-toggle="modal" data-target="#user-{{$user->id}}" data-whatever="@mdo">Edit Profile</button>
                             <small class="custom-user-info color"> {{ Carbon::parse($user->created_at)->format('d/m/Y') }} </small>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="d-flex justify-content-end">
-                    <img src="/defaultImages/Right.png" alt="vector" height="780">
-                </div>
+            <div class="col-md-2 col-sm-12 display-image-none d-flex align-items-end justify-content-center">
+                <img src="/defaultImages/Right.png" alt="vector" height="500" class="size-image-dashboard">
             </div>
         </div>
     </div>

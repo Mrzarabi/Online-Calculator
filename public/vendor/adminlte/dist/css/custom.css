@@ -31,6 +31,19 @@
     background: #fff;
 }
 
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #222222 inset !important;
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill{
+    -webkit-text-fill-color: #fff !important;
+}
+
 .custom-sm-card {
     width: auto;
     min-width: 40vw;
@@ -175,6 +188,10 @@
     background-color: #0b0602;
 }
 
+.custom-tr:hover {
+    background-color: #0b0602 !important;
+}
+
 
 .background-color-inputs {
     background-color: #222222 !important;
@@ -308,7 +325,7 @@
     }
 
     .size-image-dashboard {
-        height: 430px;
+        height: 400px;
     }
 }
 
@@ -324,6 +341,6 @@
     }
 
     .size-image-dashboard {
-        height: 780px;
+        height: 500px;
     }
 }

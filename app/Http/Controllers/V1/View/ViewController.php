@@ -91,7 +91,7 @@ class ViewController extends Controller
             
             $order = Order::where('id', $request->order_id)->with('user', 'form', 'calculator', 'element')->first();  
 
-            ProcessForm::dispatch($order)->delay(now()->addSeconds(20));
+            ProcessForm::dispatch($order)->delay(now()->addSeconds(10));
 
             // dd($time + microtime(true));
             $this->custom_alert('Your Order', 'Submited');

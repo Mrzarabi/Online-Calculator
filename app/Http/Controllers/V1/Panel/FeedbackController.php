@@ -17,10 +17,9 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //todo
         if(auth()->user()->isAbleTo('feedback-read')) {
 
-            $feedbacks = Feedback::latest()->paginate(10);
+            $feedbacks = Feedback::with('order')->latest()->paginate(10);
             return view('v1.panel.layouts.feedback.feedbacks', compact('feedbacks'));
         } else {
 

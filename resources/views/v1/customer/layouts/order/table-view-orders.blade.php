@@ -42,7 +42,7 @@
     
                                     @if ($order->feedback)
                                         
-                                        <button type="button" class="btns btn-sm ml-1 text-color custom-font-size p-2" data-toggle="modal" data-target="#readFeedback-{{$feedback->id}}" data-whatever="@mdo">Reed Feedback</button>
+                                        <button type="button" class="btns btn-sm ml-1 text-color custom-font-size p-2" data-toggle="modal" data-target="#readFeedback-{{$order->feedback->id}}" data-whatever="@mdo">Read Feedback</button>
                                     @else
     
                                         <button type="button" class="btns btn-sm ml-1 text-color custom-font-size p-2" data-toggle="modal" data-target="#showFeedback-{{$order->id}}" data-whatever="@mdo">Write Feedback</button>
@@ -160,17 +160,17 @@
                         @endif
                     {{-- end modal --}}
                     {{-- modal --}}
-                        @if (isset($feedback))
-                            <div class="modal fade" id="readFeedback-{{$feedback->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        @if (isset($order->feedback))
+                            <div class="modal fade" id="readFeedback-{{$order->feedback->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content background-color-modals modal-border">
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label class="text-color custom-font-size">Your Feedback to this Transition: </label>
-                                                <p class="ml-3 mr-3 text-justify text-color"> {{$feedback->body ? $feedback->body : 'NO TEXT'}} </p>
+                                                <p class="ml-3 mr-3 text-justify text-color"> {{$order->feedback->body ? $order->feedback->body : 'NO TEXT'}} </p>
                                                 
                                                 <div class="d-flex justify-content-end mt-3">
-                                                    <button type="button" class="btn color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn text-color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">CLOSE</button>
                                                 </div>
                                             </div>
                                         </div>

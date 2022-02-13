@@ -1,5 +1,4 @@
 @php
-    use App\Models\Calculator;
     use Carbon\Carbon;
 @endphp
 @extends('adminlte::page')
@@ -31,9 +30,6 @@
                             $i = 1;
                         @endphp
                         @foreach ($elements as $element)
-                            @php
-                                // $calculator = Calculator::where('id', $element->calculator_id)->first();
-                            @endphp
                             <tr class="with-bottom-linear-gradient-to-left">
                                 <td class="text-color border-top-0"> {{$i++}} </td>
                                 <td class="text-color border-top-0"> {{$element->calculator->name}} </td>

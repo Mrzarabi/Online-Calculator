@@ -17,8 +17,5 @@
 
         </div>
     </div>
-
-    {{-- card veiw --}}
-    @include('v1.panel.layouts.order.card-view-orders')
 @endsection
 

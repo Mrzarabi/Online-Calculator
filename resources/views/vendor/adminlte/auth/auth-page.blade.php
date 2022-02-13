@@ -22,7 +22,7 @@
         {{-- Logo --}}
         <div class="{{ $auth_type ?? 'login' }}-logo with-bottom-linear-gradient-to-left">
             <a href="{{ $dashboard_url }}" class="text-color">
-                <img src="{{ asset(config('adminlte.logo_img')) }}" height="50">
+                <img src="{{ asset(config('adminlte.logo_img')) }}" height="80">
                 {!! config('adminlte.logo', '<b>Admin</b>LTE') !!}
             </a>
         </div>

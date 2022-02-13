@@ -22,12 +22,12 @@
                 <td class="border-top-0 text-color"> {{$contactUs->name}} </td>
                 <td class="border-top-0 text-color"> {{ $contactUs->email }} </td>
                 <td class="border-top-0 text-color d-flex justify-content-center" title="{{$contactUs->body}}"> 
-                    <button type="button" class="btns btn-sm color mr-1" data-toggle="modal" data-target="#contactUs-{{$contactUs->id}}" data-whatever="@mdo">TEXT</button>
+                    <button type="button" class="btns btn-sm text-color pr-3 pl-3 mr-1" data-toggle="modal" data-target="#contactUs-{{$contactUs->id}}" data-whatever="@mdo">TEXT</button>
                 </td>
                 <td class="border-top-0 text-color">{{Carbon::parse($contactUs->created_at)->format('d/m/Y')}}</td>
                 <td class="border-top-0">
                     <div class="d-flex justify-content-center mb-2">
-                        <button type="button" class="btns btn-sm color mr-1" data-toggle="modal" data-target="#delete-{{$contactUs->id}}" data-whatever="@mdo">DELETE</button>
+                        <button type="button" class="btns btn-sm text-color pr-3 pl-3 mr-1" data-toggle="modal" data-target="#delete-{{$contactUs->id}}" data-whatever="@mdo">DELETE</button>
                     </div>
                 </td>
             </tr>
@@ -37,9 +37,12 @@
                     <div class="modal-content background-color-modals modal-border">
                         <div class="modal-body">
                             <div class="modal-body">
-                                <h5 class="text-justify text-color"> {{$contactUs->body}} </h5>
+                                <div class="form-group">
+                                    <label class="custom-font-size color">Text: </label>
+                                    <h5 class="ml-3 mr-3 text-justify text-color"> {{$contactUs->body}} </h5>
+                                </div>
                                 <div class="mt-3 d-flex justify-content-end mt-3">
-                                    <button type="button" class="btn color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">CANCLE</button>
+                                    <button type="button" class="btn text-color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">CANCLE</button>
                                 </div>
                             </div>
                         </div>
@@ -58,8 +61,8 @@
                                     @method('DELETE')
                                     <h5 class="text-center text-color">ARE YOU SURE YOU WANT TO DELETE THIS MESSAGE?</h5>
                                     <div class="mt-3 d-flex justify-content-end mt-3">
-                                        <button type="button" class="btn color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">CANCLE</button>
-                                        <button type="submit" class="btns color pr-3 pl-3 btn-sm custom-font-size">YES DELETE THE MESSAGE</button>
+                                        <button type="button" class="btn text-color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">CANCLE</button>
+                                        <button type="submit" class="btns text-color pr-3 pl-3 btn-sm custom-font-size">YES DELETE THE MESSAGE</button>
                                     </div>
                                 </div>
                             </form>

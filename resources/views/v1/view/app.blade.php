@@ -34,7 +34,7 @@
         <!--************ HERO ***************************************************************************************-->
         <!--*********************************************************************************************************-->
         <div id="ts-hero" class="ts-animate-hero-items">
-            <div class="custom-overflow-y" style="width: 100%">
+            <div class="custom-overflow-y custom-overflow-x w100">
                 @yield('content')
             </div>
             

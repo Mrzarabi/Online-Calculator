@@ -8,6 +8,9 @@
             <div class="d-flex justify-content-start mt-4 ml-0 mb-4">
                 <a href=" {{route('starters.index')}} "> <img src="/defaultImages/panel/ticket/back-left.png" alt="back left"></a>
             </div>
+            <div class="col-12">
+                <p class="text-center custom-size-text mt-2 text-justify text-color"> {{$starter->title}} </p>
+            </div>
         @endif
         <div class="d-flex justify-content-center m-4">
             @if ($tickets)
@@ -71,7 +74,7 @@
                                             <img src=" {{$ticket->image}} " class="rounded " loading="lazy" alt="ticket" width="470" height="auto"/>
                     
                                             <div class="d-flex justify-content-end mt-3">
-                                                <button type="button" class="btn color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn text-color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">CLOSE</button>
                                             </div>
                                         </div>
                                     </div>

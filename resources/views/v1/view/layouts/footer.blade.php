@@ -1,12 +1,12 @@
-<div class="row" style="height: 100%">
+<div class="row h100">
     <div class="col-md-12">
-        <div class="row" style="height: 100%">
-            <div class="col-md-5">
-                <div class="right d-flex align-items-center" style="height: 100%">
+        <div class="row h100">
+            <div class="col-md-6">
+                <div class="right d-flex align-items-center small-foo-reserved h100">
                     <small class="site-color" >© SAMXPAY, All RIGHTS RESERVED</small>
                 </div>
             </div>
-            <div class="col-md-7 d-flex  align-items-center justify-content-end">
+            <div class="col-md-6 d-flex align-items-center justify-content-end small-foo-logos">
                 <ul class="d-flex list_style_type_none">
                     <li class="m-1"><img src="/defaultImages/wu-gold.png" alt="wu-gold" width="30"></li>
                     <li class="m-1"><img src="/defaultImages/tether-gold.png" alt="tether-gold" width="30"></li>

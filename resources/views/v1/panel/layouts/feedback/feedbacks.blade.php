@@ -16,6 +16,6 @@
     </div>
 
     {{-- card veiw --}}
-    @include('v1.panel.layouts.feedback.card-view-feedbacks')
+    {{-- @include('v1.panel.layouts.feedback.card-view-feedbacks') --}}
 @endsection
 

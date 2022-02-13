@@ -5,9 +5,9 @@
             <div class="col-8 offset-2">
                 <form method="POST" action="{{route('image.store', ['clearing' => $clearing->id])}}" class="mb-4" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label class="control-label" for="image"> Image </label>
+                        <label class="control-label color custom-font-size" for="image"> IAMGE </label>
                         <div class="input-group">
-                            <input type="file" name="image[]" id="iamge" multiple/>
+                            <input type="file" name="image[]" id="iamge" class="file-input-text border-0" multiple/>
                         </div>
                         @if ($errors->has('image'))
                             <span class="d-block text-danger">{{ $errors->first('image') }}</span>
@@ -43,7 +43,7 @@
                         @endif
                     </div>
                     <div class="d-flex justify-content-end mt-3">
-                        <button type="submit" class="btn btn-success btn-sm">Submit</button>
+                        <button type="submit" class="btns custom-font-size pl-3 pr-3 pt-2 pb-2 text-color">SUBMIT</button>
                     </div>
                     @csrf
                 </form>

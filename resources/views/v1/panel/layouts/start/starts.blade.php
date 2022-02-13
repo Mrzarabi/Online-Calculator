@@ -20,7 +20,7 @@
     
     
     {{-- card views --}}
-    @include('v1.panel.layouts.start.card-view-starts')
+    {{-- @include('v1.panel.layouts.start.card-view-starts') --}}
 
 @endsection
 

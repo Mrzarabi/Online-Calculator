@@ -17,7 +17,7 @@
                     <h6>Ticket NO: {{$start->start_number}}</h6>
                     <div>
                         <div class="d-flex justify-content-center">
-                            <h6 class=" text-truncate custom-size-title-ticket" title="{{$start->title}}"> {{$start->title}} </h6>
+                            <h6 class=" text-truncate custom-size-title-ticket" title="{{$start->title}}"> {{$start->titled}} </h6>
                         </div>
                         <h6 class="d-flex justify-content-center">
                             @if (isset($newTicket))
@@ -42,7 +42,7 @@
                 <div class="user">
                     <img src=" {{$start->user->avatar ? $start->user->avatar : '/defaultImages/avatar.png'}} " alt="user" />
                     <div class="user-info">
-                        <h5 class="custom-user-info"> {{$start->user->name . ' ' . $start->user->family}} </h5>
+                        <h5 class="custom-user-info"> {{$start->user->named . ' ' . $start->user->family}} </h5>
                         <small class="custom-user-info"> {{$start->user->email}} </small>
                         <br>
                         <small class="custom-user-info"> {{$start->user->phone ? $start->user->phone : 'NO PHONE' }} </small>

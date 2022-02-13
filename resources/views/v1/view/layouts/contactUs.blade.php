@@ -2,19 +2,20 @@
 
 @extends('v1.view.app')
 @section('content')
-    <div class="container p-0" style="height: 100%">
-        @include('v1.view.layouts.top')
-        <div class="col-md-12" style="width: 100%; background-color: #0501003b; height: 70%;">
+    <div class="container p-0 position-relative custom-h100">
+        <div class="col-md-12">
+            @include('v1.view.layouts.top')
+        </div>
+        <div class="col-md-12 form-background">
             <h6 class="site-color text-center mb-3"> CONTACT US </h6>
-            <div class="row d-flex justify-content-center" style="width: 100%">
-                <div class="p-4 with-linear-gradient" style="border-radius: 4px; width: 80%; height: 100%;">
-                    <div class="col-md-12">
+            <div class="row d-flex justify-content-center">
+                <div class="p-4 with-linear-gradient w80">
+                    <div class="col-12">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-5 col-sm-12">
                                 <div class="left-aboutus">
                                     <form action=" {{ route('customer.contactUs.send')}} " method="post">
                                         @csrf
-
                                         <div class="wrap-input2 mb-3 d-flex">
                                             <input class="bg-transparent input2" type="text" name="name" required>
                                             <span class="focus-input2" data-placeholder="NAME"></span>
@@ -49,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-md-2"></div>
-                            <div class="col-md-5">
+                            <div class="col-md-5 col-sm-12">
                                 <div class="row">
                                     <div class="col-md-12 d-flex justify-content-center">
                                         <img class="p-4" src="/defaultImages/Remember Me.png" alt="image" width="280" height="280">
@@ -59,12 +60,12 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <ul class="d-flex justify-content-start">
+                        <ul class="d-sm-flex justify-content-start">
                             <li class="d-flex mb-2 mr-2"> 
                                 <span class="mr-2">
                                     <img src="/defaultImages/5340292_locate_location_map_pin_icon.png" alt="location" width="15">
                                 </span> 
-                                <h6 class="site-color font-weight-lighter mt-1" style="font-size: .7rem;">
+                                <h6 class="site-color font-weight-lighter mt-1 login-text">
                                     26 Shabdiz St, Fereshteh, Tehran
                                 </h6>    
                             </li>
@@ -72,7 +73,7 @@
                                 <span class="mr-2">
                                     <img src="/defaultImages/2561369_phone_icon.png" class="mt-1" alt="phone" width="15">
                                 </span> 
-                                <a href="https://wa.me/+19286519314" class="site-color font-weight-lighter" style="font-size: .7rem;"> 
+                                <a href="https://wa.me/+19286519314" class="site-color font-weight-lighter login-text"> 
                                     +1 928 6519 314
                                 </a>
                             </li>
@@ -80,7 +81,7 @@
                                 <span class="mr-2 mb-2 mr-2">
                                     <img src="/defaultImages/email copy.png" class="mt-1" alt="email" width="15">
                                 </span> 
-                                <a href="mailto:SamxPay@gmail.com " class="site-color font-weight-lighter" style="font-size: .7rem;"> 
+                                <a href="mailto:SamxPay@gmail.com " class="site-color font-weight-lighter login-text"> 
                                     SamxPay@gmail.com 
                                 </a>
                             </li>
@@ -89,34 +90,13 @@
                 </div>
             </div>
         </div>
-        <div class="footer" style="width: 100%; height: 12%;">
+        <div class="footer col-md-12 my-3">
             @include('v1.view.layouts.footer')
         </div>
     </div>
 @endsection
 @section('script')
     <script>
-        function animation(name) {
-            console.log(name);
-            el = document.getElementById(name);
-            el.classList.add('anim');
-        }
-    </script>
-    <script>
-        function getVal(name) {
-            val = document.getElementById(name).value;
-            var label = "l_" + name;
-            el = document.getElementById(label);
-            console.log(val)
-            if(val !== '') {
-                el.classList.add('anim');
-            } else {
-                el.classList.remove('ranim');
-            }
-        }
-    </script>
-    <script>
-        console.log('sldfj')
         $('.input2').each(function(){
         $(this).on('blur', function(){
             if($(this).val().trim() != "") {

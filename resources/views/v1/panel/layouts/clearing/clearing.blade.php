@@ -17,5 +17,5 @@
     </div>
     
     {{-- order choosed card view--}}
-    @include('v1.panel.layouts.clearing.card-view-order-clearing')
+    {{-- @include('v1.panel.layouts.clearing.card-view-order-clearing') --}}
 @endsection

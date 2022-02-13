@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between mb-2 p-4">
-                            <button type="button" class="btn-sm btns color" data-toggle="modal" data-target="#user-{{$user->id}}" data-whatever="@mdo">Edit Profile</button>
+                            <button type="button" class="btn-sm btns text-color custom-font-size pr-3 pl-3" data-toggle="modal" data-target="#user-{{$user->id}}" data-whatever="@mdo">Edit Profile</button>
                             <small class="custom-user-info color"> {{ Carbon::parse($user->created_at)->format('d/m/Y') }} </small>
                         </div>
                     </div>

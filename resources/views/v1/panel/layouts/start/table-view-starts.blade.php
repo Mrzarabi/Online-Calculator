@@ -8,7 +8,7 @@
             <th scope="col" class="color border-0">TICKET NUMBER</th>
             <th scope="col" class="color border-0">USER</th>
             <th scope="col" class="color border-0">TITLE</th>
-            <th scope="col" class="color border-0">RECEIVE NEW TICKET</th>
+            <th scope="col" class="color border-0">ANSWERD</th>
             <th scope="col" class="color border-0">SESSION STATUS</th>
             <th scope="col" class="color border-0">DATE</th>
             <th scope="col" class="color border-0">ACTIONS</th>
@@ -19,9 +19,9 @@
             $i = 1;
         @endphp
         @foreach ($starts as $start)
-        @php
-            $newTicket = $start->tickets()->with('user')->latest()->first();
-        @endphp
+            @php
+                $newTicket = $start->tickets()->with('user')->latest()->first();
+            @endphp
             <tr class="with-bottom-linear-gradient-to-left">
                 <td class="border-top-0 text-color"> {{$i++}} </td>
                 <td class="border-top-0 text-color"> {{$start->start_number}} </td>
@@ -45,10 +45,10 @@
                 <td class="border-top-0">
                     <div class="d-flex justify-content-center mb-2">
                         @if (! $start->closed)
-                            <button type="button" class="btns btn-sm color mr-1" data-toggle="modal" data-target="#start-{{$start->id}}" data-whatever="@mdo">CLOSE</button>
-                            <a href=" {{route('tickets.create', ['starter' => $start->id])}} " class="btns color btn-sm mr-1">SEND TICKET</a>
+                            <button type="button" class="btns btn-sm text-color pr-3 pl-3 mr-1" data-toggle="modal" data-target="#start-{{$start->id}}" data-whatever="@mdo">CLOSE</button>
+                            <a href=" {{route('tickets.create', ['starter' => $start->id])}} " class="btns text-color pr-3 pl-3 btn-sm mr-1">SEND TICKET</a>
                         @else 
-                            <a href=" {{route('tickets.create', ['starter' => $start->id])}} " class="btns color btn-sm mr-1">WATCH TICKET</a>
+                            <a href=" {{route('tickets.create', ['starter' => $start->id])}} " class="btns text-color pr-3 pl-3 btn-sm mr-1">WATCH TICKETS</a>
                         @endif
                     </div>
                 </td>
@@ -64,8 +64,8 @@
                                     @method('PUT')
                                     <h5 class="text-center text-color">ARE YOU SURE YOU WANT TO CLOSE THIS SESSION?</h5>
                                     <div class="mt-3 d-flex justify-content-end mt-3">
-                                    <button type="button" class="btn color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">CANCLE</button>
-                                    <button type="submit" class="btns color pr-3 pl-3 btn-sm custom-font-size">YES CLOSE THE SESSION</button>
+                                    <button type="button" class="btn text-color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">CANCLE</button>
+                                    <button type="submit" class="btns text-color pr-3 pl-3 btn-sm custom-font-size">YES CLOSE THE SESSION</button>
                                     </div>
                                 </div>
                             </form>

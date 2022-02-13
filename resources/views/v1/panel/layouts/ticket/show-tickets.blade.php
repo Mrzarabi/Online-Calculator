@@ -1,5 +1,4 @@
 @php
-    use App\Models\Ticket;
     use Carbon\Carbon;
 @endphp
 
@@ -7,4 +6,4 @@
 @include('v1.panel.layouts.ticket.show-table-view-tickets')
 
 {{-- card view tickets  --}}
-@include('v1.panel.layouts.ticket.show-card-view-tickets')
+{{-- @include('v1.panel.layouts.ticket.show-card-view-tickets') --}}

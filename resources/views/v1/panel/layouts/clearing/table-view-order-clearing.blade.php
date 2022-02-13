@@ -1,15 +1,11 @@
 @php
-    use App\Models\Clearing;
-    use App\Models\Form;
-    use App\Models\Calculator;
-    use App\Models\Element;
     use Carbon\Carbon;
 @endphp
 <table class="table table-hover text-center show-table">
     <thead class="tbh">
         <tr>
             <th scope="col" class="color border-0">#</th>
-            <th scope="col" class="color border-0">ORDER NO</th>
+            <th scope="col" class="color border-0">ORDER NUMBER</th>
             <th scope="col" class="color border-0">SEND</th>
             <th scope="col" class="color border-0">RECEIVE</th>
             <th scope="col" class="color border-0">DATE</th>
@@ -22,26 +18,21 @@
         @endphp
         <tr  class="with-bottom-linear-gradient-to-left">
             <td class="text-color border-top-0"> {{$i++}} </td>
-            <td class="text-color border-top-0"> {{$order->order_no}} </td>
-            @php
-                $form = Form::where('order_id', $order->id)->first();
-                $input = Calculator::where('id', $order->input_currency_type)->first();
-                $output = Element::where('id', $order->output_currency_type)->first();
-            @endphp
+            <td class="text-color border-top-0"> {{$order->order_number}} </td>
             <td class="text-color border-top-0">{{isset($input->name) ? $input->name : 'NO TEXT'}}  {{$order->input_number ? $order->input_number : 'NO TEXT'}} {{$order->input_currency_unit ? $order->input_currency_unit : 'NO TEXT'}}</td>
             <td class="text-color border-top-0">{{isset($output->name) ? $output->name : 'NO TEXT'}}  {{$order->output_number ? $order->output_number : 'NO TEXT'}} {{$order->output_currency_unit ? $order->output_currency_unit : 'NO TEXT'}}</td>
             <td class="text-color border-top-0">{{Carbon::parse($order->created_at)->format('d/m/Y')}}</td>
             <td class="text-color border-top-0">
                 <div class="d-flex justify-content-center mb-2">
-                    <button type="button" class="btns custom-font-size text-color p-2 mr-1" data-toggle="modal" data-target="#user-{{$order->user->id}}" data-whatever="@mdo">User Info</button> 
-                    @if ($form)
-                        <button type="button" class="btns custom-font-size text-color p-2 mr-1" data-toggle="modal" data-target="#form-{{$form->id}}" data-whatever="@mdo">Show Form</button>
+                    <button type="button" class="btns custom-font-size text-color pl-3 pr-3 pt-2 pb-2 mr-1" data-toggle="modal" data-target="#user-{{$order->user->id}}" data-whatever="@mdo">User Info</button> 
+                    @if ($order->form)
+                        <button type="button" class="btns custom-font-size text-color pl-3 pr-3 pt-2 pb-2 mr-1" data-toggle="modal" data-target="#form-{{$order->form->id}}" data-whatever="@mdo">Show Form</button>
                     @endif
                     <form action="{{route('orders.accept', ['order' => $order->id])}} " method="POST" class="mr-1">
                         @if ($order->accept == true)
-                            <button type="submit" class="btns custom-font-size text-color p-2">Accepted</button>
+                            <button type="submit" class="btns custom-font-size text-color pl-3 pr-3 pt-2 pb-2">Accepted</button>
                         @else 
-                            <button type="submit" class="btns custom-font-size text-color p-2">Pending</button>
+                            <button type="submit" class="btns custom-font-size text-color pl-3 pr-3 pt-2 pb-2">Pending</button>
                         @endif
                         @csrf
                     </form>
@@ -81,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end mt-2">
-                                <button type="button" class="btn color pr-4 pl-4 pt-2 pb-2 mr-2 custom-font-size" data-dismiss="modal">CANCEL</button>
+                                <button type="button" class="btn text-color pr-4 pl-4 pt-2 pb-2 mr-2 custom-font-size" data-dismiss="modal">CANCEL</button>
                             </div>
                         </div>
                     </div>
@@ -89,51 +80,50 @@
             </div>
         {{-- end modal --}}
         {{-- modal --}}
-        @if ($form)
-            <div class="modal fade" id="form-{{$form->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        @if ($order->form)
+            <div class="modal fade" id="form-{{$order->form->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content custom-card-color">
+                    <div class="modal-content background-color-modals modal-border">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="custom-user-info custom-font-size">User PayPal E-mail address: </label>
-                                <h6 class="ml-3 mr-3 text-justify mb-3"> {{$form->email ? $form->email : 'NO TEXT'}} </h6>
+                                <label class="custom-font-size color">User PayPal E-mail address: </label>
+                                <h6 class="ml-3 mr-3 text-justify mb-3 text-color"> {{$order->form->email ? $order->form->email : 'NO TEXT'}} </h6>
                             </div>
                             <div class="form-group">
-                                <label class="custom-user-info custom-font-size">User content E-mail address: </label>
-                                <h6 class="ml-3 mr-3 text-justify mb-3"> {{$form->contact_email ? $form->contact_email : 'NO TEXT'}} </h6>
+                                <label class="custom-font-size color">User content E-mail address: </label>
+                                <h6 class="ml-3 mr-3 text-justify mb-3 text-color"> {{$order->form->contact_email ? $order->form->contact_email : 'NO TEXT'}} </h6>
                             </div>
                             <div class="form-group">
-                                <label class="custom-user-info custom-font-size">User PayPal wallet: </label>
-                                <h6 class="ml-3 mr-3 text-justify mb-3"> {{$form->wallet ? $form->wallet : 'NO TEXT'}} </h6>
+                                <label class="custom-font-size color">User {{$input->name}} wallet: </label>
+                                <h6 class="ml-3 mr-3 text-justify mb-3 text-color"> {{$order->form->wallet ? $order->form->wallet : 'NO TEXT'}} </h6>
                             </div>
-                            @isset($form->telegram)
+                            @isset($order->form->telegram)
                                 <div class="form-group">
-                                    <label class="custom-user-info custom-font-size">User Telegram account: </label>
-                                    <h6 class="ml-3 mr-3 text-justify"> {{$form->telegram}} </h6>
+                                    <label class="custom-font-size color">User Telegram account: </label>
+                                    <h6 class="ml-3 mr-3 text-justify text-color"> {{$order->form->telegram}} </h6>
                                 </div>
                             @endisset
-                            @isset($form->whatsApp)
+                            @isset($order->form->whatsApp)
                                 <div class="form-group">
-                                    <label class="custom-user-info custom-font-size">User WhatsApp account: </label>
-                                    <h6 class="ml-3 mr-3 text-justify"> {{$form->whatsApp ? $form->whatsApp : 'NO TEXT'}} </h6>
+                                    <label class="custom-font-size color">User WhatsApp account: </label>
+                                    <h6 class="ml-3 mr-3 text-justify text-color"> {{$order->form->whatsApp ? $order->form->whatsApp : 'NO TEXT'}} </h6>
                                 </div>
                             @endisset
-                            @isset($form->skype)
+                            @isset($order->form->skype)
                                 <div class="form-group">
-                                    <label class="custom-user-info custom-font-size">User Skype account: </label>
-                                    <h6 class="ml-3 mr-3 text-justify"> {{$form->skype ? $form->skype : 'NO TEXT'}} </h6>
+                                    <label class="custom-font-size color">User Skype account: </label>
+                                    <h6 class="ml-3 mr-3 text-justify text-color"> {{$order->form->skype ? $order->form->skype : 'NO TEXT'}} </h6>
                                 </div>
                             @endisset
-                            @isset($form->extra)
+                            @isset($order->form->extra)
                                 <div class="form-group">
-                                    <label class="custom-user-info custom-font-size">Extra note on your user transaction: </label>
-                                    <p class="ml-3 mr-3 text-justify"> {{$form->extra ? $form->extra : 'NO TEXT'}} </p>
+                                    <label class="custom-font-size color">Extra note on your user transaction: </label>
+                                    <p class="ml-3 mr-3 text-justify text-color"> {{$order->form->extra ? $order->form->extra : 'NO TEXT'}} </p>
                                 </div>
                             @endisset
-                        </div>
-                        <hr/>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div class="mt-3 d-flex justify-content-end">
+                                <button type="button" class="btn text-color pr-4 pl-4 pt-2 pb-2 mr-2 custom-font-size" data-dismiss="modal">CANCEL</button>
+                            </div>
                         </div>
                     </div>
                 </div>

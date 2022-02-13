@@ -1,9 +1,6 @@
-@php
-    use App\Models\Ticket;
-@endphp
 <div class="col-md-12">
     <div class="row">
-        <div class="col-md-9 custom-background-card">
+        <div class="col-md-9 col-sm-12 custom-background-card">
             @if ($starter->closed == false)
                 <div class="with-bottom-linear-gradient-to-left">
                     <div class="row">
@@ -51,10 +48,12 @@
                     </div>
                 </div>
             @endif
+             {{-- show tickets --}}
+            @include('v1.customer.layouts.ticket.show-tickets')
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-12 display-image-none">
             <div class="d-flex justify-content-end">
-                <img src="/defaultImages/Right.png" alt="vector" height="780">
+                <img src="/defaultImages/Right.png" alt="vector" height="780" class="size-image-dashboard">
             </div>
         </div>
     </div>

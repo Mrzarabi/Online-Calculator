@@ -1,5 +1,4 @@
 @php
-    use App\Models\Ticket;
     use Carbon\Carbon;
 @endphp
 <div class="rounded show-table-ticket">
@@ -8,11 +7,11 @@
             <div class="d-flex justify-content-start">
                 <a href=" {{route('customer.starters.index')}} " > <img src="/defaultImages/panel/ticket/back-left.png" alt="back left"></a>
             </div>
+            <div class="col-12">
+                <p class="text-center custom-size-text mt-2 text-justify text-color"> {{$starter->title}} </p>
+            </div>
         @endif
         <div class="d-flex justify-content-center m-4">
-            @php
-                $tickets = Ticket::with('user')->where('starter_id', $starter->id)->get();
-            @endphp
             @if ($tickets)
             <div class="container">
                 @foreach ($tickets as $ticket)
@@ -75,7 +74,7 @@
                                             <img src=" {{$ticket->image}} " class="rounded " loading="lazy" alt="ticket" width="470" height="auto"/>
                     
                                             <div class="d-flex justify-content-end mt-3">
-                                                <button type="button" class="btn color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn text-color pr-3 pl-3 mr-1 btn-sm custom-font-size" data-dismiss="modal">CLOSE</button>
                                             </div>
                                         </div>
                                     </div>

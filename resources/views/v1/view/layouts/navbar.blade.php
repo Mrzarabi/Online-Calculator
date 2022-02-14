@@ -1,10 +1,10 @@
 <!--NAVIGATION ******************************************************************************************-->
 {{-- <nav class="navbar navbar-light bg-white fixed-top @if ( Route::currentRouteName() == 'view.index' ) navbar-toggle @endif navbar-expand-lg"> --}}
-    @php
+@php
     use App\Models\Calculator;
 @endphp
-<nav class="navbar navbar-light fixed-top">
-<div class="container">
+<nav class="navbar navbar-light fixed-top small-scrin">
+    <div class="container">
         <a class="navbar-brand ts-push-down__50 position-absolute ts-bottom__0 pb-0 ts-z-index__1 ts-scroll" href="#page-top">
         </a>
         <!--end navbar-brand-->
@@ -26,10 +26,11 @@
                 @if (isset($perfect))
                     <a href=" {{route('services.perfect')}} "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">Perfect Money</li></a>
                 @endif
+                <a href=" {{route('feedbacks')}} "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">Feedbacks</li></a>
                 <a href=" {{route('terms')}} "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">Terms</li></a>
                 <a href=" "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">Referral</li></a>
                 <a href=" "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">Sample</li></a>
-                <a href=" "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">Contact Us</li></a>
+                <a href=" {{route('contactUs')}} "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">Contact Us</li></a>
                 <a href=" "><li class="c-bg-li site-color nav-item nav-link ts-scroll custom-font-size" onclick="document.getElementById('sound').play();">F&Q</li></a>
                 @if (auth()->user())
                     @if (auth()->user()->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399'))

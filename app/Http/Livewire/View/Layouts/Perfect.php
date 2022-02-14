@@ -19,9 +19,11 @@ class Perfect extends Component
      public $inventory;
      public $cost;
      public $input;
-     public $output;
+     public $outputs;
      public $isDisabled = true;
      public $output_currency_type;
+     public $min;
+     public $max;
  
      // This is all rules for input properties
      protected $rules = [
@@ -35,7 +37,9 @@ class Perfect extends Component
      {
          $this->inventory = Inventory::latest()->first();
          $this->input = Calculator::where('name', 'Perfect Money')->first();
-         $this->output = Element::where('name', 'PayPal')->first();
+         $this->outputs = Element::where('calculator_id', $this->input->id)->get();
+           $this->min = $this->input->min;
+           $this->max = $this->input->max;
      }
      
      // I'm checking all changes from template with this function

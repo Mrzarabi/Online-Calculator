@@ -1,181 +1,129 @@
-<div style="height: 100%">
-    <div class="row" style="height: 100%; background-color: rgba(5, 1, 0, 0.231);">
+<div class="h100">
+    <div class="row h100 form-background">
         <div class="col-md-12">
-                <div class="row" style="height: 100%">
-                    <div class="col-md-12 pl-0" style="height: 30%; display: grid; align-items: end; grid-template-rows: repeat(1, 1fr); justify-content: center;" >
-                        @if (isset($inventory->paypalInv))
-                            <div class="" style="margin-left: 2.3rem;">
-                                <span class="" style="font-size: .8rem; color: #6a6a6a;">PayPal Balance Reserve: </span> <span class="site-color" style="font-size: .8rem">{{$inventory->paypalInv}}</span>
-                            </div>
-                        @endif
-                        @if (isset($inventory->cashInv))
-                            <div class="" style="margin-left: 2.3rem;">
-                                <span class="" style="font-size: .8rem; color: #6a6a6a;">Cash Balance Reserve: </span> <span class="site-color" style="font-size: .8rem">{{$inventory->cashInv}}</span>
-                            </div>
-                        @endif
-                        @if (isset($inventory->perfectMoneyInv))
-                            <div class="" style="margin-left: 2.3rem;">
-                                <span class="" style="font-size: .8rem; color: #6a6a6a;">Perfect Money Balance Reserve: </span> <span class="site-color" style="font-size: .8rem">{{$inventory->perfectMoneyInv}}</span>
-                            </div>
-                        @endif
-                        @if (isset($inventory->webMoneyInv))
-                            <div class="" style="margin-left: 2.3rem;">
-                                <span class=""  style="font-size: .8rem; color: #6a6a6a;">Web Money Balance Reserve: </span> <span class="site-color" style="font-size: .8rem"> {{$inventory->webMoneyInv}}</span>
-                            </div>
-                        @endif
-                        @if (isset($inventory->tetherInv))
-                            <div class="" style="margin-left: 2.3rem;">
-                                <span class=""  style="font-size: .8rem; color: #6a6a6a;">Tether (TRC20) Balance Reserve: </span> <span class="site-color" style="font-size: .8rem">{{$inventory->tetherInv}}</span>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="col-md-12 d-flex justify-content-center mt-4" style="height: 70%;" >
-                        <form action=" {{route('customer.orders.send')}} " method="POST">
-                            @csrf
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-12"></div>
-                                    <div class="col-md-6 pr-0">
-                                        <div class="row">
-                                            <div class="col-md-12 offset-md-1">
-                                                <h6 class="site-color" style="margin: 0 0 .3rem 1.9rem">Send</h6>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="d-flex justify-content-center" style="max-width:100%">
-                                                    <div class="form-group">
-                                                        <select name="input_currency_type" class="form-control form-control-sm" wire:model.lazy="input_currency_type" required style="
-                                                        border-radius: 4px 0 0 4px;
-                                                        background-image: -webkit-linear-gradient( 90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%);
-                                                        color: black;
-                                                        max-width: 120px;
-                                                        max-height: 40px;
-                                                        ">
-                                                            @if (isset($input->name))
-                                                                <option value="{{$input->id}}" selected style="
-                                                                    border-radius: 4px 0 0 4px;
-                                                                    background-image: -webkit-linear-gradient( 90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%);
-                                                                    color: black;
-                                                                    max-width: 120px;
-                                                                    max-height: 40px;
-                                                                    ">{{$input->name}}</option>
-                                                            @endif
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="number" step="0.01" class="form-control form-control-sm mb-2" id="input_number" placeholder="ENTER THE AMOUNT" name="input_number"  wire:model.lazy="input_number" required style="
-                                                            border-top: 1px solid #b78318;
-                                                            border-bottom: 1px solid #b78318;
-                                                            background-color: #070200;
-                                                            max-width: 160px;
-                                                            width: 160px;
-                                                            font-size: .6rem;
-                                                            max-height: 40px;
-                                                            
-                                                        height: 40px;
-                                                        margin-top: -2px;
-                                                            ">
-                                                        @if ($errors->has('input_number'))
-                                                            <span class="d-block text-danger">{{ $errors->first('input_number') }}</span>
+            <div class="row rh100">
+                <div class="col-md-12 pl-0 h30 custom-grid-inventory">
+                    @if (isset($inventory->paypal_inventory))
+                        <div class="cml">
+                            <span class="custom-title-inventory">PayPal Balance Reserve: </span> <span class="site-color custom-font-size-inventory">{{$inventory->paypal_inventory}}</span>
+                        </div>
+                    @endif
+                    @if (isset($inventory->cash_inventory))
+                        <div class="cml">
+                            <span class="custom-title-inventory">Cash Balance Reserve: </span> <span class="site-color custom-font-size-inventory">{{$inventory->cash_inventory}}</span>
+                        </div>
+                    @endif
+                    @if (isset($inventory->perfect_money_inventory))
+                        <div class="cml">
+                            <span class="custom-title-inventory">Perfect Money Balance Reserve: </span> <span class="site-color custom-font-size-inventory">{{$inventory->perfect_money_inventory}}</span>
+                        </div>
+                    @endif
+                    @if (isset($inventory->web_money_inventory))
+                        <div class="cml">
+                            <span class="custom-title-inventory">Web Money Balance Reserve: </span> <span class="site-color custom-font-size-inventory"> {{$inventory->web_money_inventory}}</span>
+                        </div>
+                    @endif
+                    @if (isset($inventory->tether_inventory))
+                        <div class="cml">
+                            <span class="custom-title-inventory">Tether (TRC20) Balance Reserve: </span> <span class="site-color custom-font-size-inventory">{{$inventory->tether_inventory}}</span>
+                        </div>
+                    @endif
+                </div>
+                <div class="col-md-12 d-flex justify-content-center mt-4 h70">
+                    <form action=" {{route('customer.orders.send')}} " method="POST">
+                        @csrf
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-12 d-flex align-self-center justify-content-center mb-5">
+                                    <h6 class="mb-0 text-come text-center site-color mr-3"> {{isset($max) ? 'MAX: '.$max : ''}} </h6>
+                                    <br>
+                                    <h6 class="mb-0 d-block text-come text-center site-color"> {{isset($min) ? 'MIN: '.$min : ''}} </h6>
+                                </div>
+                                <div class="col-lg-6 col-sm-12 pr-0 pl-0">
+                                    <div class="row">
+                                        <div class="col-md-12 offset-md-1 col-sm-12">
+                                            <h6 class="site-color width-margin-label-form">Send</h6>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="d-flex justify-content-center mw100">
+                                                <div class="form-group">
+                                                    <select name="calculator_id" class="form-control rounded-left form-control-sm input-currency-type" wire:model.lazy="input_currency_type" required>
+                                                        @if (isset($input->name))
+                                                            <option class="option-styles" value="{{$input->id}}">{{$input->name}}</option>
                                                         @endif
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <select name="input_currency_unit" class="form-control form-control-sm" wire:model.lazy="input_currency_unit" required style="
-                                                        border-radius: 0 4px 4px 0;
-                                                        color: black;
-                                                        max-width: 120px;
-                                                        width: 120px;
-                                                        max-height: 40px;
-                                                        background-image: -webkit-linear-gradient( 90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%);
-                                                        ">
-                                                            <option selected>Select Money</option>
-                                                            <option value="USD">USD</option>
-                                                            <option value="EUR" disabled>EUR</option>
-                                                        </select>
-                                                    </div>
+                                                    </select>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12  offset-md-1">
-                                                <h6 class="site-color"  style="margin: 0 0 .3rem 1.9rem">Receive</h6>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="d-flex justify-content-center">
-                                                    <div class="form-group">
-                                                        <select name="output_currency_type" class="form-control form-control-sm" wire:model.lazy="output_currency_type" required style="
-                                                        border-radius: 4px 0 0 4px;
-                                                        background-image: -webkit-linear-gradient( 90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%);
-                                                        color: black;
-                                                        max-width: 120px;
-                                                        max-height: 40px;
-                                                        ">
-                                                            <option selected >Select Currency</option>
-                                                            @if (isset($output))
-                                                                <option value="{{$output->id}}">{{$output->name}}</option>
-                                                            @endif
-                                                                <option value="Cash" disabled>Cash</option>
-                                                                <option value="Tether (TRC20)" disabled>Tether (TRC20)</option>
-                                                                <option value="Web Money" disabled>Web Money</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" name="output_number" class="form-control form-control-sm mb-2" value="{{ $output_number ? $output_number : 0.00 }}" disabled style="
-                                                        border-top: 1px solid #b78318;
-                                                        border-bottom: 1px solid #b78318;
-                                                        background-color: #070200;
-                                                        max-width: 160px;
-                                                        width: 160px;
-                                                        font-size: .6rem;
-                                                        max-height: 40px;
-                                                        height: 40px;
-                                                        margin-top: -2px;
-                                                        ">
-                                                        <input type="hidden" name="output_number"value="{{ $output_number ? $output_number : 0.00 }}">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" name="output_currency_unit" class="form-control form-control-sm mb-2" value="{{ $output_currency_unit ?  $output_currency_unit : 'Still Not Chosen'}}" disabled style="
-                                                        border-radius: 0 4px 4px 0;
-                                                        background-image: -webkit-linear-gradient( 90deg, rgb(183,131,24) 0%, rgb(196,149,46) 47%, rgb(255,241,164) 73%, rgb(205,148,49) 96%);
-                                                        max-width: 120px;
-                                                        color: black;
-                                                        width: 120px;
-                                                        max-height: 40px;
-                                                        height: 40px;
-                                                        margin-top: -2px;
-                                                        ">
-                                                        <input type="hidden" name="output_currency_unit" value="{{ $output_currency_unit ?  $output_currency_unit : 'Still Not Chosen'}}">
-                                                    </div>
+                                                <div class="form-group">
+                                                    <input type="number" step="0.01" class="form-control form-control-sm mb-2 input-currency-number" id="input_number" min="{{ isset($input->min) ? $input->min : '' }}" max="{{ isset($input->max) ? $input->max : '' }}" placeholder="ENTER THE AMOUNT" name="input_number"  wire:model.lazy="input_number" required>
+                                                    @if ($errors->has('input_number'))
+                                                        <span class="d-block text-danger custom-font-size">{{ $errors->first('input_number') }}</span>
+                                                    @endif
                                                 </div>
-                                            </div>
-                                            <div class="col-md-8 offset-md-2" style="padding-left: 0;">
-                                                @guest
-                                                    <h6 class="site-color mt-4 text-center" style="font-size: .7rem;">If You Are Interesting To Trade Please, Log In/Sing Up At First</h6>
-                                                @else
-                                                    <div class="d-flex justify-content-center mt-4">
-                                                        @if($isDisabled)
-                                                            <button type="submit" class="btn btn-sm rounded custom-btn-content" disabled="{{ $isDisabled }}">Confirm</button>
-                                                        @else
-                                                            <button type="submit" class="btn btn-sm rounded custom-btn-content" onclick="document.getElementById('sound').play();">Confirm</button>
-                                                        @endif
-                                                    </div>
-                                                @endguest
+                                                <div class="form-group">
+                                                    <select name="input_currency_unit" class="form-control form-control-sm input-currency-unit" wire:model.lazy="input_currency_unit" required>
+                                                        <option selected>Select Currency</option>
+                                                        <option value="USD">USD</option>
+                                                        <option value="EUR" disabled>EUR</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-12 accent-green p-0 d-flex align-items-center">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h6 class="mb-0 @if ($image) mt--5 @endif d-block text-come text-center site-color" style="margin-top: -3rem;"> {{isset($cost) ? $cost ."%" : ''}} </h6>
-                                                <img src="/defaultImages/form-image.png" class="d-block {{$image ? 'sold' : ''}}" alt="logo" width="70">
+                                        <div class="col-md-12 offset-md-1 col-sm-12">
+                                            <h6 class="site-color width-margin-label-form">Receive</h6>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="d-flex justify-content-center">
+                                                <div class="form-group">
+                                                    <select name="element_id" class="form-control form-control-sm output-currency-type" wire:model.lazy="output_currency_type" required>
+                                                        <option selected >Select Money</option>
+                                                        @if (isset($outputs))
+                                                            @foreach ($outputs as $output)
+                                                                <option value="{{$output->id}}">{{$output->name}}</option>
+                                                            @endforeach
+                                                        @endif
+                                                            <option value="Cash" disabled>Cash</option>
+                                                            <option value="Tether (TRC20)" disabled>Tether (TRC20)</option>
+                                                            <option value="Web Money" disabled>Web Money</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="output_number" class="form-control form-control-sm mb-2 output-currency-number" value="{{ $output_number ? $output_number : 0.00 }}" disabled>
+                                                    <input type="hidden" name="output_number"value="{{ $output_number ? $output_number : 0.00 }}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="output_currency_unit" class="form-control form-control-sm mb-2 output-currency-unit" value="{{ $output_currency_unit ?  $output_currency_unit : 'Still Not Chosen'}}" disabled>
+                                                    <input type="hidden" name="output_currency_unit" value="{{ $output_currency_unit ?  $output_currency_unit : 'Still Not Chosen'}}">
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="col-md-8 offset-md-2 cpr-sm-0 pl-0">
+                                            @guest
+                                                <h6 class="site-color mt-4 text-center custom-font-size">If You Are Interesting To Trade Please, Log In/Sing Up At First</h6>
+                                            @else
+                                                <div class="d-flex justify-content-center mt-4">
+                                                    @if($isDisabled)
+                                                        <button type="submit" class="btn btn-sm rounded custom-btn-content" disabled="{{ $isDisabled }}">Confirm</button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-sm rounded custom-btn-content" onclick="document.getElementById('sound').play();">Confirm</button>
+                                                    @endif
+                                                </div>
+                                            @endguest
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-12 accent-green p-0 d-flex align-items-center justify-content-sm-center mt-sm">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="mb-0 @if ($image) mt--5 @endif d-block text-come text-center site-color" style="margin-top: -3rem;"> {{isset($cost) ? $cost ."%" : ''}} </h6>
+                                            <img src="/defaultImages/form-image.png" class="d-block {{$image ? 'sold' : ''}}" alt="logo" width="70">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                        </form>
-                        
-                    </div>
+                        </div>
+                    </form>
                 </div>
-
+            </div>
         </div>
     </div>
 </div>

@@ -19,7 +19,7 @@ class Tether extends Component
        public $inventory;
        public $cost;
        public $input;
-       public $output;
+       public $outputs;
        public $isDisabled = true;
        public $output_currency_type;
    
@@ -35,7 +35,9 @@ class Tether extends Component
        {
            $this->inventory = Inventory::latest()->first();
            $this->input = Calculator::where('name', 'Tether (TRC 20)')->first();
-           $this->output = Element::where('name', 'PayPal')->first();
+           $this->outputs = Element::where('calculator_id', $this->input->id)->get();
+           $this->min = $this->input->min;
+           $this->max = $this->input->max;
        }
        
        // I'm checking all changes from template with this function
@@ -49,7 +51,7 @@ class Tether extends Component
                 $this->isDisabled = false;
             }
         }
-   
+
        // With this function I'm trading all currencies to Paypal
        public function calculate($output_currency_type) 
        {

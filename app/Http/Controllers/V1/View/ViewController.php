@@ -39,14 +39,16 @@ class ViewController extends Controller
 
     public function tether()
     {
+        $perfect = false;
         $tether = true;
-        return view('v1.view.layouts.index', compact('tether'));
+        return view('v1.view.layouts.index', compact('tether', 'perfect'));
     }
 
     public function perfect()
     {
+        $tether = false;
         $perfect = true;
-        return view('v1.view.layouts.index', compact('perfect'));
+        return view('v1.view.layouts.index', compact('perfect', 'tether'));
     }
 
     public function store(OrderRequest $request)
@@ -108,7 +110,7 @@ class ViewController extends Controller
 
     public function feedbacks()
     {
-        $feedbacks = Feedback::with('order')->where('show', true)->latest()->paginate(5);
+        $feedbacks = Feedback::with('order')->where('show', true)->latest()->paginate(1);
         
         return view('v1.view.layouts.feedback', [
             'feedbacks' => $feedbacks,

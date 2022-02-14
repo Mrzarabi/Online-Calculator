@@ -197,8 +197,8 @@
                                                 @endif
                     
                                                 <div class="d-flex justify-content-end mt-3">
-                                                    <button type="button" class="btn color pr-4 pl-4 mr-1 btn-sm custom-font-size" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btns color pr-4 pl-4 btn-sm custom-font-size">Submit</button>
+                                                    <button type="button" class="btn text-color pr-4 pl-4 mr-1 btn-sm custom-font-size" data-dismiss="modal">CLOSE</button>
+                                                    <button type="submit" class="btns text-color pr-4 pl-4 btn-sm custom-font-size">Submit</button>
                                                 </div>
                                             </form>
                                         </div>

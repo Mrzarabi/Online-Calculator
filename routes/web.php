@@ -9,7 +9,6 @@ use App\Http\Controllers\V1\Customer\TicketController as CustomerTicketControlle
 use App\Http\Controllers\V1\Panel\CalculatorController;
 use App\Http\Controllers\V1\Panel\ClearingController;
 use App\Http\Controllers\V1\Panel\ElementController;
-use App\Http\Controllers\V1\Panel\FormController;
 use App\Http\Controllers\V1\Panel\InventoryController;
 use App\Http\Controllers\V1\Panel\LocationController;
 use App\Http\Controllers\V1\Panel\OrderController;
@@ -19,8 +18,7 @@ use App\Http\Controllers\V1\Panel\ContactUsController;
 use App\Http\Controllers\V1\Panel\FeedbackController;
 use App\Http\Controllers\V1\Panel\UserController;
 use App\Http\Controllers\V1\View\ViewController;
-use App\Http\Livewire\View\Layouts\Perfect;
-use App\Http\Livewire\View\Layouts\Tether;
+use App\Models\Feedback;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,101 +35,116 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-//auth route for google
+//! auth route for google
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('auth.google');
 Route::get('auth/google/callback', [GoogleAuthController::class, 'callBack']);
 
-//template livewire components 
-
-// Admin routes
+//! Admin routes
 Route::prefix('admin')
     ->middleware(['role:100e82ba-e1c0-4153-8633-e1bd228f7399', 'auth'])
     ->group(function () {
 
+    //? Profile
     Route::get('/settings', [UserController::class, 'show_profile'])->name('settings');;
     Route::put('/settings/profile/{user}', [UserController::class, 'update_profile'])->name('settings.profile');
-
-    Route::put('/ticket/watched/{ticket}', [TicketController::class, 'watched'])->name('ticket.watched');
-
+    
+    //? Calculators Or Costs
     Route::get('/define/currencies', [CalculatorController::class, 'index'])->name('calculators.index');
     Route::post('/define/currencies', [CalculatorController::class, 'store'])->name('calculators.store');
     Route::delete('/define/currencies/{calculator}', [CalculatorController::class, 'destroy'])->name('calculators.destroy');
-    
+
+    //? Elements
+    Route::resource('/elements', ElementController::class)->except(['index', 'show', 'edit']);
+
+    //? Inventories
     Route::get('/define/inventories', [InventoryController::class, 'index'])->name('inventories.index');
     Route::post('/define/inventories', [InventoryController::class, 'store'])->name('inventories.store');
+
+    //? Users
+    Route::resource('/users', UserController::class)->only(['index', 'destroy']);
+
     
+    //? Locations
+    Route::post('loacations/{user}', [LocationController::class, 'index'])->name('locations.index');
+
+    //? Orders
+    Route::resource('/orders', OrderController::class)->only(['index', 'destroy']);
     Route::post('/orders/accept/{order}', [OrderController::class, 'accept'])->name('orders.accept');
     
+    //? Clearings
     Route::get('/clearing/create/{order}', [ClearingController::class, 'create'])->name('clearing.create');
     Route::post('clearing/store', [ClearingController::class, 'store'])->name('clearing.store');
-    Route::get('/clearing/edit/{clearing}', [ClearingController::class, 'edit'])->name('clearing.edit');
     Route::put('clearing/update/{clearing}', [ClearingController::class, 'update'])->name('clearing.update');
-    
+
     Route::get('/upload/image/{clearing}', [ClearingController::class, 'editUploadImages'])->name('image.create');
     Route::post('/upload/image/{clearing}', [ClearingController::class, 'uploadImages'])->name('image.store');
-    // Route::put('clearing/update/{clearing}', [ClearingController::class, 'update'])->name('clearing.update');
-    
-    Route::get('/create/ticket/{starter}', [TicketController::class, 'create'])->name('tickets.create');
-    Route::post('/create/ticket/{starter}', [TicketController::class, 'store'])->name('tickets.store');
-    Route::put('/close/ticket/{starter}', [StarterController::class, 'close'])->name('starters.close');
-    
-    Route::post('loacations/{user}', [LocationController::class, 'index'])->name('locations.index');
-    
-    Route::get('/search/order', [OrderController::class, 'search'])->name('order.search');
-    Route::get('/search/user', [UserController::class, 'search'])->name('user.search');
-    Route::get('/search/element', [ElementController::class, 'search'])->name('element.search');
-    Route::get('/search/start', [StarterController::class, 'search'])->name('starts.search');
-    
-    Route::get('/contactUses', [ContactUsController::class, 'index'])->name('contactUs.index');
-    Route::delete('/contactUses/{contactUs}', [ContactUsController::class, 'destroy'])->name('contactUs.destroy');
-    
+
+    //? Feedbacks
+    Route::resource('/feedbacks', FeedbackController::class)->only(['index', 'destroy']);
     Route::put('/update/feedback/{feedback}', [FeedbackController::class, 'watch'])->name('feedbacks.watch');
 
-    Route::resources([
-        '/users' => UserController::class,
-        '/orders' => OrderController::class,
-        '/forms' => FormController::class,
-        '/elements' => ElementController::class,
-        '/starters' => StarterController::class,
-        '/feedbacks' => FeedbackController::class,
-    ]);
+    //? Starters
+    Route::resource('/starters', StarterController::class)->only(['index']);
+    Route::put('/close/ticket/{starter}', [StarterController::class, 'close'])->name('starters.close');
+
+    //? Tickets
+    Route::get('/create/ticket/{starter}', [TicketController::class, 'create'])->name('tickets.create');
+    Route::post('/create/ticket/{starter}', [TicketController::class, 'store'])->name('tickets.store');
+
+    //? Contact Uses
+    Route::get('/contactUses', [ContactUsController::class, 'index'])->name('contactUs.index');
+    Route::delete('/contactUses/{contactUs}', [ContactUsController::class, 'destroy'])->name('contactUs.destroy');
+
+    //? Searches
+    Route::get('/search/element', [ElementController::class, 'search'])->name('element.search');
+    Route::get('/search/user', [UserController::class, 'search'])->name('user.search');
+    Route::get('/search/order', [OrderController::class, 'search'])->name('order.search');
+    Route::get('/search/start', [StarterController::class, 'search'])->name('starts.search');
+    
+
+    
+    
+
 });
 
-// Customer routes
+//! Customer routes
 Route::prefix('customer')->middleware('auth')->name('customer.')->group(function () {
-    
+    //? Profile
     Route::get('/home', [CustomerController::class, 'index'])->name('index');
     Route::put('/settings/profile/{user}', [UserController::class, 'update_profile'])->name('settings.profile');
+
+    //? Orders
+    Route::resource('/orders', CustomerOrderController::class)->only('index');
+    
+    //? Starters
+    Route::resource('/starters', CustomerStarterController::class)->only(['index', 'store']);
+
+    //? Tickets
     Route::get('/create/ticket/{starter}', [CustomerTicketController::class, 'create'])->name('tickets.create');
     Route::post('/create/ticket/{starter}', [CustomerTicketController::class, 'store'])->name('tickets.store');
 
-    Route::resources([
-        // '/tickets' => CustomerTicketController::class,
-        '/orders' => CustomerOrderController::class,
-        '/starters' => CustomerStarterController::class,
-        '/feedbacks' => CustomerFeedbackController::class,
-
-    ]);
-
+    //? Feedbacks
+    Route::resource('/feedbacks', CustomerFeedbackController::class)->only('store');
 });
 
-//View Routes
-    
+//! View Routes
 Route::get('/', [ViewController::class, 'index'])->name('home');
 Route::post('/customer/order/send', [ViewController::class, 'store'])->name('customer.orders.send');
-Route::get('/customer/forms', [ViewController::class, 'createForms'])->name('customer.forms');
+Route::get('/customer/forms/{order}', [ViewController::class, 'createForms'])->name('customer.forms');
 Route::post('/customer/forms/send', [ViewController::class, 'storeForm'])->name('customer.forms.send');
 Route::post('/customer/contact/us/send', [ViewController::class, 'contacUs'])->name('customer.contactUs.send');
 
 Route::view('/terms', '/v1/view/layouts/term')->name('terms');
 Route::view('/aboutUs', '/v1/view/layouts/aboutUs')->name('aboutUs');
 Route::view('/contactUs', '/v1/view/layouts/contactUs')->name('contactUs');
-// Route::view('/form')
 
 Route::get('/services/tether', [ViewController::class, 'tether'])->name('services.tether');
 Route::get('/services/perfect/money', [ViewController::class, 'perfect'])->name('services.perfect');
 Route::get('/feedbacks', [ViewController::class, 'feedbacks'])->name('feedbacks');
-// Route::get('test/email', [ViewController::class, 'email']);
+// Route::get('test', [ViewController::class, 'email']);
 
 Route::get('refresh-captcha', [ViewController::class, 'refreshCaptcha'])->name('refreshCaptcha');
-Route::view('test', '/index');
+// Route::view('test', '/index');
+// Route::get('/phpinfo', function() {
+//     return phpinfo();
+// });

@@ -33,11 +33,9 @@ class ClearingController extends Controller
     public function create(Order $order)
     {
         if (auth()->user()->isAbleTo('clearing-create')) {
-
+        
             $order->with(['clearing', 'form'])->firstOrFail();
-            $input = Calculator::where('id', $order->input_currency_type)->firstOrFail();
-            $output = Element::where('id', $order->output_currency_type)->firstOrFail();
-            return view('v1.panel.layouts.clearing.clearing', compact('order', 'input', 'output'));
+            return view('v1.panel.layouts.clearing.clearing', compact('order'));
         } else {
 
             abort(403, 'Forbidden.');

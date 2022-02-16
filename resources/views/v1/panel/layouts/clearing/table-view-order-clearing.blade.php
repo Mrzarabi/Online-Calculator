@@ -19,8 +19,8 @@
         <tr  class="with-bottom-linear-gradient-to-left">
             <td class="text-color border-top-0"> {{$i++}} </td>
             <td class="text-color border-top-0"> {{$order->order_number}} </td>
-            <td class="text-color border-top-0">{{isset($input->name) ? $input->name : 'NO TEXT'}}  {{$order->input_number ? $order->input_number : 'NO TEXT'}} {{$order->input_currency_unit ? $order->input_currency_unit : 'NO TEXT'}}</td>
-            <td class="text-color border-top-0">{{isset($output->name) ? $output->name : 'NO TEXT'}}  {{$order->output_number ? $order->output_number : 'NO TEXT'}} {{$order->output_currency_unit ? $order->output_currency_unit : 'NO TEXT'}}</td>
+            <td class="text-color border-top-0">{{isset($order->calculator->name) ? $order->calculator->name : 'NO TEXT'}}  {{$order->input_number ? $order->input_number : 'NO TEXT'}} {{$order->input_currency_unit ? $order->input_currency_unit : 'NO TEXT'}}</td>
+            <td class="text-color border-top-0">{{isset($order->element->name) ? $order->element->name : 'NO TEXT'}}  {{$order->output_number ? $order->output_number : 'NO TEXT'}} {{$order->output_currency_unit ? $order->output_currency_unit : 'NO TEXT'}}</td>
             <td class="text-color border-top-0">{{Carbon::parse($order->created_at)->format('d/m/Y')}}</td>
             <td class="text-color border-top-0">
                 <div class="d-flex justify-content-center mb-2">
@@ -94,7 +94,7 @@
                                 <h6 class="ml-3 mr-3 text-justify mb-3 text-color"> {{$order->form->contact_email ? $order->form->contact_email : 'NO TEXT'}} </h6>
                             </div>
                             <div class="form-group">
-                                <label class="custom-font-size color">User {{$input->name}} wallet: </label>
+                                <label class="custom-font-size color">User {{$order->calculator->name}} wallet: </label>
                                 <h6 class="ml-3 mr-3 text-justify mb-3 text-color"> {{$order->form->wallet ? $order->form->wallet : 'NO TEXT'}} </h6>
                             </div>
                             @isset($order->form->telegram)

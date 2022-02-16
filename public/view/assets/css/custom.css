@@ -215,6 +215,9 @@ input:-webkit-autofill{
 .h90 {
     height: 94%;
 }
+.h80 {
+    height: 80%;
+}
 
 .h70 {
     height: 70%;
@@ -234,6 +237,10 @@ input:-webkit-autofill{
 
 .cml {
     margin-left: 2.3rem;
+}
+
+.custom-vertical-align {
+    vertical-align: middle !important;
 }
 
 .custom-title-inventory {
@@ -274,7 +281,7 @@ input:-webkit-autofill{
 }
 
 .input-currency-type {
-    border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px !important;
     background-image: -webkit-linear-gradient(
         90deg,
         rgb(183, 131, 24) 0%,
@@ -284,11 +291,16 @@ input:-webkit-autofill{
     );
     color: black;
     max-width: 120px;
+    width: 120px;
     max-height: 40px;
 }
 
+.input-currency-type:focus {
+    color: black;
+}
+
 .output-currency-type {
-    border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px !important;
     background-image: -webkit-linear-gradient(
         90deg,
         rgb(183, 131, 24) 0%,
@@ -298,13 +310,22 @@ input:-webkit-autofill{
     );
     color: black;
     max-width: 120px;
+    width: 120px;
     max-height: 40px;
+}
+
+.output-currency-type:focus {
+    color: black;
+}
+
+.output-currency-type:focus {
+    color: black;
 }
 
 .output-currency-number {
     border-top: 1px solid #b78318;
     border-bottom: 1px solid #b78318;
-    background-color: #070200;
+    background-color: #070200 !important;
     max-width: 160px;
     width: 160px;
     font-size: 0.6rem;
@@ -331,7 +352,7 @@ input:-webkit-autofill{
 }
 
 .input-currency-unit {
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0 !important;
     color: black;
     max-width: 120px;
     width: 120px;
@@ -343,6 +364,10 @@ input:-webkit-autofill{
         rgb(255, 241, 164) 73%,
         rgb(205, 148, 49) 96%
     );
+}
+
+.input-currency-unit:focus {
+    color: black;
 }
 
 .output-currency-unit {
@@ -375,7 +400,7 @@ input:-webkit-autofill{
 }
 
 .input-currency-number {
-    border-top: 1px solid #b78318 !important;
+    border-top: 1px solid rgb(183, 131, 24) !important;
     border-bottom: 1px solid #b78318 !important;
     background-color: #070200;
     max-width: 160px;
@@ -779,6 +804,13 @@ input:-webkit-autofill{
     all: unset;
 }
 
+.custom-background-card {
+    background: transparent !important;
+    border-width: 1px;
+    border-style: solid;
+    border-image: var(--border);
+}
+
 .custom-background-dropdown {
     background-color: transparent;
 }
@@ -842,6 +874,10 @@ input:-webkit-autofill{
         padding: 8% 0 8% 0 !important;
     }
 
+    .rh100 {
+        height: 100%;
+    }
+
     .content-style {
         left: 1%;
         right: 1%;
@@ -854,6 +890,12 @@ input:-webkit-autofill{
 
 @media (min-width: 769px) {
     .nav {
+        display: none;
+    }
+}
+
+@media (min-width: 821px) {
+    .show-card {
         display: none;
     }
 }
@@ -937,6 +979,12 @@ input:-webkit-autofill{
 
     .small-foo-logos {
         justify-content: center !important;
+    }
+}
+
+@media (max-width: 820.98px) {
+    .show-table {
+        display: none;
     }
 }
 
@@ -1069,6 +1117,16 @@ input:-webkit-autofill{
 
     .select-background-color-right {
         min-width: 100px !important;
+    }
+}
+
+@media (max-width: 411px) {
+    .input-currency-number {
+        width: 120px;
+    }
+
+    .output-currency-number {
+        width: 120px;
     }
 }
 

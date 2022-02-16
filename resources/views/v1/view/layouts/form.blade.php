@@ -16,7 +16,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="wrap-input2 mb-3 d-flex">
-                                            <input class="bg-transparent input2" id="email" type="email" name="email" value=" {{old('email')}} " onchange="hi" required>
+                                            <input class="bg-transparent input2" id="email" type="email" name="email" value=" {{old('email')}} " required>
                                             <span class="focus-input2 text-uppercase" data-placeholder="YOUR PayPal E-mail ADDRESS *"></span>
                                             <img src="/defaultImages/view/form/paypal email.png" alt="paypal email" class="float-right pb-3 pt-2" width="18" height="45">
                                         </div>
@@ -91,7 +91,7 @@
                                         <div class="wrap-input2 mb-3 d-flex">
                                             <input class="bg-transparent input2" type="text" name="whatsApp" value=" {{old('whatsApp')}} ">
                                             <span class="focus-input2 text-uppercase" data-placeholder="WhatsApp"></span>
-                                            <img src="/defaultImages/view/form/whatsApp.png" alt="whatsApp" class="float-right pb-3 pt-2" width="18" height="45">
+                                            <img src="/defaultImages/view/form/whatsapp.png" alt="whatsApp" class="float-right pb-3 pt-2" width="18" height="45">
                                         </div>
                                         @if ($errors->has('whatsApp'))
                                             <span class="d-block text-danger custom-font-size mb-3">{{ $errors->first('whatsApp') }}</span>
@@ -239,14 +239,14 @@
         });
     </script>
     <script>
-        $(document).ready(function() {
-            var inputs = document.getElementById('#email');
-            console.log(inputs);
-        })
 
-        function hi() {
-            console.log('hi');
-        }
+        window.addEventListener('DOMContentLoaded', (event) => {
+            let inputs = document.querySelectorAll('.input2')
+
+            inputs.forEach(input => {
+                input.value && input.focus()
+            });
+        });
     </script>
 @endsection
 

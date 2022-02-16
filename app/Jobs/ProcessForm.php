@@ -54,7 +54,6 @@ class ProcessForm implements ShouldQueue
 
     public function failed()
     {
-        dd('you have error');
         Mail::to('samxpay@gamil.com')->send( new adminRequest($this->order, $this->order->calculator->name, $this->order->element->name, $this->form) );
     }
 }

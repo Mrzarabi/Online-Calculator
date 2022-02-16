@@ -110,7 +110,7 @@ class ViewController extends Controller
 
     public function feedbacks()
     {
-        $feedbacks = Feedback::with('order')->where('show', true)->latest()->paginate(1);
+        $feedbacks = Feedback::with('order')->where('show', true)->latest()->paginate(5);
         
         return view('v1.view.layouts.feedback', [
             'feedbacks' => $feedbacks,

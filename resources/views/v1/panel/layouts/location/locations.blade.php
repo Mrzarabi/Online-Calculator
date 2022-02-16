@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="d-flex justify-content-start mt-4 ml-0 mb-4">
-                <a href=" {{route('starters.index')}} "> <img src="/defaultImages/panel/ticket/back-left.png" alt="back left"></a>
+                <a href=" {{route('locations.index')}} "> <img src="/defaultImages/panel/ticket/back-left.png" alt="back left"></a>
             </div>
             <div class="container">
                 <div class="row">

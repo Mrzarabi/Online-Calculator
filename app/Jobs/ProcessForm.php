@@ -39,11 +39,11 @@ class ProcessForm implements ShouldQueue
         $tether = Calculator::where('name', 'Tether (TRC 20)')->first();
         $perfect = Calculator::where('name', 'Perfect Money')->first();
 
-        if(isset($tether) && $this->order->calculator_id == $tether->id) {
+        if(isset($tether) && $this->order->currency_id == $tether->id) {
                 
             Mail::to($this->order->form->contact_email)->send( new tether($this->order->user ,$this->order));
         }
-        if(isset($perfect) && $this->order->calculator_id == $perfect->id) {
+        if(isset($perfect) && $this->order->currency_id == $perfect->id) {
             
             Mail::to($this->order->form->contact_email)->send( new perfect($this->order->user ,$this->order));
         } 

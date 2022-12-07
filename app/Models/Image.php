@@ -15,7 +15,7 @@ class Image extends Model
      * @var array
      */
     protected $fillable = [
-        'clearing_id',
+        'document_id',
         
         'image',
     ];

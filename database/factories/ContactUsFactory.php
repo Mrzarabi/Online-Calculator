@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\contactUs;
+use App\Models\Opinion\ContactUs\ContactUs;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ContactUsFactory extends Factory
@@ -12,7 +12,7 @@ class ContactUsFactory extends Factory
      *
      * @return array
      */
-    protected $model = contactUs::class;
+    protected $model = ContactUs::class;
     
     public function definition()
     {

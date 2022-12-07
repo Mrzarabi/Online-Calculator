@@ -16,8 +16,8 @@ class CreateFormsTable extends Migration
         Schema::create('forms', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignUuid('user_id')->references('id')->on('users')
-                                    ->onDelete('cascade')
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')
+                                    ->onDelete('set null')
                                     ->onUpdate('cascade');
 
             $table->foreignId('order_id')->references('id')->on('orders')
@@ -32,7 +32,7 @@ class CreateFormsTable extends Migration
             $table->string('whatsApp')->nullable();
             $table->string('skype')->nullable();
             $table->string('extra', 255)->nullable();
-            $table->boolean('cheack')->default(false);
+            $table->boolean('is_cheack')->default(false);
 
             $table->timestamps();
         });

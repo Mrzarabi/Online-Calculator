@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\View\Layouts;
 
-use App\Models\Calculator;
-use App\Models\Element;
-use App\Models\Inventory;
+use App\Models\Financial\Currency\Currency;
+use App\Models\Financial\Exchange\Exchange;
+use App\Models\Financial\Inventory\Inventory;
 use Livewire\Component;
 
 class Index extends Component
@@ -25,6 +25,7 @@ class Index extends Component
     public $isDisabled = true;
     public $min;
     public $max;
+    public $input_country = false;
 
     // This is all rules for input properties
     protected $rules = [
@@ -38,7 +39,7 @@ class Index extends Component
     public function mount()
     {
         $this->inventory = Inventory::latest()->first();
-        $this->inputs = Calculator::all();
+        $this->inputs = Currency::all();
     }
     
     // I'm checking all changes from template with this function
@@ -46,6 +47,7 @@ class Index extends Component
     {
         $this->validateOnly($name);
         $this->show_min_max($this->input_currency_type);
+        $this->find_cash($this->input_currency_type);
         $this->find_output_currncy_type($this->input_currency_type);
         $this->calculate($this->output_currency_type); 
         $this->money_type( $this->input_currency_unit );
@@ -59,15 +61,24 @@ class Index extends Component
     // this function show min and max value of each input currency where selected
     public function show_min_max($input_currency_type)
     {
-        $input = Calculator::findOrFail($input_currency_type);
+        $input = Currency::findOrFail($input_currency_type);
         $this->min = $input->min;
         $this->max = $input->max;
+    }
+
+    // this function show min and max value of each input currency where selected
+    public function find_cash($input_currency_type)
+    {
+        $input = Currency::findOrFail($input_currency_type);
+        if($input->name == 'Cach' || $input->name == 'cach') {
+            $this->input_country = true;
+        }
     }
 
     // this function for finding output currency name and currency price
     public function find_output_currncy_type($input_currency_type)
     {
-        $this->outputs = Element::where('calculator_id', $input_currency_type)->get();
+        $this->outputs = Exchange::where('currency_id', $input_currency_type)->get();
     }
 
     // With this function I'm trading all currencies to Paypal
@@ -75,11 +86,10 @@ class Index extends Component
     {
         if($output_currency_type != null) {
 
-            $element = Element::where('id', $output_currency_type)->firstOrFail();
-            $this->cost = $element->price;
-
+            $exchange = Exchange::where('id', $output_currency_type)->firstOrFail();
+            $this->cost = $exchange->price;
     
-            $this->output_number = ($this->input_number * $element->price) / 100;
+            $this->output_number = ($this->input_number * $exchange->price) / 100;
             $this->output_number = $this->input_number - $this->output_number;
             $this->image = true;
         }

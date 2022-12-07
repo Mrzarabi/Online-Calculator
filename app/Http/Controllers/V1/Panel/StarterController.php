@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\V1\Panel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\Search\SearchRequest;
+use App\Http\Requests\V1\Panel\Search\SearchRequest;
 use App\Models\Starter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

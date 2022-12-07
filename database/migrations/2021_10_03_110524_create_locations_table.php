@@ -16,7 +16,7 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignUuid('user_id')->references('id')->on('users')
+            $table->foreignId('user_id')->references('id')->on('users')
                             ->onDelete('cascade')
                             ->onUpdate('cascade');
 

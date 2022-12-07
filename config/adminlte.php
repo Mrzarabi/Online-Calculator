@@ -244,7 +244,7 @@ return [
         // ],
         ['header' => 'YOU CAN ACCESS TO'],
         [
-            'text' => 'PROFILE',
+            'text' => 'Profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
             'can'  => 'admin'
@@ -255,53 +255,59 @@ return [
         //     'icon' => 'fas fa-fw fa-lock',
         // ],
         [
-            'text' => 'COSTS',
+            'text' => 'Currency',
             'url'  => 'admin/define/currencies',
             'icon' => 'fas fa-coins',
             'can'  => 'admin'
             
         ],
         [
-            'text' => 'ELEMENTS',
-            'url'  => 'admin/elements/create',
+            'text' => 'Exchange',
+            'url'  => 'admin/exchanges/create',
             'icon' => 'fas fa-money-check-alt',
             'can'  => 'admin'
             
         ],
         [
-            'text' => 'INVENTORIES',
+            'text' => 'Inventory',
             'url'  => 'admin/define/inventories',
             'icon' => 'fas fa-wallet',
             'can'  => 'admin'
             
         ],
         [
-            'text' => 'USERS',
+            'text' => 'Users',
             'url'  => 'admin/users',
             'icon' => 'fa fa-users',
             'can'  => 'admin'
         ],
         [
-            'text' => 'ORDERS',
+            'text' => 'Orders',
             'url'  => 'admin/orders',
             'icon' => 'fas fa-align-justify',
             'can'  => 'admin'
         ],
         [
-            'text' => 'FEEDBACKS',
+            'text' => 'Country',
+            'url'  => 'admin/countries',
+            'icon' => 'fa fa-flag',
+            'can'  => 'admin'
+        ],
+        [
+            'text' => 'Feedback',
             'url'  => 'admin/feedbacks',
             'icon' => 'fas fa-comment-dots',
             'can'  => 'admin'
         ],
         [
-            'text' => 'TICKETS',
+            'text' => 'Ticket',
             'url'  => 'admin/starters',
             'icon' => 'fas fa-envelope-open-text',
             'can'  => 'admin'
         ],
         [
-            'text' => 'CONTACT USES',
-            'url'  => 'admin/contactUses',
+            'text' => 'Contact us',
+            'url'  => 'admin/contactUs',
             'icon' => 'fas fa-envelope-open-text',
             'can'  => 'admin'
         ],

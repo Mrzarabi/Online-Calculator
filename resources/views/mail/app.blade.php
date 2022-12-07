@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
-
         body {
             justify-content: center;
         }
 
         #main {
-            background: #ffffff !important; 
-            height: auto !important; 
-            text-align: left !important; 
+            background: #ffffff !important;
+            height: auto !important;
+            text-align: left !important;
             font-family: system-ui, sans-serif !important;
             width: 450px;
             max-width: 450px;
@@ -36,13 +36,15 @@
         }
 
         .main-h2 {
-            color:black !important;
+            color: black !important;
             display: block;
             text-align: center !important;
             font-size: 1rem;
         }
 
-        #main-div, .custom-h4, #custom-p {
+        #main-div,
+        .custom-h4,
+        #custom-p {
             color: #000;
         }
 
@@ -56,13 +58,11 @@
         }
 
         .site-color {
-            background-image: -webkit-linear-gradient(
-                90deg,
-                rgb(183, 131, 24) 0%,
-                rgb(196, 149, 46) 47%,
-                rgb(255, 241, 164) 73%,
-                rgb(205, 148, 49) 96%
-            );
+            background-image: -webkit-linear-gradient(90deg,
+                    rgb(183, 131, 24) 0%,
+                    rgb(196, 149, 46) 47%,
+                    rgb(255, 241, 164) 73%,
+                    rgb(205, 148, 49) 96%);
             background-size: 100%;
             -webkit-background-clip: text;
             -moz-background-clip: text;
@@ -75,7 +75,7 @@
             padding: 15px;
             text-align: left !important;
         }
-        
+
         .content {
             padding: 15px;
         }
@@ -118,7 +118,7 @@
         }
 
         .custom-div-text-center {
-            text-align: center !important;            
+            text-align: center !important;
         }
 
         .rights-reserved {
@@ -127,7 +127,7 @@
 
         .m-h6 {
             margin: 10px;
-        } 
+        }
 
         .first-d-block {
             border-top: 1px solid #fbeca1;
@@ -153,23 +153,29 @@
         .mt-0 {
             margin-top: 0;
         }
+
+        p {
+            text-align: start !important;
+        }
+
     </style>
 </head>
+
 <body>
     <div id="main">
         @php
             use Carbon\Carbon;
         @endphp
-        <a href="https://samxpay.com" class="custom-style-image">
+        {{-- <a href="https://samxpay.com" class="custom-style-image">
             <img width="150" src="{{ asset('/defaultImages/samxpay-logo-removebg-preview.png') }}" alt="logo">
-        </a>
+        </a> --}}
         <div class="content">
-            
+
 
             @yield('content')
 
         </div>
-        <div class="footer">
+        {{-- <div class="footer">
             <a href="https://samxpay.com" class="custom-style-image">
                 <img width="100" class="image-soldier" src="{{ asset('/defaultImages/Soldier.png') }}" alt="soldier">
             </a>
@@ -177,35 +183,38 @@
                 <table>
                     <tr>
                         <td>
-                            <img src=" {{asset('/defaultImages/mail/footer/telegram.png')}} " alt="telegram" class="" width="25">
+                            <img src=" {{ asset('/defaultImages/mail/footer/telegram.png') }} " alt="telegram"
+                                class="" width="25">
                         </td>
                         <td>
-                            <a href="tel:SamxPayExchanger" class="site-color a-1"> 
-                                @SamxPayExchanger  
+                            <a href="tel:SamxPayExchnager" class="site-color a-1">
+                                @SamxPayExchnager
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src=" {{asset('/defaultImages/mail/footer/whatsapp.png')}} " alt="whatsapp" class="" width="25">
+                            <img src=" {{ asset('/defaultImages/mail/footer/whatsapp.png') }} " alt="whatsapp"
+                                class="" width="25">
                         </td>
                         <td>
-                            <a href="https://wa.me/+19286519314" class="site-color a-1"> 
-                                +1 928 6519 314  
+                            <a href="https://wa.me/+19286519314" class="site-color a-1">
+                                +1 (928) 6519 3514
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src=" {{asset('/defaultImages/mail/footer/email.png')}} " alt="email" class="" width="25">
+                            <img src=" {{ asset('/defaultImages/mail/footer/email.png') }} " alt="email"
+                                class="" width="25">
                         </td>
                         <td>
-                            <a href="mailto:SamxPay@gmail.com" class="site-color a-1"> 
-                                SamxPay@gmail.com 
+                            <a href="mailto:SamxPay@gmail.com" class="site-color a-1">
+                                SamxPay@gmail.com
                             </a>
                             <h6 class="site-color a-1 d-inline"> & </h6>
                             <a href="mailto:Support@Samxpay.com" class="site-color a-1">
-                                Support@Samxpay.com  
+                                Support@Samxpay.com
                             </a>
                         </td>
                     </tr>
@@ -216,23 +225,24 @@
                 </div>
                 <div class="d-block">
                     <a href="https://samxpay.com" class="site-color a-1">
-                        Visit our website  
+                        Visit our website
                     </a>
                     <h6 class="site-color a-1 d-inline"> | </h6>
                     <a href="https://samxpay.com/login" class="site-color a-1">
-                        Log in to your account  
+                        Log in to your account
                     </a>
                     <h6 class="site-color a-1 d-inline"> | </h6>
                     <a href="https://samxpay.com/customer/starters" class="site-color a-1">
-                        Get support  
+                        Get support
                     </a>
                 </div>
                 <div class="d-block">
                     <h6 class="rights-reserved site-color m-h6">Copyright © SamxPay.com , All rights reserved.</h6>
                 </div>
             </h6>
-        </div>
+        </div> --}}
     </div>
-    
+
 </body>
+
 </html>

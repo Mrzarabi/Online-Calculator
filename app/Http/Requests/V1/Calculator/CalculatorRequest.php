@@ -24,9 +24,7 @@ class CalculatorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|required|max:20',
-            'min' => 'nullable',
-            'max' => 'nullable',
+            
         ];
     }
 }

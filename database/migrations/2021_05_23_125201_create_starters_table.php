@@ -16,7 +16,7 @@ class CreateStartersTable extends Migration
         Schema::create('starters', function (Blueprint $table) {
             $table->id();
             
-            $table->foreignUuid('user_id')->references('id')->on('users')
+            $table->foreignId('user_id')->references('id')->on('users')
                                     ->onDelete('cascade')
                                     ->onUpdate('cascade');
                                     

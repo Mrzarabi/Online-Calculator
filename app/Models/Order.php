@@ -16,8 +16,9 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'calculator_id',
-        'element_id',
+        'currency_id',
+        'exchange_id',
+        'country_id',
 
         'input_number',
         'input_currency_unit',

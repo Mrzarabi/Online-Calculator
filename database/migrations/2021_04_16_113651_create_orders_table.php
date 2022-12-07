@@ -16,16 +16,20 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignUuid('user_id')->references('id')->on('users')
-                                    ->onDelete('cascade')
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')
+                                    ->onDelete('set null')
                                     ->onUpdate('cascade');
 
-            $table->foreignId('calculator_id')->references('id')->on('calculators')
-                                    ->onDelete('cascade')
+            $table->foreignId('currency_id')->nullable()->references('id')->on('currencies')
+                                    ->onDelete('set null')
                                     ->onUpdate('cascade');
 
-            $table->foreignId('element_id')->references('id')->on('elements')
-                                    ->onDelete('cascade')
+            $table->foreignId('exchange_id')->nullable()->references('id')->on('exchanges')
+                                    ->onDelete('set null')
+                                    ->onUpdate('cascade');
+
+            $table->foreignId('country_id')->nullable()->references('id')->on('countries')
+                                    ->onDelete('set null')
                                     ->onUpdate('cascade');
 
             
@@ -38,7 +42,7 @@ class CreateOrdersTable extends Migration
 
             $table->bigInteger('order_number')->unique();
 
-            $table->boolean('accept')->default(false);
+            $table->boolean('is_accept')->default(false);
 
             $table->timestamps();
         });

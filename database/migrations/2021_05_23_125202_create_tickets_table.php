@@ -16,7 +16,7 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignUuid('user_id')->references('id')->on('users')
+            $table->foreignId('user_id')->references('id')->on('users')
                                     ->onDelete('cascade')
                                     ->onUpdate('cascade');
 

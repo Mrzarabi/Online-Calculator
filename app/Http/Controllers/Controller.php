@@ -51,4 +51,12 @@ class Controller extends BaseController
             ])
         );
     }
+
+    public function check_isAbleTo($ability)
+    {
+        if(auth()->user()->isAbleTo($ability)) {
+            return true;
+        } 
+        return abort(403, 'Forbidden.');;
+    }
 }

@@ -1,26 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\V1\Panel;
+namespace App\Http\Controllers\V1\Panel\Opinion\Ticket;
 
 use App\Http\Controllers\Controller;
-use App\Models\location;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class LocationController extends Controller
+class TicketSessionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index()
     {
-        if(auth()->user()->isAbleTo('location-read')) {
-
-            $locations = location::where('user_id', $user->id)->paginate(50);
-            return view('v1.panel.layouts.location.locations', compact('locations'));
-        }
+        //
     }
 
     /**

@@ -12,20 +12,22 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
-        '100e82ba-e1c0-4153-8633-e1bd228f7399' => [
-            'calculator' => 'c,r,d',
-            'clearing' => 'c,r,u',
-            'contactUs' => 'r,d',
-            'element' => 'c,u,d,s',
-            'feedback' => 'r,d,a',
-            'image' => 'c,r',
-            'inventory' => 'c,r',
-            'location' => 'r',
-            'order' => 'r,d,a,s',
-            'starter' => 'r,cl,s',
-            'ticket' => 'an',
-            'user' => 'r,d,s',
-            'profile' => 'r,u'
+        'is_owner' => [
+            'currency'          => 'c,r,u,d',
+            //TODO جک کنم ببینم بی حساب به انگلیسی چی میشه همون بزارم
+            'document'          => 'c,r,u',
+            'contactUs'         => 'r,d',
+            'country'           => 'c,r,u,d',
+            'exchange'          => 'c,r,u,d,s',
+            'feedback'          => 'r,d,a',
+            'image'             => 'c,r',
+            'inventory'         => 'c,r',
+            'location'          => 'r',
+            'order'             => 'r,d,a,s',
+            'ticket_session'    => 'r,cl,s',
+            'ticket_item'       => 'r,d,u,c',
+            'user'              => 'r,d,s',
+            'profile'           => 'r,u'
         ],
 
         // '3362c127-65aa-4950-b14f-2fc86b53ea88' => [
@@ -36,9 +38,9 @@ return [
     ],
 
     'roles_label' => [
-        '100e82ba-e1c0-4153-8633-e1bd228f7399' => [
-            'name' => 'owner',
-            'description' => 'website owner'
+        'is_owner' => [
+            'name'          => 'owner',
+            'description'   => 'website owner'
         ],
         // '3362c127-65aa-4950-b14f-2fc86b53ea88' => [
         //     'name'  => 'customer',
@@ -47,14 +49,14 @@ return [
     ],
 
     'permissions_map' => [
-        'c' => 'create',
-        'r' => 'read',
-        'u' => 'update',
-        'd' => 'delete',
-        'w' => 'watch',
-        'an' => 'answer',
-        'a' => 'accept',
-        'cl' => 'close',
-        's' => 'search'
+        'c'     => 'create',
+        'r'     => 'read',
+        'u'     => 'update',
+        'd'     => 'delete',
+        'w'     => 'watch',
+        'an'    => 'answer',
+        'a'     => 'accept',
+        'cl'    => 'close',
+        's'     => 'search'
     ]
 ];

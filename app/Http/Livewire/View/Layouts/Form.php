@@ -12,7 +12,6 @@ class Form extends Component
     public $email;
     public $email_confirmation;
     public $contact_email;
-    public $contact_email_confirmation;
     public $wallet;
     public $telegram;
     public $whatsApp;
@@ -24,11 +23,10 @@ class Form extends Component
     public $input;
     public $output;
     public $email_text = '';
-    public $contact_email_text = '';
 
     protected $rules = [
         'email' => 'required|string|email|max:255|confirmed',
-        'contact_email' => 'required|string|email|max:255|confirmed',
+        'contact_email' => 'required|string|email|max:255',
         'wallet' => 'required|string|max:255',
         'telegram' => 'nullable|string|max:255',
         'whatsApp' => 'nullable|string|max:255',
@@ -54,15 +52,6 @@ class Form extends Component
 
             $this->email_text = '' ;
         }
-
-        if( $this->contact_email !== $this->contact_email_confirmation ) {
-            
-            $this->contact_email_text = 'Your contact email does not match yet';
-        } else { 
-
-            $this->contact_email_text = '' ;
-        }
-
         if( ! empty($this->email) && ! empty($this->contact_email) ) {
 
             if( $this->cheack == true && $this->email === $this->email_confirmation &&  $this->contact_email === $this->contact_email_confirmation ) {
@@ -79,6 +68,6 @@ class Form extends Component
 
             $this->isDisabled = true;
         }
-        return view('livewire.view.layouts.form');
+        return view('livewire.view.layouts.pages.form');
     }
 }

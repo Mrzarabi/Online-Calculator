@@ -21,7 +21,7 @@ class CreateFeedbackTable extends Migration
                             ->onUpdate('cascade');
 
             $table->text('body');
-            $table->boolean('show')->default(false);
+            $table->boolean('is_show')->default(false);
 
             $table->timestamps();
         });

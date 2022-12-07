@@ -28,12 +28,12 @@ class AuthServiceProvider extends ServiceProvider
 
         //for admin which i using in config/adminglte 
         Gate::define('admin', function($user) {
-            return $user->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399');
+            return $user->hasRole('is_owner');
         });
 
         //for customer which i using in config/adminglte
         Gate::define('customer', function($user) {
-            if( ! $user->hasRole('100e82ba-e1c0-4153-8633-e1bd228f7399')) {
+            if( ! $user->hasRole('is_owner')) {
                 return $user;
             }
         });

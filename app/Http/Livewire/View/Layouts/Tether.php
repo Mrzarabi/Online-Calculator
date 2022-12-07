@@ -4,7 +4,7 @@ namespace App\Http\Livewire\View\Layouts;
 
 use App\Models\Calculator;
 use App\Models\Element;
-use App\Models\Inventory;
+use App\Models\Financial\Inventory\Inventory;
 use Livewire\Component;
 
 class Tether extends Component
@@ -88,6 +88,6 @@ class Tether extends Component
             $this->isDisabled = true;
         }
 
-        return view('livewire.view.layouts.tether');
+        return view('livewire.view.layouts.pages.tether');
     }
 }

@@ -523,6 +523,14 @@ input:-webkit-autofill{
     color: #fbeca1;
 }
 
+.icon-color {
+    color: #c3a24b !important;
+}
+
+.icon-color:hover {
+    color: #c3a24b;
+}
+
 .btns:hover {
     color: #fbeca1;
     text-decoration: none;

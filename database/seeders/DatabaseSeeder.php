@@ -4,9 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Article;
 use App\Models\Calculator;
-use App\Models\contactUs;
+
 use App\Models\Element;
 use App\Models\Feedback;
+use App\Models\Opinion\ContactUs\ContactUs;
 use App\Models\Order;
 use App\Models\Starter;
 use App\Models\Ticket;
@@ -54,5 +55,7 @@ class DatabaseSeeder extends Seeder
         // });
 
         // $contactUses = contactUs::factory(27)->create();
+
+            // ContactUs::factory()->count(50)->create();
     }
 }
